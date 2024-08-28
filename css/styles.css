@@ -196,6 +196,8 @@ a.custom-card:hover {
 
 /*Acá comenzamos*/
 
+
+
 .login{
   display: flex;
   justify-content: center; /* Centra horizontalmente */
@@ -259,6 +261,88 @@ a.custom-card:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para darle profundidad */
 }
 
+/*-------------------------------------AUTOS-----------------------------------------------------*/
+.carsProductTitle {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 30px;
+}
+
+/* Estilo para el contenedor de las tarjetas */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre tarjetas */
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Estilo para cada tarjeta */
+.cardAuto {
+  background-color: #fff; /* Fondo blanco para la tarjeta */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra media */
+  overflow: hidden; /* Para que el borde redondeado se aplique también a las imágenes */
+  max-width: 300px; /* Ancho máximo de la tarjeta */
+  text-align: center; /* Centrar texto y elementos */
+  position: relative; /* Necesario para el posicionamiento absoluto del texto */
+  padding-bottom: 90px; /* Espacio adicional en la parte inferior para el texto de vendidosCar  y precio*/
+  justify-content: space-between; /* Espacio entre los elementos */
+  transition: box-shadow 0.3s; /* Transición suave para la sombra al hacer hover */
+}
+
+/* Estilo para la imagen dentro de la tarjeta */
+.cardAuto img {
+  width: 100%; /* Imagen ocupa todo el ancho de la tarjeta */
+  height: auto; /* Mantener proporciones */
+  display: block;
+}
+
+/* Estilo para el nombre del modelo */
+.modelo {
+  font-size: 1.2em; /* Tamaño del texto */
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Estilo para la descripción */
+.description {
+  font-size: 0.9em;
+  color: #555; /* Color gris oscuro */
+  margin: 10px 10px;
+  text-align: center;
+}
+
+
+/* Estilo para el precio */
+.precio {
+  font-size: 1.1em;
+  color: #e74c3c; /* Color rojo para destacar el precio */
+  position: absolute; /* Posicionar de manera absoluta */
+  bottom: 30px; /* Espacio desde el borde inferior de la tarjeta para hacer lugar para vendidosCar */
+  left: 0; /* Alineado a la izquierda */
+  right: 0; /* Alineado a la derecha */
+  background-color: #fff; /* Fondo blanco para evitar que el texto se mezcle con el fondo */
+  padding: 10px; /* Espacio alrededor del texto */
+  border-top: 1px solid #ddd; /* Borde superior para separar del contenido superior */
+}
+
+/* Estilo para la cantidad de vendidos */
+.vendidos {
+  font-size: 0.9em;
+  color: #777; /* Color gris claro */
+  margin: 0;
+  position: absolute; /* Posicionar de manera absoluta en la parte inferior de la tarjeta */
+  bottom: 0; /* Ubicar en el borde inferior de la tarjeta */
+  left: 0; /* Alineado a la izquierda */
+  right: 0; /* Alineado a la derecha */
+  background-color: #f9f9f9; /* Fondo ligeramente diferente para el texto */
+  padding: 10px; /* Espacio alrededor del texto */
+  border-top: 1px solid #ddd; /* Borde superior para separar el texto del resto del contenido */
+}
+
+/*
 .productos h1 {
   text-align: center;
   color: #f08000;
@@ -273,7 +357,7 @@ a.custom-card:hover {
   text-align: center;
   font-size: 22px;
 }
-
+*/
 .login img {
   width: 65%;
   margin-bottom: 20px;
