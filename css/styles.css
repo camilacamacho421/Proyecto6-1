@@ -194,9 +194,12 @@ a.custom-card:hover {
   color: orange;
 }
 
-/*Acá comenzamos*/
+/*-------------------------------------LOGIN-----------------------------------------------------*/
 
-
+.login img {
+  width: 65%;
+  margin-bottom: 20px;
+}
 
 .login{
   display: flex;
@@ -260,6 +263,9 @@ a.custom-card:hover {
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para darle profundidad */
 }
+
+/*-------------------------------------FIN LOGIN-----------------------------------------------------*/
+
 
 /*-------------------------------------AUTOS-----------------------------------------------------*/
 .carsProductTitle {
@@ -342,30 +348,38 @@ a.custom-card:hover {
   border-top: 1px solid #ddd; /* Borde superior para separar el texto del resto del contenido */
 }
 
-/*
-.productos h1 {
-  text-align: center;
-  color: #f08000;
-  margin-top: 50px;
+/*-------------------------------------FIN AUTOS-----------------------------------------------------*/
+
+/*-------------------------------------RESPONSIVE-----------------------------------------------------*/
+
+/* Resolución smartphone pequeño */
+@media screen and (width:320px) and (height:568px) {
+  .login{
+    background-color:#1fce36;
+  }
 }
 
-#tabla {
-  width: 80%;
-  margin: 40px 0 20px 200px;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  font-size: 22px;
-}
-*/
-.login img {
-  width: 65%;
-  margin-bottom: 20px;
+/* Resolución tableta modo vertical */
+@media screen and (width:768px) and (height:1024px) {
+  .login{
+    background-color:#6724d3;
+  }
 }
 
-/* DESAFIATE 2 */
+/* Resolución estándar */
+@media screen and (width: 1366px) and (height: 768px) {
+  .login{
+    background-color:#970e0e;
+  }
+}
 
-/* Estilos básicos para el menú */
+
+
+/*-------------------------------------FIN RESPONSIVE-----------------------------------------------------*/
+
+
+/*-------------------------------------DESAFIATE 2-----------------------------------------------------*/
+
 .navbar {
   background-color: #343a40;
   padding: 10px;
@@ -407,3 +421,5 @@ a.custom-card:hover {
 .nav-item:hover .desplegable {
   display: block;
 }
+
+/*-------------------------------------FIN DESAFIATE 2-----------------------------------------------------*/
