@@ -141,3 +141,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+//FUNCIÓN EN COMÚN PARA EL DESAFIANTE
+document.addEventListener('DOMContentLoaded', () => {
+    Desafiante();
+});

@@ -40,3 +40,8 @@ probandoAutos.innerHTML = `<p>Error ${err.status}: ${message}</p>`;
 .finally(() => 
 console.log('Operación de fetch completada.'));
 
+
+//FUNCIÓN EN COMÚN PARA EL DESAFIANTE
+document.addEventListener('DOMContentLoaded', () => {
+  Desafiante();
+});
