@@ -256,7 +256,10 @@ a.custom-card:hover {
 }
 
 #container-login {
-  width: 50%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
   max-width: 25em; /* Ajusta el ancho según tu diseño */
   margin: 6.25em auto 6.25em auto; /* Centra el formulario horizontalmente y verticalemente*/
   padding: 0; /* Espacio interno */
@@ -354,8 +357,8 @@ a.custom-card:hover {
 
 /* Resolución smartphone pequeño */
 @media screen and (width:320px) and (height:568px) {
-  .login{
-    background-color:#1fce36;
+  #container-login{
+    margin-top: -100;
   }
 }
 
