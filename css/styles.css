@@ -199,13 +199,14 @@ a.custom-card:hover {
 .login img {
   width: 65%;
   margin-bottom: 20px;
+  
 }
 
 .login{
   display: flex;
   justify-content: center; /* Centra horizontalmente */
   align-items: center;     /* Centra verticalmente */
-  height: 600px;           /* Asegura que el body ocupe toda la altura de la ventana */
+  height: 37.5em;           /* Asegura que el body ocupe toda la altura de la ventana */
   margin: 0;               /* Elimina el margen por defecto del body */
   background-color: #ffffff; /* Color de fondo opcional para ver mejor el contenedor */
   flex-direction: column;
@@ -213,19 +214,19 @@ a.custom-card:hover {
 }
 
 .titulo{
-  border-radius: 50px;
+  border-radius: 3.125em;
   background-color: #F09100;
-  padding: 10px;
-  margin-bottom: 40px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 0.625em;
+  margin-bottom: 2.5em;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
   color: white;
 }
 
 .usuario, 
 .contraseña{
-  padding: 10px;
-  border-radius: 25px;
+  padding: 0.625em;
+  border-radius: 1.563em;
   border: #fff;
   box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
 }
@@ -255,17 +256,19 @@ a.custom-card:hover {
 }
 
 #container-login {
-  width: 50%;
-  max-width: 400px; /* Ajusta el ancho según tu diseño */
-  margin: 100px auto 100px auto; /* Centra el formulario horizontalmente y verticalemente*/
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 25em; /* Ajusta el ancho según tu diseño */
+  margin: 6.25em auto 6.25em auto; /* Centra el formulario horizontalmente y verticalemente*/
   padding: 0; /* Espacio interno */
   border: 1px solid #cccccc; /* Color y grosor del borde */
-  border-radius: 8px; /* Bordes redondeados */
+  border-radius: 0.5em; /* Bordes redondeados */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para darle profundidad */
 }
 
 /*-------------------------------------FIN LOGIN-----------------------------------------------------*/
-
 
 /*-------------------------------------AUTOS-----------------------------------------------------*/
 .carsProductTitle {
@@ -354,8 +357,8 @@ a.custom-card:hover {
 
 /* Resolución smartphone pequeño */
 @media screen and (width:320px) and (height:568px) {
-  .login{
-    background-color:#1fce36;
+  #container-login{
+    margin-top: -100;
   }
 }
 
@@ -372,8 +375,6 @@ a.custom-card:hover {
     background-color:#970e0e;
   }
 }
-
-
 
 /*-------------------------------------FIN RESPONSIVE-----------------------------------------------------*/
 
