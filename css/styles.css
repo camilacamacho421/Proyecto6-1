@@ -255,13 +255,13 @@ a.custom-card:hover {
   background-color:#f08000;
 }
 
-#container-login {
-  display: flex;
+.container-login {
+  display: flex; 
   justify-content: center;
   width: 100%;
   height: auto;
   max-width: 25em; /* Ajusta el ancho según tu diseño */
-  margin: 6.25em auto 6.25em auto; /* Centra el formulario horizontalmente y verticalemente*/
+  margin: auto; /* Centra el formulario horizontalmente y verticalemente*/
   padding: 0; /* Espacio interno */
   border: 1px solid #cccccc; /* Color y grosor del borde */
   border-radius: 0.5em; /* Bordes redondeados */
@@ -357,8 +357,9 @@ a.custom-card:hover {
 
 /* Resolución smartphone pequeño */
 @media screen and (width:320px) and (height:568px) {
-  #container-login{
-    margin-top: -100;
+
+  .login{
+    background-color:#24d33e;
   }
 }
 
