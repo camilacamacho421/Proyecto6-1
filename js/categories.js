@@ -1,3 +1,5 @@
+//ordenación
+
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
@@ -35,10 +37,14 @@ function sortCategories(criteria, array){
     return result;
 }
 
+//guarda el id en local storage y redirecciona a products.html
+
 function setCatID(id) {
     localStorage.setItem("catID", id);
     window.location = "products.html"
 }
+
+//muestra la lista según id
 
 function showCategoriesList(){
 
@@ -50,20 +56,15 @@ function showCategoriesList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
 
             htmlContentToAppend += `
-            <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${category.name}</h4>
-                            <small class="text-muted">${category.productCount} artículos</small>
-                        </div>
-                        <p class="mb-1">${category.description}</p>
-                    </div>
-                </div>
+           <div class="cardAuto">
+                <div onclick="setCatID(${category.id})" class="list-group-item-action cursor-active">
+                <img src= "${category.imgSrc}" alt= "${category.description}">
+                <p class="modelo"> ${category.name} </p> 
+                <p class="description">${category.description} </p>       
+                <p class="vendidos"> Cantidad: ${category.productCount}</p>
+                
             </div>
+             </div>
             `
         }
 
