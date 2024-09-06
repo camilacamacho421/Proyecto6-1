@@ -30,18 +30,20 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <a id="menu-button" class="nav-link">Cerrar sesión</a>
+             <!--DESAFIATE 2 -->
+          <div class="nav-item">
+            <a class="nav-link" id="username">Usuario</a>
+            <div class="desplegable">
+                <a id="logout-button">Cerrar sesión</a>
+            </div>
+          </div>
         </ul>
       </div>
     </div>
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
+      <div id="product-info-container"></div> <!-- Aquí se inyectará el HTML dinámico -->
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -59,6 +61,7 @@
       <div></div>
     </div>
   </div>
+  <script src="js/funcionesComunes.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
