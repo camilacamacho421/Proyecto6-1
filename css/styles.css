@@ -410,3 +410,51 @@ a.custom-card:hover {
 }
 
 /*-------------------------------------FIN DESAFIATE 2-----------------------------------------------------*/
+
+/* ESTILOS DE PRODUCT-INFO */
+
+.carousel-image {
+  max-height: 500px; /* Ajusta la altura máxima de las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+
+.product-info .carousel {
+  margin-right: 20px; /* Espacio entre el carrusel y la información del producto */
+}
+
+.product-info .carousel-inner {
+  width: 100%; /* Asegura que el carrusel ocupe el ancho disponible */
+}
+
+.product-info .carousel-control-prev,
+.product-info .carousel-control-next {
+  width: 5%; /* Ajusta el ancho de los controles */
+}
+
+.product-info .carousel-control-prev-icon,
+.product-info .carousel-control-next-icon {
+  background-color: black; /* Color de las flechas */
+}
+
+/* Texto */
+
+.product-category {
+  font-size: 2em;
+}
+
+.product-cost {
+  font-size: 2em;
+  color: #e74c3c
+}
+
+.product-name {
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.product-sold-count{
+  color: #777;
+}
+
+
+/* FIN ESTILOS DE PRODUCT-INFO */
