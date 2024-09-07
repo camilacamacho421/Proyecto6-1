@@ -456,5 +456,20 @@ a.custom-card:hover {
   color: #777;
 }
 
-
 /* FIN ESTILOS DE PRODUCT-INFO */
+
+/* DESAFIATE 3 */
+
+.searchInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+
+.searchInput input[type="text"] {
+  border-radius: 8px;
+  border: 1px solid #ddd; 
+  padding: 10px; /* Espacio interno */
+  font-size: 16px;
+}
