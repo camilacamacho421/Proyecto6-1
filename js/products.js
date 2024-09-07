@@ -54,14 +54,22 @@ function setProductID(id) {
     window.location = "product-info.html" 
 }
 
+// DESAFIATE 3 
+
+// Añadimos una nueva variable para almacenar el término de búsqueda
+let searchQuery = "";
+
+// Modificamos la función showCategoriesList para incluir la búsqueda
 function showCategoriesList(){
-  let htmlContentToAppend = "";
+    let htmlContentToAppend = "";
     for(let i = 0; i < currentCategoriesArray.length; i++){
         let product = currentCategoriesArray[i];
 
-        //ENTREGA 3: Cambié rango a product.cost y agregué currency y cost en la etiqueta.
+        // Verifica si el producto cumple con los criterios de búsqueda
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount)) &&
+            (product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||  //ESTA ES LA NUEVA CONDICION
+            product.description.toLowerCase().includes(searchQuery.toLowerCase()))) {
 
             htmlContentToAppend += `
              <div class="cardAuto">
@@ -74,13 +82,18 @@ function showCategoriesList(){
                 
             </div>
              </div>
-            `
-          
+            `;
         }
+    }
 
     document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
 }
-};
+
+// Añadimos un event listener para el input de búsqueda
+document.getElementById("searchInput").addEventListener("input", function() {
+    searchQuery = this.value; // Actualiza el término de búsqueda
+    showCategoriesList(); // Muestra la lista de productos filtrada
+});
 
 //FUNCIÓN sortAndShowCategorie FUSIONA LAS DOS FUNCIONES ANTERIORES. FILTRA Y MUESTRA.
 
@@ -96,7 +109,6 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
     //Muestro las categorías ordenadas
     showCategoriesList();
 }
-
 
 
 // ENTREGA 3: Modifico URL para que asocie el catID y lleve al JSON correcto.
@@ -191,9 +203,6 @@ function fetchCategoryName() {
             console.error('There was a problem with the fetch operation:', error);
         });
 }
-
-// Llama a la función cuando la página se haya cargado
-window.onload = fetchCategoryName;
 
 // Llama a la función cuando la página se haya cargado
 window.onload = fetchCategoryName;
