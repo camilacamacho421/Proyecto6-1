@@ -413,27 +413,65 @@ a.custom-card:hover {
 
 /* ESTILOS DE PRODUCT-INFO */
 
+#containerComprar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#product-info-container {
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+}
+
+.carousel-item {
+  height: 400px; /* Altura del carrusel */
+}
+
 .carousel-image {
-  max-height: 500px; /* Ajusta la altura máxima de las imágenes */
-  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.product-info .carousel {
-  margin-right: 20px; /* Espacio entre el carrusel y la información del producto */
+.carousel-control-prev-icon {
+  background-image: url(/img/boton\ izquierda.png); /* Ruta relativa desde /css/ a /images/ */
+  background-size: 100% 100%; /* Ajusta el tamaño de la imagen */
 }
 
-.product-info .carousel-inner {
-  width: 100%; /* Asegura que el carrusel ocupe el ancho disponible */
+.carousel-control-next-icon {
+  background-image: url(/img/boton\ derecha.png); /* Ruta relativa desde /css/ a /images/ */
+  background-size: 100% 100%; /* Ajusta el tamaño de la imagen */
 }
 
-.product-info .carousel-control-prev,
-.product-info .carousel-control-next {
-  width: 5%; /* Ajusta el ancho de los controles */
+.product-info .product-category,
+.product-info .product-cost,
+.product-info .product-description,
+.product-info .product-sold-count {
+  font-size: 18px;
 }
 
-.product-info .carousel-control-prev-icon,
-.product-info .carousel-control-next-icon {
-  background-color: black; /* Color de las flechas */
+.product-info .product-name{
+  font-size: 25px;
+}
+
+#botonCompra {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#botonCompra:hover {
+  background-color: #8d281d;
 }
 
 /* Texto */
@@ -453,7 +491,7 @@ a.custom-card:hover {
 }
 
 .product-sold-count{
-  color: #777;
+  color: #949090;
 }
 
 /* FIN ESTILOS DE PRODUCT-INFO */

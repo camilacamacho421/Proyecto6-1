@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <p class="product-cost">${product.currency} ${product.cost}</p>
                                 <p class="product-description">${product.description}</p>                                
                                 <p class="product-sold-count">Cantidad de vendidos: ${product.soldCount}</p>
-                                <button type="submit">Comprar</button>
+                                <button type="submit" id="botonCompra">Comprar</button>
                             </div>
                         </div>
                     </div>
