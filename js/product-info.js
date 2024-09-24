@@ -84,6 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //ENTREGA 4 - INFO DE PRODUCTO RELACIONADO 
 
+//const URL_RELACIONADO = PRODUCT_INFO_URL + productIDrelacionado + EXT_TYPE;
+
+//function setProductRelacionadoID(rid) {
+  //localStorage.setItem("productIDrelacionado", rid);
+   // window.location = URL_RELACIONADO
+//}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // Obtener el ID del producto almacenado en localStorage
@@ -108,7 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     
                     // Agregar el HTML al contenido
-                    htmlContentToAppend += `<div class="related-product">${description}${img}</div>`;
+                    htmlContentToAppend += `
+                    <div class="related-product">${description}${img}</div>`;
                 });
 
                 // Insertar el contenido generado en el DOM
