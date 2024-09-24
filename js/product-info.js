@@ -61,9 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <p class="product-sold-count">Cantidad de vendidos: ${product.soldCount}</p>
                                 <button type="submit" id="botonCompra">Comprar</button>
                             </div>
+                            </div>
+
+
                         </div>
+                        
+                                
                     </div>
+                   
                 `;
+               
 
                 // Insertar el contenido generado en el DOM
                 document.getElementById('product-info-container').innerHTML = htmlContentToAppend;
@@ -73,3 +80,43 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('No se encontró ningún ID de producto en el almacenamiento local');
     }
 });
+
+
+//ENTREGA 4 - INFO DE PRODUCTO RELACIONADO 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Obtener el ID del producto almacenado en localStorage
+    const productID = localStorage.getItem('productID');
+
+    if (productID) {
+        // Construir la URL para obtener los datos del producto
+        const productInfoURL = PRODUCT_INFO_URL + productID + EXT_TYPE;
+
+        // Hacer la solicitud para obtener la información del producto
+        getJSONData(productInfoURL).then(function (resultObj) {
+            if (resultObj.status === "ok") {
+                const product = resultObj.data;
+
+                // Generar el contenido HTML para mostrar los productos relacionados
+                let htmlContentToAppend = '';
+
+                product.relatedProducts.forEach(item => {
+                    // Crear un nuevo elemento de imagen
+                    const description = `<p class="product-description">${item.name}</p>`;
+                    const img = `<img src="${item.image}" alt="${item.name}">`;
+                    
+                    
+                    // Agregar el HTML al contenido
+                    htmlContentToAppend += `<div class="related-product">${description}${img}</div>`;
+                });
+
+                // Insertar el contenido generado en el DOM
+                document.getElementById('product-info-related').innerHTML = htmlContentToAppend;
+            }
+        });
+    } else {
+        console.error('No se encontró ningún ID de producto en el almacenamiento local');
+    }
+});
+
