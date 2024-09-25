@@ -516,6 +516,11 @@ a.custom-card:hover {
 
 /* ENTREGA 4 - ESTRELLAS */
 .checked {
-  color: orange;
+  color:#f7c522;
 }
+
+.nochecked{
+  color:#d8d8d8
+}
+
 /* FIN ENTREGA 4 - ESTRELLAS */

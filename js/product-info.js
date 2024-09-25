@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (i <= score) {
                     estrellasHTML += '<span class="fa fa-star checked"></span>'; // Estrella llena (checked)
                 } else {
-                    estrellasHTML += '<span class="fa fa-star"></span>'; // Estrella vacía
+                    estrellasHTML += '<span class="fa fa-star nochecked"></span>'; // Estrella vacía
                 }
             }
             return estrellasHTML;
