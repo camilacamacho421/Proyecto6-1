@@ -82,14 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-//ENTREGA 4 - INFO DE PRODUCTO RELACIONADO 
 
-//const URL_RELACIONADO = PRODUCT_INFO_URL + productIDrelacionado + EXT_TYPE;
-
-//function setProductRelacionadoID(rid) {
-  //localStorage.setItem("productIDrelacionado", rid);
-   // window.location = URL_RELACIONADO
-//}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -98,10 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (productID) {
         // Construir la URL para obtener los datos del producto
-        const productInfoURL = PRODUCT_INFO_URL + productID + EXT_TYPE;
+        const productRelacionado = PRODUCT_INFO_URL + productID + EXT_TYPE;
 
         // Hacer la solicitud para obtener la información del producto
-        getJSONData(productInfoURL).then(function (resultObj) {
+        getJSONData(productRelacionado).then(function (resultObj) {
             if (resultObj.status === "ok") {
                 const product = resultObj.data;
 
@@ -116,7 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Agregar el HTML al contenido
                     htmlContentToAppend += `
-                    <div class="related-product">${description}${img}</div>`;
+                    <div class="related-product" onclick="setProductRelacionadoID(${item.id})">
+                    ${description}
+                    ${img}
+                    </div>`;
                 });
 
                 // Insertar el contenido generado en el DOM
@@ -128,3 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+//ENTREGA 4 - INFO DE PRODUCTO RELACIONADO 
+function setProductRelacionadoID(id) {
+    localStorage.setItem("productID", id);
+    //const URL_RELACIONADO = PRODUCT_INFO_URL + id + EXT_TYPE; // Usa el ID pasado como parámetro
+    window.location = "product-info.html";
+}
