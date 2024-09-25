@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                    
                 `;
-               
+
 
                 // Insertar el contenido generado en el DOM
                 document.getElementById('product-info-container').innerHTML = htmlContentToAppend;
@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Crear un nuevo elemento de imagen
                     const description = `<p class="product-description">${item.name}</p>`;
                     const img = `<img src="${item.image}" alt="${item.name}">`;
-                    
-                    
+
+
                     // Agregar el HTML al contenido
                     htmlContentToAppend += `
                     <div class="related-product" onclick="setProductRelacionadoID(${item.id})">
@@ -127,6 +127,60 @@ document.addEventListener('DOMContentLoaded', () => {
 //ENTREGA 4 - INFO DE PRODUCTO RELACIONADO 
 function setProductRelacionadoID(id) {
     localStorage.setItem("productID", id);
-    //const URL_RELACIONADO = PRODUCT_INFO_URL + id + EXT_TYPE; // Usa el ID pasado como parámetro
     window.location = "product-info.html";
 }
+
+//ENTRGA 4 - SECCIÓN DE CALIFICACIONES
+document.addEventListener('DOMContentLoaded', () => {
+    // Obtener el ID del producto almacenado en localStorage
+    const productID = localStorage.getItem('productID');
+
+    if (productID) {
+        // Construir la URL para obtener los comentarios del producto
+        const commentsAPIURL = `https://japceibal.github.io/emercado-api/products_comments/${productID}.json`;
+        // Hacer la solicitud para obtener los comentarios
+        fetch(commentsAPIURL)
+            .then(response => response.json())
+            .then(comments => {
+                // Llamar a la función para mostrar los comentarios
+                mostrarComentarios(comments);
+            })
+            .catch(error => {
+                console.error('Error al obtener los comentarios:', error);
+            });
+        // Función para generar el HTML de los comentarios
+        function mostrarComentarios(comentarios) {
+            let htmlContentToAppend = '';
+            comentarios.forEach(item => {
+                let estrellas = generarEstrellas(item.score);
+                htmlContentToAppend += `
+                    <div class="comment">
+                        <p><strong>Usuario:</strong> ${item.user}</p>
+                        <p><strong>Fecha:</strong> ${item.dateTime}</p>
+                        <p><strong>Comentario:</strong> ${item.description}</p>
+                        <p><strong>Calificación:</strong> ${estrellas} </p>
+                    </div>
+                    <hr>`;
+            });
+            document.getElementById('comments-container').innerHTML = htmlContentToAppend;
+        }
+
+
+
+        // Función para generar las estrellas de votación
+        // Función para generar las estrellas de votación usando Font Awesome
+        function generarEstrellas(score) {
+            let estrellasHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= score) {
+                    estrellasHTML += '<span class="fa fa-star checked"></span>'; // Estrella llena (checked)
+                } else {
+                    estrellasHTML += '<span class="fa fa-star"></span>'; // Estrella vacía
+                }
+            }
+            return estrellasHTML;
+        }
+    } else {
+        console.error('No se encontró ningún ID de producto en el almacenamiento local');
+    }
+});
