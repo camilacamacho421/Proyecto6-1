@@ -102,14 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 let htmlContentToAppend = '';
 
                 product.relatedProducts.forEach(item => {
-                    // Crear un nuevo elemento de imagen
-                    const description = `<p class="product-description">${item.name}</p>`;
-                    const img = `<img src="${item.image}" alt="${item.name}">`;
-
-
+                    const description= `<p class="product-description">${item.name}</p>`;
+                    const img= `<img src="${item.image}" alt="${item.name}">`;
                     // Agregar el HTML al contenido
                     htmlContentToAppend += `
-                    <div class="related-product" onclick="setProductRelacionadoID(${item.id})">
+                    <div class="cardRelated" onclick="setProductRelacionadoID(${item.id})">
                     ${description}
                     ${img}
                     </div>`;
