@@ -129,55 +129,83 @@ function setProductRelacionadoID(id) {
 
 //ENTRGA 4 - SECCIÓN DE CALIFICACIONES
 document.addEventListener('DOMContentLoaded', () => {
-    // Obtener el ID del producto almacenado en localStorage
     const productID = localStorage.getItem('productID');
 
     if (productID) {
-        // Construir la URL para obtener los comentarios del producto
         const commentsAPIURL = `https://japceibal.github.io/emercado-api/products_comments/${productID}.json`;
-        // Hacer la solicitud para obtener los comentarios
+
         fetch(commentsAPIURL)
             .then(response => response.json())
             .then(comments => {
-                // Llamar a la función para mostrar los comentarios
                 mostrarComentarios(comments);
+
+                document.getElementById('comment-form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const nuevoComentario = capturarComentario(); 
+
+                    if (nuevoComentario) { // Solo agrega si se seleccionó una estrella
+                        comments.push(nuevoComentario);
+                        mostrarComentarios(comments);
+                        // Limpiar el formulario después de enviar
+                        document.getElementById('comment-form').reset();
+                    } else {
+                        alert("Por favor selecciona una calificación.");
+                    }
+                });
             })
             .catch(error => {
                 console.error('Error al obtener los comentarios:', error);
             });
-        // Función para generar el HTML de los comentarios
-        function mostrarComentarios(comentarios) {
-            let htmlContentToAppend = '';
-            comentarios.forEach(item => {
-                let estrellas = generarEstrellas(item.score);
-                htmlContentToAppend += `
-                    <div class="comment">
-                        <p><strong>Usuario:</strong> ${item.user}</p>
-                        <p><strong>Fecha:</strong> ${item.dateTime}</p>
-                        <p><strong>Comentario:</strong> ${item.description}</p>
-                        <p><strong>Calificación:</strong> ${estrellas} </p>
-                    </div>
-                    <hr>`;
-            });
-            document.getElementById('comments-container').innerHTML = htmlContentToAppend;
-        }
-
-
-
-        // Función para generar las estrellas de votación
-        // Función para generar las estrellas de votación usando Font Awesome
-        function generarEstrellas(score) {
-            let estrellasHTML = '';
-            for (let i = 1; i <= 5; i++) {
-                if (i <= score) {
-                    estrellasHTML += '<span class="fa fa-star checked"></span>'; // Estrella llena (checked)
-                } else {
-                    estrellasHTML += '<span class="fa fa-star nochecked"></span>'; // Estrella vacía
-                }
-            }
-            return estrellasHTML;
-        }
     } else {
         console.error('No se encontró ningún ID de producto en el almacenamiento local');
+    }
+
+    // Capturar los datos del formulario de comentario
+    function capturarComentario() {
+        // Obtener la calificación seleccionada
+        const calificacion = document.querySelector('input[name="rating"]:checked');
+        
+        if (!calificacion) {
+            return null; // Si no se seleccionó ninguna estrella, retornar null
+        }
+
+        const comentario = document.getElementById('mensaje').value;
+
+        return {
+            user: localStorage.getItem('username'),
+            dateTime: new Date().toLocaleString(),
+            description: comentario,
+            score: parseInt(calificacion.value) // Obtener el valor seleccionado
+        };
+    }
+
+    // Función para mostrar los comentarios
+    function mostrarComentarios(comentarios) {
+        let htmlContentToAppend = '';
+        comentarios.forEach(item => {
+            let estrellas = generarEstrellas(item.score);
+            htmlContentToAppend += `
+                <div class="comment">
+                    <p><strong>Usuario:</strong> ${item.user}</p>
+                    <p><strong>Fecha:</strong> ${item.dateTime}</p>
+                    <p><strong>Comentario:</strong> ${item.description}</p>
+                    <p><strong>Calificación:</strong> ${estrellas}</p>
+                </div>
+                <hr>`;
+        });
+        document.getElementById('comments-container').innerHTML = htmlContentToAppend;
+    }
+
+    // Función para generar estrellas
+    function generarEstrellas(score) {
+        let estrellasHTML = '';
+        for (let i = 1; i <= 5; i++) {
+            if (i <= score) {
+                estrellasHTML += '<span class="fa fa-star checked"></span>';
+            } else {
+                estrellasHTML += '<span class="fa fa-star nochecked"></span>';
+            }
+        }
+        return estrellasHTML;
     }
 });
