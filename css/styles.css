@@ -553,3 +553,24 @@ a.custom-card:hover {
   height: auto; /* Mantener la proporción de la imagen */
   margin-bottom: 10px; /* Espacio entre la imagen y el texto */
 }
+
+.stars {
+  direction: rtl;
+  display: inline-flex;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  font-size: 2em;
+  color: gray;
+  cursor: pointer;
+}
+
+.stars input:checked ~ label,
+.stars label:hover,
+.stars label:hover ~ label {
+  color: gold;
+}
