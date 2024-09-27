@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -44,8 +45,42 @@
   <main id="containerComprar">
     <div class="container">
       <div id="product-info-container"></div> <!-- Aquí se inyectará el HTML dinámico -->
+      <h3> Reseñas</h3>
+      <div id="comments-container"></div>
     </div>
   </main>
+
+  
+  <div class="container">
+    <h3>Productos relacionados</h3>
+    <div id="product-info-related" class="card-container"></div> <!-- Aquí se inyectará el HTML dinámico -->
+  </div>
+
+  <div class="container">
+    <h3>Envía tu comentario</h3>
+    <form id="comment-form">
+      <div class="stars">
+        <input type="radio" name="rating" id="star1" value="5">
+        <label for="star1" class="star">&#9733;</label>
+        <input type="radio" name="rating" id="star2" value="4">
+        <label for="star2" class="star">&#9733;</label>
+        <input type="radio" name="rating" id="star3" value="3">
+        <label for="star3" class="star">&#9733;</label>
+        <input type="radio" name="rating" id="star4" value="2">
+        <label for="star4" class="star">&#9733;</label>
+        <input type="radio" name="rating" id="star5" value="1">
+        <label for="star5" class="star">&#9733;</label>
+    </div>
+    <div>
+      <label for="mensaje"></label>
+      <textarea id="mensaje" name="mensaje" placeholder="Deja tu comentario"></textarea>
+    </div>  
+    <div>
+      <button class="enviarComment" type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

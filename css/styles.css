@@ -511,3 +511,66 @@ a.custom-card:hover {
   padding: 10px; /* Espacio interno */
   font-size: 16px;
 }
+
+/* FIN DESAFIATE 3 */
+
+/* ENTREGA 4 - ESTRELLAS */
+.checked {
+  color:#f7c522;
+}
+
+.nochecked{
+  color:#d8d8d8
+}
+
+/* FIN ENTREGA 4 - ESTRELLAS */
+
+/*ESTETICA PRODUCTOS RELACIONADOS*/
+
+#product-info-related {
+  display: flex; /* Usar flexbox para el contenedor */
+  flex-wrap: wrap; /* Permitir que las tarjetas se envuelvan si no caben en una fila */
+  justify-content: center; /* Centrar las tarjetas en el contenedor */
+}
+
+.cardRelated {
+  display: flex; /* Usar flexbox para alinear elementos */
+  flex-direction: column; /* Colocar elementos en una columna */
+  align-items: center; /* Centrar horizontalmente */
+  text-align: center; /* Centrar texto */
+  margin: 10px; /* Espacio alrededor de la tarjeta */
+  padding: 20px; /* Espacio interno */
+  border: 1px solid #ccc; /* Borde de la tarjeta */
+  border-radius: 8px; /* Bordes redondeados */
+  width: 300px; /* Ancho fijo para las tarjetas */
+  height: 250px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.cardRelated img {
+  max-width: 100%; /* Asegura que la imagen no se desborde */
+  height: auto; /* Mantener la proporción de la imagen */
+  margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.stars {
+  direction: rtl;
+  display: inline-flex;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  font-size: 2em;
+  color: gray;
+  cursor: pointer;
+}
+
+.stars input:checked ~ label,
+.stars label:hover,
+.stars label:hover ~ label {
+  color: gold;
+}
