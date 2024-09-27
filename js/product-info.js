@@ -1,3 +1,4 @@
+const submitSound = new Audio('submit-sound.mp3');
 // Modifica el HTML en product-info.js para incluir las clases necesarias
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('menu-button').addEventListener('click', function (event) {
@@ -146,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (nuevoComentario) { // Solo agrega si se seleccionó una estrella
                         comments.push(nuevoComentario);
                         mostrarComentarios(comments);
+                        submitSound.play();
                         // Limpiar el formulario después de enviar
                         document.getElementById('comment-form').reset();
                     } else {
