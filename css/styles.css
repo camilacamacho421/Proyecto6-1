@@ -567,10 +567,12 @@ a.custom-card:hover {
   font-size: 2em;
   color: gray;
   cursor: pointer;
+  transition: color 0.3s, transform 0.3s; /* Añadir transición para el color y la transformación */
 }
 
 .stars input:checked ~ label,
 .stars label:hover,
 .stars label:hover ~ label {
   color: gold;
+  transform: rotate(360deg) scale(1.1); /* Rotar y agrandar al pasar el mouse */
 }
