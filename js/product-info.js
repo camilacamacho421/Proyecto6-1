@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     Desafiante();
 });
 
+
+//INFO PRINCIPAL DEL PRODUCTO
 document.addEventListener('DOMContentLoaded', () => {
     // Obtener el ID del producto almacenado en localStorage
     const productID = localStorage.getItem('productID');
@@ -82,10 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
-
-
-
+//MOSTRAR LOS PRODUCTOS RELACIONADOS
 document.addEventListener('DOMContentLoaded', () => {
     // Obtener el ID del producto almacenado en localStorage
     const productID = localStorage.getItem('productID');
@@ -175,21 +174,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return {
             user: localStorage.getItem('username'),
-            dateTime: new Date().toLocaleString(),
+            dateTime: new Date().toISOString(), //Antes estaba así: dateTime: new Date().toLocaleString(), - lo cambié porque con localeString arrojaba un formato de fecha que no "entendía" la función
             description: comentario,
             score: parseInt(calificacion.value) // Obtener el valor seleccionado
         };
     }
+
+    //Formato de fecha y hora para que quede así -> dd/mm/yyyy, hh:mm y luego se llama esta función en MostrarComentarios()
+    function formatoFecha(fechaString) {
+        const fecha = new Date(fechaString);
+        const dia = String(fecha.getDate()).padStart(2, '0'); 
+        const mes = String(fecha.getMonth() + 1).padStart(2, '0'); 
+        const año = fecha.getFullYear();
+        const horas = String(fecha.getHours()).padStart(2, '0');
+        const minutos = String(fecha.getMinutes()).padStart(2, '0');
+        
+        return `${dia}/${mes}/${año}, ${horas}:${minutos}`;
+    }
+    
 
     // Función para mostrar los comentarios
     function mostrarComentarios(comentarios) {
         let htmlContentToAppend = '';
         comentarios.forEach(item => {
             let estrellas = generarEstrellas(item.score);
+            let fechaFormateada = formatoFecha(item.dateTime); // Formatear la fecha
             htmlContentToAppend += `
                 <div class="comment">
                     <p><strong>Usuario:</strong> ${item.user}</p>
-                    <p><strong>Fecha:</strong> ${item.dateTime}</p>
+                    <p><strong>Fecha:</strong> ${fechaFormateada}</p>
                     <p><strong>Comentario:</strong> ${item.description}</p>
                     <p><strong>Calificación:</strong> ${estrellas}</p>
                 </div>
