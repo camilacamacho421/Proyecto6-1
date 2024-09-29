@@ -554,6 +554,9 @@ a.custom-card:hover {
   margin-bottom: 10px; /* Espacio entre la imagen y el texto */
 }
 
+/*FIN ESTETICA PRODUCTOS RELACIONADOS*/
+
+/*ESTRELLAS ANIMADAS PARA COMENTARIO*/
 .stars {
   direction: rtl;
   display: inline-flex;
@@ -565,7 +568,7 @@ a.custom-card:hover {
 
 .stars label {
   font-size: 2em;
-  color: gray;
+  color: #d8d8d8;
   cursor: pointer;
   transition: color 0.3s, transform 0.3s; /* Añadir transición para el color y la transformación */
 }
@@ -573,6 +576,8 @@ a.custom-card:hover {
 .stars input:checked ~ label,
 .stars label:hover,
 .stars label:hover ~ label {
-  color: gold;
-  transform: rotate(360deg) scale(1.1); /* Rotar y agrandar al pasar el mouse */
+  color: #f7c522;
+  transform: rotate(144deg) scale(1.1); /* Rotar y agrandar al pasar el mouse */
 }
+
+/*FIN ESTRELLAS ANIMADAS PARA COMENTARIO*/
