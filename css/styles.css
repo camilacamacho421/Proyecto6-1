@@ -613,3 +613,50 @@ color: #212529;
 
 /* Termina estilo de comentarios*/
 
+/* FORMULARIO CALIFICACIÓN / COMENTARIO */
+
+/* Contenedor de las estrellas */
+.containerEstrellas {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Título del formulario */
+.containerEstrellas h3 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Área de texto */
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  resize: none;
+}
+
+/* Botón de enviar */
+.enviarComment {
+  width: 100%;
+  padding: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.enviarComment:hover {
+  background-color: #c0392b; 
+}
+
+/* FIN FORMULARIO CALIFICACIÓN / COMENTARIO */
+
