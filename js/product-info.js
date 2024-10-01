@@ -200,16 +200,17 @@ document.addEventListener('DOMContentLoaded', () => {
             let fechaFormateada = formatoFecha(item.dateTime);
             htmlContentToAppend += `
                 <div class="comment">
-                    <p><strong>Usuario:</strong> ${item.user}</p>
-                    <p><strong>Fecha:</strong> ${fechaFormateada}</p>
-                    <p><strong>Comentario:</strong> ${item.description}</p>
-                    <p><strong>Calificación:</strong> ${estrellas}</p>
+                    <img src="img/profile photo.jpg" alt="profile" class="profile-icon">
+                    <strong>${item.user}</strong>
+                    <span class="date">${fechaFormateada}</span>
+                    <div class="comment"> ${item.description}</div>
+                    <span> ${estrellas}</span>
                 </div>
                 <hr>`;
         });
         document.getElementById('comments-container').innerHTML = htmlContentToAppend;
     }
-
+    
     // Función para generar estrellas
     function generarEstrellas(score) {
         let estrellasHTML = '';
