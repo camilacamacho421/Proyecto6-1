@@ -199,21 +199,26 @@ a.custom-card:hover {
 .login img {
   width: 65%;
   margin-bottom: 20px;
-  
+
 }
 
-.login{
+.login {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center;     /* Centra verticalmente */
-  height: 37.5em;           /* Asegura que el body ocupe toda la altura de la ventana */
-  margin: 0;               /* Elimina el margen por defecto del body */
-  background-color: #ffffff; /* Color de fondo opcional para ver mejor el contenedor */
+  justify-content: center;
+  /* Centra horizontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  height: 37.5em;
+  /* Asegura que el body ocupe toda la altura de la ventana */
+  margin: 0;
+  /* Elimina el margen por defecto del body */
+  background-color: #ffffff;
+  /* Color de fondo opcional para ver mejor el contenedor */
   flex-direction: column;
   border-radius: 8px;
 }
 
-.titulo{
+.titulo {
   border-radius: 3.125em;
   background-color: #F09100;
   padding: 0.625em;
@@ -223,15 +228,15 @@ a.custom-card:hover {
   color: white;
 }
 
-.usuario, 
-.contraseña{
+.usuario,
+.contraseña {
   padding: 0.625em;
   border-radius: 1.563em;
   border: #fff;
   box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
 }
 
-.boton{
+.boton {
   margin-top: 30px;
   margin-bottom: 20px;
   padding-left: 40px;
@@ -252,20 +257,26 @@ a.custom-card:hover {
 }
 
 .boton:hover {
-  background-color:#f08000;
+  background-color: #f08000;
 }
 
 .container-login {
-  display: flex; 
+  display: flex;
   justify-content: center;
   width: 100%;
   height: auto;
-  max-width: 25em; /* Ajusta el ancho según tu diseño */
-  margin: 6.5em auto; /* Centra el formulario horizontalmente y verticalemente*/
-  padding: 0; /* Espacio interno */
-  border: 1px solid #cccccc; /* Color y grosor del borde */
-  border-radius: 0.5em; /* Bordes redondeados */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para darle profundidad */
+  max-width: 25em;
+  /* Ajusta el ancho según tu diseño */
+  margin: 6.5em auto;
+  /* Centra el formulario horizontalmente y verticalemente*/
+  padding: 0;
+  /* Espacio interno */
+  border: 1px solid #cccccc;
+  /* Color y grosor del borde */
+  border-radius: 0.5em;
+  /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Sombra ligera para darle profundidad */
 }
 
 /*-------------------------------------FIN LOGIN-----------------------------------------------------*/
@@ -281,36 +292,51 @@ a.custom-card:hover {
 .cards-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Espacio entre tarjetas */
+  gap: 20px;
+  /* Espacio entre tarjetas */
   justify-content: center;
   padding: 20px;
 }
 
 /* Estilo para cada tarjeta */
 .cardAuto {
-  background-color: #fff; /* Fondo blanco para la tarjeta */
-  border: 1px solid #ddd; /* Borde gris claro */
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra media */
-  overflow: hidden; /* Para que el borde redondeado se aplique también a las imágenes */
-  max-width: 300px; /* Ancho máximo de la tarjeta */
-  text-align: center; /* Centrar texto y elementos */
-  position: relative; /* Necesario para el posicionamiento absoluto del texto */
-  padding-bottom: 90px; /* Espacio adicional en la parte inferior para el texto de vendidosCar  y precio*/
-  justify-content: space-between; /* Espacio entre los elementos */
-  transition: box-shadow 0.3s; /* Transición suave para la sombra al hacer hover */
+  background-color: #fff;
+  /* Fondo blanco para la tarjeta */
+  border: 1px solid #ddd;
+  /* Borde gris claro */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  /* Sombra media */
+  overflow: hidden;
+  /* Para que el borde redondeado se aplique también a las imágenes */
+  max-width: 300px;
+  /* Ancho máximo de la tarjeta */
+  text-align: center;
+  /* Centrar texto y elementos */
+  position: relative;
+  /* Necesario para el posicionamiento absoluto del texto */
+  padding-bottom: 90px;
+  /* Espacio adicional en la parte inferior para el texto de vendidosCar  y precio*/
+  justify-content: space-between;
+  /* Espacio entre los elementos */
+  transition: box-shadow 0.3s;
+  /* Transición suave para la sombra al hacer hover */
 }
 
 /* Estilo para la imagen dentro de la tarjeta */
 .cardAuto img {
-  width: 100%; /* Imagen ocupa todo el ancho de la tarjeta */
-  height: auto; /* Mantener proporciones */
+  width: 100%;
+  /* Imagen ocupa todo el ancho de la tarjeta */
+  height: auto;
+  /* Mantener proporciones */
   display: block;
 }
 
 /* Estilo para el nombre del modelo */
 .modelo {
-  font-size: 1.2em; /* Tamaño del texto */
+  font-size: 1.2em;
+  /* Tamaño del texto */
   font-weight: bold;
   margin: 10px 0;
 }
@@ -318,7 +344,8 @@ a.custom-card:hover {
 /* Estilo para la descripción */
 .description {
   font-size: 0.9em;
-  color: #555; /* Color gris oscuro */
+  color: #555;
+  /* Color gris oscuro */
   margin: 10px 10px;
   text-align: center;
 }
@@ -327,28 +354,44 @@ a.custom-card:hover {
 /* Estilo para el precio */
 .precio {
   font-size: 1.1em;
-  color: #e74c3c; /* Color rojo para destacar el precio */
-  position: absolute; /* Posicionar de manera absoluta */
-  bottom: 30px; /* Espacio desde el borde inferior de la tarjeta para hacer lugar para vendidosCar */
-  left: 0; /* Alineado a la izquierda */
-  right: 0; /* Alineado a la derecha */
-  background-color: #fff; /* Fondo blanco para evitar que el texto se mezcle con el fondo */
-  padding: 10px; /* Espacio alrededor del texto */
-  border-top: 1px solid #ddd; /* Borde superior para separar del contenido superior */
+  color: #e74c3c;
+  /* Color rojo para destacar el precio */
+  position: absolute;
+  /* Posicionar de manera absoluta */
+  bottom: 30px;
+  /* Espacio desde el borde inferior de la tarjeta para hacer lugar para vendidosCar */
+  left: 0;
+  /* Alineado a la izquierda */
+  right: 0;
+  /* Alineado a la derecha */
+  background-color: #fff;
+  /* Fondo blanco para evitar que el texto se mezcle con el fondo */
+  padding: 10px;
+  /* Espacio alrededor del texto */
+  border-top: 1px solid #ddd;
+  /* Borde superior para separar del contenido superior */
 }
 
 /* Estilo para la cantidad de vendidos */
 .vendidos {
   font-size: 0.9em;
-  color: #777; /* Color gris claro */
+  color: #777;
+  /* Color gris claro */
   margin: 0;
-  position: absolute; /* Posicionar de manera absoluta en la parte inferior de la tarjeta */
-  bottom: 0; /* Ubicar en el borde inferior de la tarjeta */
-  left: 0; /* Alineado a la izquierda */
-  right: 0; /* Alineado a la derecha */
-  background-color: #f9f9f9; /* Fondo ligeramente diferente para el texto */
-  padding: 10px; /* Espacio alrededor del texto */
-  border-top: 1px solid #ddd; /* Borde superior para separar el texto del resto del contenido */
+  position: absolute;
+  /* Posicionar de manera absoluta en la parte inferior de la tarjeta */
+  bottom: 0;
+  /* Ubicar en el borde inferior de la tarjeta */
+  left: 0;
+  /* Alineado a la izquierda */
+  right: 0;
+  /* Alineado a la derecha */
+  background-color: #f9f9f9;
+  /* Fondo ligeramente diferente para el texto */
+  padding: 10px;
+  /* Espacio alrededor del texto */
+  border-top: 1px solid #ddd;
+  /* Borde superior para separar el texto del resto del contenido */
 }
 
 /*-------------------------------------FIN AUTOS-----------------------------------------------------*/
@@ -357,7 +400,7 @@ a.custom-card:hover {
 
 /* Resolución smartphone pequeño */
 @media screen and (width:320px) and (height:568px) {
-  .container-login{
+  .container-login {
     margin: auto;
   }
 }
@@ -390,7 +433,7 @@ a.custom-card:hover {
   position: absolute;
   background-color: #343a40;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -413,14 +456,15 @@ a.custom-card:hover {
 
 /* ESTILOS DE PRODUCT-INFO */
 
-#containerComprar{
+#containerComprar {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #product-info-container {
-  max-width: 1200px; /* Ancho máximo del contenedor */
+  max-width: 1200px;
+  /* Ancho máximo del contenedor */
   background: #fff;
   border-radius: 8px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
@@ -429,7 +473,8 @@ a.custom-card:hover {
 }
 
 .carousel-item {
-  height: 400px; /* Altura del carrusel */
+  height: 400px;
+  /* Altura del carrusel */
 }
 
 .carousel-image {
@@ -440,13 +485,17 @@ a.custom-card:hover {
 }
 
 .carousel-control-prev-icon {
-  background-image: url(/img/boton\ izquierda.png); /* Ruta relativa desde /css/ a /images/ */
-  background-size: 100% 100%; /* Ajusta el tamaño de la imagen */
+  background-image: url(/img/boton\ izquierda.png);
+  /* Ruta relativa desde /css/ a /images/ */
+  background-size: 100% 100%;
+  /* Ajusta el tamaño de la imagen */
 }
 
 .carousel-control-next-icon {
-  background-image: url(/img/boton\ derecha.png); /* Ruta relativa desde /css/ a /images/ */
-  background-size: 100% 100%; /* Ajusta el tamaño de la imagen */
+  background-image: url(/img/boton\ derecha.png);
+  /* Ruta relativa desde /css/ a /images/ */
+  background-size: 100% 100%;
+  /* Ajusta el tamaño de la imagen */
 }
 
 .product-info .product-category,
@@ -456,7 +505,7 @@ a.custom-card:hover {
   font-size: 18px;
 }
 
-.product-info .product-name{
+.product-info .product-name {
   font-size: 25px;
 }
 
@@ -490,7 +539,7 @@ a.custom-card:hover {
   font-weight: 600;
 }
 
-.product-sold-count{
+.product-sold-count {
   color: #949090;
 }
 
@@ -507,8 +556,9 @@ a.custom-card:hover {
 
 .searchInput input[type="text"] {
   border-radius: 8px;
-  border: 1px solid #ddd; 
-  padding: 10px; /* Espacio interno */
+  border: 1px solid #ddd;
+  padding: 10px;
+  /* Espacio interno */
   font-size: 16px;
 }
 
@@ -516,11 +566,11 @@ a.custom-card:hover {
 
 /* ENTREGA 4 - ESTRELLAS */
 .checked {
-  color:#f7c522;
+  color: #f7c522;
 }
 
-.nochecked{
-  color:#d8d8d8
+.nochecked {
+  color: #d8d8d8
 }
 
 /* FIN ENTREGA 4 - ESTRELLAS */
@@ -528,30 +578,45 @@ a.custom-card:hover {
 /*ESTETICA PRODUCTOS RELACIONADOS*/
 
 #product-info-related {
-  display: flex; /* Usar flexbox para el contenedor */
-  flex-wrap: wrap; /* Permitir que las tarjetas se envuelvan si no caben en una fila */
-  justify-content: center; /* Centrar las tarjetas en el contenedor */
+  display: flex;
+  /* Usar flexbox para el contenedor */
+  flex-wrap: wrap;
+  /* Permitir que las tarjetas se envuelvan si no caben en una fila */
+  justify-content: center;
+  /* Centrar las tarjetas en el contenedor */
 }
 
 .cardRelated {
-  display: flex; /* Usar flexbox para alinear elementos */
-  flex-direction: column; /* Colocar elementos en una columna */
-  align-items: center; /* Centrar horizontalmente */
-  text-align: center; /* Centrar texto */
-  margin: 10px; /* Espacio alrededor de la tarjeta */
-  padding: 20px; /* Espacio interno */
-  border: 1px solid #ccc; /* Borde de la tarjeta */
-  border-radius: 8px; /* Bordes redondeados */
-  width: 300px; /* Ancho fijo para las tarjetas */
+  display: flex;
+  /* Usar flexbox para alinear elementos */
+  flex-direction: column;
+  /* Colocar elementos en una columna */
+  align-items: center;
+  /* Centrar horizontalmente */
+  text-align: center;
+  /* Centrar texto */
+  margin: 10px;
+  /* Espacio alrededor de la tarjeta */
+  padding: 20px;
+  /* Espacio interno */
+  border: 1px solid #ccc;
+  /* Borde de la tarjeta */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  width: 300px;
+  /* Ancho fijo para las tarjetas */
   height: 250px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
 .cardRelated img {
-  max-width: 100%; /* Asegura que la imagen no se desborde */
-  height: auto; /* Mantener la proporción de la imagen */
-  margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+  max-width: 100%;
+  /* Asegura que la imagen no se desborde */
+  height: auto;
+  /* Mantener la proporción de la imagen */
+  margin-bottom: 10px;
+  /* Espacio entre la imagen y el texto */
 }
 
 /*FIN ESTETICA PRODUCTOS RELACIONADOS*/
@@ -570,14 +635,16 @@ a.custom-card:hover {
   font-size: 2em;
   color: #d8d8d8;
   cursor: pointer;
-  transition: color 0.3s, transform 0.3s; /* Añadir transición para el color y la transformación */
+  transition: color 0.3s, transform 0.3s;
+  /* Añadir transición para el color y la transformación */
 }
 
-.stars input:checked ~ label,
+.stars input:checked~label,
 .stars label:hover,
-.stars label:hover ~ label {
+.stars label:hover~label {
   color: #f7c522;
-  transform: rotate(144deg) scale(1.1); /* Rotar y agrandar al pasar el mouse */
+  transform: rotate(144deg) scale(1.1);
+  /* Rotar y agrandar al pasar el mouse */
 }
 
 /*FIN ESTRELLAS ANIMADAS PARA COMENTARIO*/
@@ -585,31 +652,40 @@ a.custom-card:hover {
 
 /* ESTILO DE COMENTARIOS */
 
-.profile-icon{
-    width: 40px;
-    height: 40px; 
-    border-radius: 50%; 
-    margin-right: 5px; 
-    vertical-align: middle;
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
-.date{
+.date {
   color: #949090;
   margin-left: 5px;
 }
 
 
-.comment{
+.comment {
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
 }
 
-h3.product-info-titles{
-margin-top: 2rem;
-margin-bottom: 2rem;
-font-size: 20px;
-color: #333;
-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+h3.product-info-reseña {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 20px;
+  color: #333;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+h3.product-info-titles {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 20px;
+  color: #333;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* Termina estilo de comentarios*/
@@ -656,8 +732,7 @@ textarea {
 }
 
 .enviarComment:hover {
-  background-color: #c0392b; 
+  background-color: #c0392b;
 }
 
 /* FIN FORMULARIO CALIFICACIÓN / COMENTARIO */
-
