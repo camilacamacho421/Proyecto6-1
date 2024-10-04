@@ -457,6 +457,7 @@ a.custom-card:hover {
 /* ESTILOS DE PRODUCT-INFO */
 
 #containerComprar {
+  padding-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
