@@ -147,3 +147,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+//FUNCIÓN EN COMÚN PARA EL DESAFIANTE 2 - mostrar usuario
+document.addEventListener('DOMContentLoaded', () => {
+    Desafiante();
+});

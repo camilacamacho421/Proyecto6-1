@@ -116,11 +116,6 @@ footer p {
   cursor: pointer;
 }
 
-/* esto agregamos para que el botón de cerrar sesión tenga el mismo comportamiento que lo demás*/
-#logout-button {
-  cursor: pointer;
-}
-
 .left {
   float: left;
   padding: 4px;
@@ -442,6 +437,7 @@ a.custom-card:hover {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  cursor: pointer;
 }
 
 .desplegable a:hover {
