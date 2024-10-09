@@ -733,3 +733,21 @@ textarea {
 }
 
 /* FIN FORMULARIO CALIFICACIÓN / COMENTARIO */
+
+/* ENTREGA 5 */
+
+/* BOTÓN MODO DIA Y NOCHE */
+
+body.modo-dia {
+  background-color: white;
+  color: black;
+}
+
+body.modo-noche {
+  background-color: black;
+  color: white;
+}
+
+/* FIN BOTÓN MODO DIA Y NOCHE */
+
+/* FIN ENTREGA 5 */

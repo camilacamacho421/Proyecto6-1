@@ -1,4 +1,4 @@
-//Función para cerrar sesión t redirección al login
+//Función para cerrar sesión y redirección al login
 function Desafiante() {
     const logoutButton = document.getElementById('logout-button');
     const perfilButton = document.getElementById('perfil-button');
@@ -36,3 +36,33 @@ function Desafiante() {
         window.location.href = 'login.html';
     }
 }
+
+//Entrega 5 - Función para establecer el modo
+function cambiarModo() {
+    const modo = localStorage.getItem('modo');
+    if (modo === 'noche') {
+        document.body.classList.remove('modo-dia');
+        document.body.classList.add('modo-noche');
+        document.getElementById('modoSwitch').checked = true;
+    } else {
+        document.body.classList.remove('modo-noche');
+        document.body.classList.add('modo-dia');
+        document.getElementById('modoSwitch').checked = false;
+    }
+}
+
+//Entrega 5 - Establecer el modo
+cambiarModo();
+
+//Entrega 5 - Evento para cambiar el modo
+document.getElementById('modoSwitch').addEventListener('change', function() {
+    if (this.checked) {
+        document.body.classList.remove('modo-dia');
+        document.body.classList.add('modo-noche');
+        localStorage.setItem('modo', 'noche'); // Guardar en localStorage
+    } else {
+        document.body.classList.remove('modo-noche');
+        document.body.classList.add('modo-dia');
+        localStorage.setItem('modo', 'dia'); // Guardar en localStorage
+    }
+});
