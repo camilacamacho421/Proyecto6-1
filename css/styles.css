@@ -750,4 +750,22 @@ body.modo-noche {
 
 /* FIN BOTÓN MODO DIA Y NOCHE */
 
+/*ESTILO IMAGEN DE PERFIL*/
+
+.perfil-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente, si es necesario */
+  margin: 20px 0; /* Opcional: espacio alrededor del contenedor */
+}
+
+
+#imagenPerfil {
+  width: 150px; /* Ajusta el tamaño a lo que necesites */
+  height: 150px; /* Mantén las proporciones */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+}
+
+
 /* FIN ENTREGA 5 */

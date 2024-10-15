@@ -61,7 +61,9 @@
   <!--Formulario-->
   <main>
     <div class="info-perfil">
-      <img id="imagenPerfil" class="img-thumbnail" style="display:none;">
+      <div class="perfil-container">
+        <img id="imagenPerfil" class="img-thumbnail" style="display:none;">
+      </div>
     </div>
 
     <div class="container mt-5">
@@ -102,7 +104,7 @@
             <div class="invalid-feedback">El teléfono debe contener solo números y 9 dígitos.</div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" id="foto">
           <label for="fotoPerfil" class="form-label">Foto de perfil</label>
           <input type="file" class="form-control" id="fotoPerfil" accept="image/*">
         </div>
