@@ -1,6 +1,15 @@
 //FUNCIÓN EN COMÚN PARA REDIRIGIR (OPCIONES MENU DESPLEGABLE)
 document.addEventListener('DOMContentLoaded', () => {
     Desafiante();
+
+    // Cargar la foto de perfil desde localStorage al cargar la página
+    const storedPic = localStorage.getItem('FotoPerfil');
+    if (storedPic) {
+        const imagenElement = document.getElementById('imagenPerfil');
+        imagenElement.src = storedPic;
+        imagenElement.style.display = 'block';
+    }
+
 });
 
 // Variable para el correo
@@ -29,12 +38,11 @@ document.getElementById('email').value = username;
             const nombre = document.querySelector('#nombre').value;
             const apellido = document.querySelector('#apellido').value;
             const email = document.querySelector('#email').value;
-            const fotoPerfil = document.querySelector('#fotoPerfil').value;
+            const fotoPerfil = document.querySelector('#fotoPerfil');
 
             localStorage.setItem('Nombre', nombre);
             localStorage.setItem('Apellido', apellido);
             localStorage.setItem('Email', email);
-            localStorage.setItem('FotoPerfil', fotoPerfil);
             localStorage.setItem("username", email);
 
             // Si hay un archivo de imagen seleccionado
@@ -47,6 +55,9 @@ document.getElementById('email').value = username;
                     const imagenElement = document.getElementById('imagenPerfil');
                     imagenElement.src = e.target.result; // Establecer la imagen
                     imagenElement.style.display = 'block'; // Hacer visible la imagen
+
+                    // Almacenar la URL de la imagen en localStorage
+                    localStorage.setItem('FotoPerfil', e.target.result);
                 }
 
                 reader.readAsDataURL(file); // Leer el archivo como URL
