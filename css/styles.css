@@ -767,5 +767,27 @@ body.modo-noche {
   object-fit: cover; /* Asegura que la imagen cubra el contenedor */
 }
 
+/* Botón guardar */
+
+/* Botón de enviar */
+.Botongurdar {
+  width: 200px;
+  padding: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 auto;
+  display: block;
+}
+
+.Botongurdar:hover {
+  background-color: #c0392b;
+}
+
+/* Fin botón guardar */
 
 /* FIN ENTREGA 5 */

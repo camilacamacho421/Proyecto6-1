@@ -81,7 +81,7 @@ document.getElementById('email').value = username;
             } else {
                 this.classList.remove('is-valid');
                 this.classList.add('is-invalid');
-            }
+            } 
         });
     });
 })();
