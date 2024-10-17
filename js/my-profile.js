@@ -1,4 +1,4 @@
-const imagenPredeterminada = 'img/profile_photo.jpg' 
+const imagenPredeterminada = "img/istockphoto-1337144146-612x612.jpg" 
 
 //FUNCIÓN EN COMÚN PARA REDIRIGIR (OPCIONES MENU DESPLEGABLE)
 document.addEventListener('DOMContentLoaded', () => {
