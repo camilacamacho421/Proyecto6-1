@@ -34,6 +34,7 @@ document.getElementById('email').value = username;
 
             alert("Faltan campos por completar.");
         } else {
+            event.preventDefault();
             alert("Formulario enviado con éxito.");
             const nombre = document.querySelector('#nombre').value;
             const apellido = document.querySelector('#apellido').value;
@@ -44,6 +45,12 @@ document.getElementById('email').value = username;
             localStorage.setItem('Apellido', apellido);
             localStorage.setItem('Email', email);
             localStorage.setItem("username", email);
+
+             // Mostrar el nombre y apellido debajo de la imagen 
+             const nombreCompleto = document.getElementById('nombreCompleto');
+             const nombreDisplay = document.getElementById('nombreDisplay');
+             nombreDisplay.innerText = `${nombre} ${apellido}`; // Combina nombre y apellido ingresados por el usuario
+             nombreCompleto.style.display = 'block'; // Muestra el nombre completo en el contenedor
 
             // Si hay un archivo de imagen seleccionado
             if (fotoPerfil.files.length > 0) {

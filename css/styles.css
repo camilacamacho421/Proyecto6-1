@@ -750,10 +750,11 @@ body.modo-noche {
 
 /* FIN BOTÓN MODO DIA Y NOCHE */
 
-/*ESTILO IMAGEN DE PERFIL*/
+/*ESTILO IMAGEN Y NOMBRE DEL PERFIL*/
 
 .perfil-container {
   display: flex;
+  flex-direction: column;
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente, si es necesario */
   margin: 20px 0; /* Opcional: espacio alrededor del contenedor */
@@ -761,15 +762,21 @@ body.modo-noche {
 
 
 #imagenPerfil {
-  width: 150px; /* Ajusta el tamaño a lo que necesites */
-  height: 150px; /* Mantén las proporciones */
+  width: 150px;
+  height: 150px;
   border-radius: 50%; /* Hace que la imagen sea redonda */
   object-fit: cover; /* Asegura que la imagen cubra el contenedor */
 }
 
+#nombreDisplay {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+}
+
+/* FIN ESTILO IMAGEN Y NOMBRE DEL PERFIL*/
+
 /* Botón guardar */
 
-/* Botón de enviar */
 .Botongurdar {
   width: 200px;
   padding: 10px;
