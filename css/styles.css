@@ -744,7 +744,7 @@ body.modo-dia {
 }
 
 body.modo-noche {
-  background-color: black;
+  background-color: rgb(13, 13, 13);
   color: white;
 }
 
