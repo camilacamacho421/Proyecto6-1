@@ -1,20 +1,26 @@
+const imagenPredeterminada = 'img/profile_photo.jpg' 
+
 //FUNCIÓN EN COMÚN PARA REDIRIGIR (OPCIONES MENU DESPLEGABLE)
 document.addEventListener('DOMContentLoaded', () => {
     Desafiante();
 
-    // Cargar la foto de perfil desde localStorage al cargar la página
     const storedPic = localStorage.getItem('FotoPerfil');
+    const imagenElement = document.getElementById('imagenPerfil');
+
+    // Cargar la foto de perfil desde localStorage al cargar la página
     if (storedPic) {
-        const imagenElement = document.getElementById('imagenPerfil');
         imagenElement.src = storedPic;
-        imagenElement.style.display = 'block';
+    } else {
+        imagenElement.src = imagenPredeterminada; // Usar imagen predeterminada si no hay guardada
     }
+    imagenElement.style.display = 'block';
 
 });
 
 // Variable para el correo
 const username = localStorage.getItem('username');
 document.getElementById('email').value = username;
+
 
 // Validación del formulario
 (function () {
@@ -69,7 +75,9 @@ document.getElementById('email').value = username;
 
                 reader.readAsDataURL(file); // Leer el archivo como URL
             } else {
-                console.log('No se ha seleccionado ninguna imagen.');
+                // Si no hay imagen seleccionada, usar la imagen predeterminada
+                imagenElement.src = imagenPredeterminada;
+                imagenElement.style.display = 'block';
             }
         }
         form.classList.add('was-validated');
