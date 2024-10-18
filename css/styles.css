@@ -745,7 +745,7 @@ body.modo-dia {
 
 body.modo-noche {
   background-color: rgb(13, 13, 13);
-  color: white;
+  color: rgb(169, 169, 169);
 }
 
 /* FIN BOTÓN MODO DIA Y NOCHE */
