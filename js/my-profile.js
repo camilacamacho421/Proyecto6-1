@@ -1,6 +1,6 @@
-const imagenPredeterminada = "img/istockphoto-1337144146-612x612.jpg" 
+const imagenPredeterminada = "img/istockphoto-1337144146-612x612.jpg";
 
-//FUNCIÓN EN COMÚN PARA REDIRIGIR (OPCIONES MENU DESPLEGABLE)
+// FUNCIÓN EN COMÚN PARA REDIRIGIR (OPCIONES MENU DESPLEGABLE)
 document.addEventListener('DOMContentLoaded', () => {
     Desafiante();
 
@@ -15,12 +15,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     imagenElement.style.display = 'block';
 
+    // Cargar el email y mostrar nombre y apellido debajo de la imagen
+    const username = localStorage.getItem('username');
+    document.getElementById('email').value = username;
+    actualizarNombreCompleto();
 });
 
-// Variable para el correo
-const username = localStorage.getItem('username');
-document.getElementById('email').value = username;
+// Función para actualizar nombre y apellido
+function actualizarNombreCompleto() {
+    const nombre = localStorage.getItem('Nombre');
+    const apellido = localStorage.getItem('Apellido');
+    const nombreDisplay = document.getElementById('nombreDisplay');
 
+    if (nombre && apellido) {
+        nombreDisplay.innerText = `${nombre} ${apellido}`; // Combina nombre y apellido ingresados por el usuario
+        const nombreCompleto = document.getElementById('nombreCompleto');
+        nombreCompleto.style.display = 'block'; // Muestra el nombre completo en el contenedor
+    }
+}
 
 // Validación del formulario
 (function () {
@@ -51,12 +63,8 @@ document.getElementById('email').value = username;
             localStorage.setItem('Email', email);
             localStorage.setItem("username", email);
             
-            //NO FUNCIONA - VERLO PARA LA PRÓXIMA ENTREGA
-            /*Mostrar el nombre y apellido debajo de la imagen 
-            const nombreCompleto = document.getElementById('nombreCompleto');
-            const nombreDisplay = document.getElementById('nombreDisplay');
-            nombreDisplay.innerText = `${nombre} ${apellido}`; // Combina nombre y apellido ingresados por el usuario
-            nombreCompleto.style.display = 'block'; // Muestra el nombre completo en el contenedor*/
+            // Actualizar el nombre completo
+            actualizarNombreCompleto();
 
             // Si hay un archivo de imagen seleccionado
             if (fotoPerfil.files.length > 0) {
@@ -76,6 +84,7 @@ document.getElementById('email').value = username;
                 reader.readAsDataURL(file); // Leer el archivo como URL
             } else {
                 // Si no hay imagen seleccionada, usar la imagen predeterminada
+                const imagenElement = document.getElementById('imagenPerfil');
                 imagenElement.src = imagenPredeterminada;
                 imagenElement.style.display = 'block';
             }
