@@ -110,14 +110,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Guardar los datos en localStorage y redirigir al carrito
                 document.getElementById('botonCompra').addEventListener('click', function () {
                     // Información del producto a guardar
+                    const cantidadAlmacenada = localStorage.getItem('quantity') || 1; // Si no hay cantidad en el localStorage, se usa 1 por defecto
+                    const quantity = parseInt(cantidadAlmacenada, 10); // Asegúrate de convertirla a número
+
                     const productComprado = {
                         id: product.id,
                         name: product.name,
                         cost: product.cost,
                         currency: product.currency,
                         image: product.images[0],
-                        quantity: 1,
-                        subtotal: product.cost * 1
+                        quantity: quantity,
+                        subtotal: product.cost * quantity
                     };
 
                     localStorage.setItem('productoComprado', JSON.stringify(productComprado));
