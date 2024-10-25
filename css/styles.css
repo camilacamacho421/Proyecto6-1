@@ -398,6 +398,14 @@ a.custom-card:hover {
   /* Borde superior para separar el texto del resto del contenido */
 }
 
+/* FILTROS PRODUCTOS */
+
+/* Tamaño de imagen para filtro alfabeticamente */
+.icon-alfabeticamente {
+  width: 20px; /* Cambia el tamaño según tus necesidades */
+  vertical-align: middle;
+}
+
 /*-------------------------------------FIN AUTOS-----------------------------------------------------*/
 
 /*-------------------------------------RESPONSIVE-----------------------------------------------------*/
@@ -963,3 +971,8 @@ a{
 }
 
 /* FIN ENTREGA 6 */
+
+.icon-alfabeticamente {
+  width: 20px; /* Cambia el tamaño según tus necesidades */
+  vertical-align: middle;
+}

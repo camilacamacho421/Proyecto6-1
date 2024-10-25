@@ -67,9 +67,13 @@
       <div class="col text-end">
         <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
           <input type="radio" class="btn-check" name="options" id="sortAsc">
-          <label class="btn btn-light" for="sortAsc">↓$</label>
+          <label class="btn btn-light" for="sortAsc">
+            <img src="img/menor a mayor precio.png" alt="menor a mayor precio" class="icon-alfabeticamente">
+          </label>
           <input type="radio" class="btn-check" name="options" id="sortDesc">
-          <label class="btn btn-light" for="sortDesc">↑$</label>
+          <label class="btn btn-light" for="sortDesc">
+            <img src="img/mayor a menor precio.png" alt="mayor a menor precio" class="icon-alfabeticamente">
+          </label>
           <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
           <label class="btn btn-light" for="sortByCount"><i class="fad fa-sort-amount-down mr-1"></i>Cant</label>
         </div>
@@ -89,9 +93,9 @@
             <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
           </div>
           <div class="col-3 p-0">
-            <div class="btn-group" role="group">
+            <div class="d-flex" style="gap: 10px;">
               <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+              <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
             </div>
           </div>
         </div>
