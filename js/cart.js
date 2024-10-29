@@ -59,3 +59,8 @@ function updateDisplay(producto) {
     producto.subtotal = subtotal;  // Actualiza subtotal del Local Storage
     localStorage.setItem('productoComprado', JSON.stringify(producto)); 
 }
+
+//mostrar usuario
+document.addEventListener('DOMContentLoaded', () => {
+    Desafiante();
+});
