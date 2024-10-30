@@ -970,6 +970,18 @@ a{
   background-position-y: center;
 }
 
+#carrito-badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 20%;
+  color: white;
+  background-color: red;
+}
+
+
 /* FIN ENTREGA 6 */
 
 .icon-alfabeticamente {

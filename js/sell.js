@@ -152,3 +152,8 @@ document.addEventListener("DOMContentLoaded", function(e){
 document.addEventListener('DOMContentLoaded', () => {
     Desafiante();
 });
+
+//Funcion para ver el badget ENTREGA 6
+document.addEventListener('DOMContentLoaded', () => {
+    inicializarBadgeCarrito();
+});

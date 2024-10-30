@@ -66,3 +66,44 @@ document.getElementById('modoSwitch').addEventListener('change', function() {
         localStorage.setItem('modo', 'dia'); // Guardar en localStorage
     }
 });
+
+//Entrega 6 - Badge carrito
+
+function inicializarBadgeCarrito() {
+    const productosComprados = JSON.parse(localStorage.getItem('productosComprados')) || [];
+    const carritoBadge = document.getElementById('carrito-badge');
+
+    // Calcula la cantidad total de productos en el carrito
+    const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
+
+    // Muestra la cantidad total en el badge, o lo deja vacío si es 0
+    carritoBadge.textContent = cantidadTotal > 0 ? cantidadTotal : "";
+}
+
+function actualizarBadgeCarrito() {
+    const productosComprados = JSON.parse(localStorage.getItem('productosComprados')) || [];
+    const carritoBadge = document.getElementById('carrito-badge');
+
+    const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
+    carritoBadge.textContent = cantidadTotal > 0 ? cantidadTotal : "";
+}
+
+function incrementarQuantity(id) {
+    const productosComprados = JSON.parse(localStorage.getItem('productosComprados')) || [];
+    const producto = productosComprados.find(p => p.id === id);
+    if (producto) {
+        producto.quantity++;
+        localStorage.setItem('productosComprados', JSON.stringify(productosComprados));  // Actualiza en el localStorage
+        actualizarBadgeCarrito();  // Llama a la función para actualizar el badge
+    }
+}
+
+function decrementarQuantity(id) {
+    const productosComprados = JSON.parse(localStorage.getItem('productosComprados')) || [];
+    const producto = productosComprados.find(p => p.id === id);
+    if (producto && producto.quantity > 1) {
+        producto.quantity--;
+        localStorage.setItem('productosComprados', JSON.stringify(productosComprados));  // Actualiza en el localStorage
+        actualizarBadgeCarrito();  // Llama a la función para actualizar el badge
+    }
+}
