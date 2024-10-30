@@ -1,13 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productosComprados = localStorage.getItem('productosComprados');
     const contenedor = document.querySelector('.texto_producto');
+    const carritoBadge = document.getElementById('carrito-badge');
 
     if (!productosComprados) {
         contenedor.innerHTML = `<h5>No hay productos</h5>`;
+        carritoBadge.textContent = ""
         return;
     }
 
     const listaProductos = JSON.parse(productosComprados);
+
+    // Actualiza el badge con la cantidad total de productos
+    const cantidadTotal = listaProductos.reduce((total, producto) => total + producto.quantity, 0);
+    console.log("Cantidad total en el carrito:", cantidadTotal);// Verificar que se actualice la cantidad total
+    carritoBadge.textContent = cantidadTotal > 0 ? cantidadTotal : "";
 
     if (listaProductos && listaProductos.length > 0) {
         let htmlContentToAppend = '';
@@ -38,6 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Funcion para actualizar el badge al incrementar o decrementar la cantidad
+function updateBadge() {
+    const productosComprados = JSON.parse(localStorage.getItem('productosComprados'));
+    const carritoBadge = document.getElementById('carrito-badge');
+    const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
+    carritoBadge.textContent = cantidadTotal;
+}
+
 // Funciones para incrementar y decrementar la cantidad
 function incrementarQuantity(id) {
     let ObternerListaProducto = JSON.parse(localStorage.getItem('productosComprados'));
@@ -46,6 +61,7 @@ function incrementarQuantity(id) {
         producto.quantity++;
         updateDisplay(producto);
         localStorage.setItem('productosComprados', JSON.stringify(ObternerListaProducto)); // Actualiza el localStorage
+        updateBadge();  // Llama a updateBadge para actualizar el badge
     }
 }
 
@@ -56,6 +72,7 @@ function decrementarQuantity(id) {
         producto.quantity--;
         updateDisplay(producto);
         localStorage.setItem('productosComprados', JSON.stringify(ObternerListaProducto)); // Actualiza el localStorage
+        updateBadge();  // Llama a updateBadge para actualizar el badge
     }
 }
 
