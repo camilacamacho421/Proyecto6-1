@@ -112,7 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Información del producto a guardar
                     const cantidadAlmacenada = localStorage.getItem('quantity') || 1; // Si no hay cantidad en el localStorage, se usa 1 por defecto
                     const quantity = parseInt(cantidadAlmacenada, 10); // Asegúrate de convertirla a número
-
+                
+                    // Obtén la lista actual de productos comprados del localStorage
+                    let ListaProductoComprado = JSON.parse(localStorage.getItem('productosComprados')) || [];
+                
                     const productComprado = {
                         id: product.id,
                         name: product.name,
@@ -122,11 +125,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         quantity: quantity,
                         subtotal: product.cost * quantity
                     };
-
-                    localStorage.setItem('productoComprado', JSON.stringify(productComprado));
-
+                
+                    // Agrega el nuevo producto a la lista
+                    ListaProductoComprado.unshift(productComprado);
+                
+                    // Guarda la lista actualizada en el localStorage
+                    localStorage.setItem('productosComprados', JSON.stringify(ListaProductoComprado));
+                
+                    // Redirige a la página del carrito
                     window.location.href = 'cart.html';
                 });
+                
             }
         });
 

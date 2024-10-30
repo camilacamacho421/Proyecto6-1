@@ -3,64 +3,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Verificar si existe algún producto
     if (!productoComprado) {
-        let htmlContentToAppend = `
-            <h5>No hay productos</h5>
-        `;
-
-        // Insertar el contenido generado en el DOM
-        document.getElementsByClassName('texto_producto')[0].innerHTML = htmlContentToAppend;
+        document.getElementsByClassName('texto_producto')[0].innerHTML = `<h5>No hay productos</h5>`;
     } else {
-        // Convertir el string almacenado en localStorage en un objeto
-        const producto = JSON.parse(productoComprado);
+        // Obtener la lista de productos comprados
+        let ObternerListaProducto = JSON.parse(localStorage.getItem('productosComprados'));
 
-        // Acceder a las propiedades del objeto
-        let htmlContentToAppend = `
-            <div class="col-2"><img class="img-fluid" src="${producto.image}" alt="${producto.name}"></div>
-            <div class="col">
-                <div class="row text-muted">${producto.name}</div>
-            </div>
-            <div class="col">
-                <button class="border" onclick="decrementarQuantity()">-</button>
-                <span id="quantity" class="border">${producto.quantity}</span>
-                <button class="border" onclick="incrementarQuantity()">+</button>
-            </div>
-            <div class="col"> 
-                Subtotal: <span id="subtotal">${producto.currency} ${producto.cost * producto.quantity}</span>
-                <span class="close">&#10005;</span>
-            </div>
-        `;
+        // Verificar si la lista no está vacía
+        if (ObternerListaProducto && ObternerListaProducto.length > 0) {
+            let htmlContentToAppend = '';
 
-        // Insertar el contenido generado en el DOM
-        document.getElementsByClassName('texto_producto')[0].innerHTML = htmlContentToAppend;
+            ObternerListaProducto.forEach(function(producto) {
+                console.log('Producto:', producto); // Verificar el contenido de cada producto
+
+                // Genera el contenido HTML para cada producto
+                htmlContentToAppend += `
+                    <div class="row">
+                        <div class="col-2"><img class="img-fluid" src="${producto.image}" alt="${producto.name}"></div>
+                        <div class="col">
+                            <div class="row text-muted">${producto.name}</div>
+                        </div>
+                        <div class="col">
+                            <button class="border" onclick="decrementarQuantity(${producto.id})">-</button>
+                            <span id="quantity-${producto.id}" class="border">${producto.quantity}</span>
+                            <button class="border" onclick="incrementarQuantity(${producto.id})">+</button>
+                        </div>
+                        <div class="col"> 
+                            Subtotal: <span id="subtotal-${producto.id}">${producto.currency} ${producto.cost * producto.quantity}</span>
+                            <span class="close">&#10005;</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Insertar todo el contenido generado en el DOM
+            document.getElementsByClassName('texto_producto')[0].innerHTML = htmlContentToAppend;
+        } else {
+            document.getElementsByClassName('texto_producto')[0].innerHTML = `<h5>No hay productos</h5>`;
+        }
     }
 });
 
-// Función para incrementar la cantidad
-function incrementarQuantity() {
-    let producto = JSON.parse(localStorage.getItem('productoComprado'));
-    producto.quantity++;
-    updateDisplay(producto);  // Actualiza la cantidad y el subtotal en el DOM
+// Funciones para incrementar y decrementar la cantidad
+function incrementarQuantity(id) {
+    let ObternerListaProducto = JSON.parse(localStorage.getItem('productosComprados'));
+    const producto = ObternerListaProducto.find(p => p.id === id);
+    if (producto) {
+        producto.quantity++;
+        updateDisplay(producto);
+        localStorage.setItem('productosComprados', JSON.stringify(ObternerListaProducto)); // Actualiza el localStorage
+    }
 }
 
-// Función para decrementar la cantidad
-function decrementarQuantity() {
-    let producto = JSON.parse(localStorage.getItem('productoComprado'));
-    if (producto.quantity > 1) {
+function decrementarQuantity(id) {
+    let ObternerListaProducto = JSON.parse(localStorage.getItem('productosComprados'));
+    const producto = ObternerListaProducto.find(p => p.id === id);
+    if (producto && producto.quantity > 1) {
         producto.quantity--;
-        updateDisplay(producto);  // Actualiza la cantidad y el subtotal en el DOM
+        updateDisplay(producto);
+        localStorage.setItem('productosComprados', JSON.stringify(ObternerListaProducto)); // Actualiza el localStorage
     }
 }
 
 function updateDisplay(producto) {
-    document.getElementById('quantity').textContent = producto.quantity;  // Actualiza la cantidad en el DOM
+    document.getElementById(`quantity-${producto.id}`).textContent = producto.quantity;  // Actualiza la cantidad en el DOM
     const subtotal = producto.cost * producto.quantity;
-    document.getElementById('subtotal').textContent = `${producto.currency} ${subtotal}`;  // Actualiza el subtotal en el DOM
-    
-    producto.subtotal = subtotal;  // Actualiza subtotal del Local Storage
+    document.getElementById(`subtotal-${producto.id}`).textContent = `${producto.currency} ${subtotal}`;  // Actualiza el subtotal en el DOM
     localStorage.setItem('productoComprado', JSON.stringify(producto)); 
 }
 
-//mostrar usuario
+// Mostrar usuario
 document.addEventListener('DOMContentLoaded', () => {
     Desafiante();
 });
