@@ -1,45 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const productoComprado = localStorage.getItem('productoComprado');
+    const productosComprados = localStorage.getItem('productosComprados');
+    const contenedor = document.querySelector('.texto_producto');
 
-    // Verificar si existe algún producto
-    if (!productoComprado) {
-        document.getElementsByClassName('texto_producto')[0].innerHTML = `<h5>No hay productos</h5>`;
-    } else {
-        // Obtener la lista de productos comprados
-        let ObternerListaProducto = JSON.parse(localStorage.getItem('productosComprados'));
+    if (!productosComprados) {
+        contenedor.innerHTML = `<h5>No hay productos</h5>`;
+        return;
+    }
 
-        // Verificar si la lista no está vacía
-        if (ObternerListaProducto && ObternerListaProducto.length > 0) {
-            let htmlContentToAppend = '';
+    const listaProductos = JSON.parse(productosComprados);
 
-            ObternerListaProducto.forEach(function(producto) {
-                console.log('Producto:', producto); // Verificar el contenido de cada producto
+    if (listaProductos && listaProductos.length > 0) {
+        let htmlContentToAppend = '';
 
-                // Genera el contenido HTML para cada producto
-                htmlContentToAppend += `
-                    <div class="row">
-                        <div class="col-2"><img class="img-fluid" src="${producto.image}" alt="${producto.name}"></div>
-                        <div class="col">
-                            <div class="row text-muted">${producto.name}</div>
-                        </div>
-                        <div class="col">
-                            <button class="border" onclick="decrementarQuantity(${producto.id})">-</button>
-                            <span id="quantity-${producto.id}" class="border">${producto.quantity}</span>
-                            <button class="border" onclick="incrementarQuantity(${producto.id})">+</button>
-                        </div>
-                        <div class="col"> 
-                            Subtotal: <span id="subtotal-${producto.id}">${producto.currency} ${producto.cost * producto.quantity}</span>
-                            <span class="close">&#10005;</span>
-                        </div>
+        listaProductos.forEach(producto => {
+            htmlContentToAppend += `
+                <div class="row">
+                    <div class="col-2"><img class="img-fluid" src="${producto.image}" alt="${producto.name}"></div>
+                    <div class="col">
+                        <div class="row text-muted">${producto.name}</div>
                     </div>
-                `;
-            });
+                    <div class="col">
+                        <button class="border" onclick="decrementarQuantity(${producto.id})">-</button>
+                        <span id="quantity-${producto.id}" class="border">${producto.quantity}</span>
+                        <button class="border" onclick="incrementarQuantity(${producto.id})">+</button>
+                    </div>
+                    <div class="col"> 
+                        Subtotal: <span id="subtotal-${producto.id}">${producto.currency} ${producto.cost * producto.quantity}</span>
+                        <span class="close">&#10005;</span>
+                    </div>
+                </div>
+            `;
+        });
 
-            // Insertar todo el contenido generado en el DOM
-            document.getElementsByClassName('texto_producto')[0].innerHTML = htmlContentToAppend;
-        } else {
-            document.getElementsByClassName('texto_producto')[0].innerHTML = `<h5>No hay productos</h5>`;
-        }
+        contenedor.innerHTML = htmlContentToAppend;
+    } else {
+        contenedor.innerHTML = `<h5>No hay productos</h5>`;
     }
 });
 
