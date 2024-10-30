@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         Subtotal: <span id="subtotal-${producto.id}">${producto.currency} ${producto.cost * producto.quantity}</span>
                         <span class="close">&#10005;</span>
                     </div>
+                    <div class="col">
+                    <button id="eliminarProducto"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+
                 </div>
             `;
         });
