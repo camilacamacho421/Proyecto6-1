@@ -859,7 +859,7 @@ body.modo-noche {
 @media(max-width:767px){
   .summary{
   border-top-right-radius: unset;
-  border-bottom-left-radius: 1rem;
+  border-bottom-left-radius: 1rem; 
   }
 }
 .summary .col-2{
@@ -868,9 +868,21 @@ body.modo-noche {
 .summary .col-10
 {
   padding: 0;
+
 }.row{
   margin: 0;
+  position: relative;
 }
+
+.border-bottom {
+  border-bottom: none !important; /* Elimina la línea inferior */
+}
+
+.linea-separadora{
+   border-top: 1px solid #414141 !important;
+
+}
+
 .titulo_carrito b{
   font-size: 1.5rem;
 }
@@ -879,6 +891,12 @@ body.modo-noche {
   padding: 2vh 0;
   width: 100%;
 }
+
+.col-2 {
+  flex: 0 0 30%; /* Ajuste del ancho de la columna */
+  max-width: 30%; 
+}
+
 .col-2, .col{
   padding: 0 1vh;
 }
@@ -889,12 +907,9 @@ a{
   margin-left: auto;
   font-size: 0.7rem;
 }
-.img-fluid carrito{
-  width: 3.5rem;
-}
-
-.back-to-shop{
-  margin-top: 5rem;
+.img-fluid {
+  height: 5rem;
+  padding-bottom: 0.5rem;
 }
 
 .h5 carrito{
@@ -929,14 +944,14 @@ a{
 }
 
 .boton_carrito{
-  background-color: #000;
-  border-color: #000;
+  background-color: #e74c3c;
+  border: none;
   color: white;
   width: 100%;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   margin-top: 4vh;
   padding: 1vh;
-  border-radius: 0;
+  border-radius: 5px;
 }
 
 .boton_carrito:focus{
@@ -950,18 +965,117 @@ a{
 }
 
 .boton_carrito:hover{
-  color: white;
+  background-color: #c0392b;
 }
 
 .border{
   color: black;
   text-decoration: none;
+  padding: 0.2rem;
 }
+
 
 .border:hover{
   color: black;
   text-decoration: none;
 }
+
+.boton-circular {
+  background-color: #e74c3c; /* Color de fondo rojo */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 50%; /* Hacer el botón circular */
+  width: 25px; /* Ajusta el ancho */
+  height: 25px; /* Ajusta la altura */
+  display: flex; /* Para centrar el contenido */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  font-size: 1.2rem; /* Tamaño del texto */
+}
+
+.boton-circular:hover {
+  background-color: #c0392b; /* Color al pasar el ratón */
+}
+
+.boton-circular:focus {
+  outline: none; /* Sin borde de enfoque */
+}
+
+.col {
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+}
+
+.btn-eliminar {
+  background: transparent; 
+  border: none; 
+  cursor: pointer; 
+  padding: 0; 
+  position: absolute; 
+  top: 5px; 
+  right: 5px; 
+}
+
+.btn-eliminar:hover {
+  color: #e74c3c; 
+}
+
+span {
+  margin: 0 10px; /* Espaciado horizontal entre botones y cantidad */
+}
+
+.icono-container {
+  display: flex;
+  flex-direction: column; /* Organiza los elementos en columna */
+  align-items: center; /* Centra horizontalmente */
+}
+
+.material-icons {
+  font-size: 24px; 
+  color: #6c757d;
+  vertical-align: middle; 
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.material-icons:hover{
+  color: #e74c3c; 
+}
+
+.back-to-shop {
+  display: flex;
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center; /* Centra verticalmente */
+}
+
+.vaciar-carrito span {
+  display: block; /* Hace que el texto aparezca en una nueva línea */
+}
+
+.subtotal-container {
+  display: flex;
+  flex-direction: column; /* Cambia a columna para que subtotal esté encima */
+}
+
+.subtotal-container div {
+  display: flex; /* Mantiene el monto y la moneda en la misma línea */
+  align-items: center; /* Alinea verticalmente en el centro */
+}
+
+.subtotal-container span {
+  font-size: 0.9rem; 
+  color: #333; 
+  margin-left: 5px; /* Espaciado entre el monto y la moneda */
+}
+
+#precio_total{
+ color: #e74c3c;
+ font-size: 0.9rem;
+}
+
+#subtotal{
+  font-size: 0.9rem;
+ }
 
 #code{
   background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253) , rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
@@ -988,3 +1102,5 @@ a{
   width: 20px; /* Cambia el tamaño según tus necesidades */
   vertical-align: middle;
 }
+
+

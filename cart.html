@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -58,27 +59,35 @@
                       <div class="texto_producto"></div>
                     </div>
                 </div>
+
+
                 
-                <div class="back-to-shop"><a class="border" href="javascript:history.back()">&leftarrow;</a><span class="text-muted">Seguir comprando</span></div>
+                <div class="back-to-shop"><a class="border" href="javascript:history.back()">&leftarrow;</a><span class="text-muted">Seguir comprando</span>
+                
+                        <i class="material-icons">delete</i>
+                    
+              
+                </div>
                 <!--Esto hace que vuelva a la pagina anterior: javascript:history.back()-->
-                
+          
             </div>
             <div class="col-md-4 summary">
                 <div><h5 class="h5 carrito"><b>Resumen</b></h5></div>
                 <hr>
                 <div class="row">
-                    <div class="col" style="padding-left:0;">Subtotal</div>
+                    <div class="col" style="padding-left:0;" id="subtotal"><strong>Total productos</strong></div>
                     <div class="col text-right" id="subtotal_carrito"></div>
                 </div>
                 <!--ENVÍO - CARRITO - ENTREGA 7-->
-                <!--<form class="form_carrito">
+                <form class="form_carrito">
                     <p>ENVÍO</p>
                     <select class="select_carrito"><option class="text-muted">Envío estándar &dollar;220</option></select>
-                </form>-->
+                </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                    <div class="col">PRECIO TOTAL</div>
+                 <div class="col" id="precio_total"><strong>PRECIO TOTAL</strong></div>
+                    <hr>
                     <div class="col text-right" id="total_carrito"></div>
-                </div>
+                </div > 
                 <button class="boton_carrito">COMPRAR</button>
             </div>
         </div>
