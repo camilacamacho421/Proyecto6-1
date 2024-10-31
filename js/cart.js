@@ -63,10 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
 
-        subtotal_carrito.textContent = `Total: UYU ${sumaSubTotalUYU}`;
+        subtotal_carrito.textContent = `UYU ${sumaSubTotalUYU}`;
         contenedor.innerHTML = htmlContentToAppend;
-    } else {
-        contenedor.innerHTML = `<h5>No hay productos</h5>`;
     }
 });
 
