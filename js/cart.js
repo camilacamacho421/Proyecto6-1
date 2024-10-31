@@ -63,7 +63,11 @@ function incrementarQuantity(id) {
         producto.quantity++;
         updateDisplay(producto);
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
-        updateBadge();
+        
+        // Actualiza directamente el badge
+        const cantidadTotal = obtenerListaProducto.reduce((total, producto) => total + producto.quantity, 0);
+        document.getElementById('carrito-badge').textContent = cantidadTotal > 0 ? cantidadTotal : "";
+        
         actualizarSumaTotal(obtenerListaProducto); // Actualiza el subtotal total
     }
 }
@@ -76,7 +80,11 @@ function decrementarQuantity(id) {
         producto.quantity--;
         updateDisplay(producto);
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
-        updateBadge();
+        
+        // Actualiza directamente el badge
+        const cantidadTotal = obtenerListaProducto.reduce((total, producto) => total + producto.quantity, 0);
+        document.getElementById('carrito-badge').textContent = cantidadTotal > 0 ? cantidadTotal : "";
+        
         actualizarSumaTotal(obtenerListaProducto); // Actualiza el subtotal total
     }
 }
@@ -95,15 +103,6 @@ function actualizarSumaTotal(listaProductos) {
     const currency = listaProductos[0].currency; // Asume que todos los productos tienen la misma moneda
     subtotal_carrito.textContent = `${currency} ${sumaSubTotal}`; // Muestra el subtotal total actualizado
 }
-
-// Función para actualizar el badge
-function updateBadge() {
-    const productosComprados = JSON.parse(localStorage.getItem('productosComprados'));
-    const carritoBadge = document.getElementById('carrito-badge');
-    const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
-    carritoBadge.textContent = cantidadTotal;
-}
-
 
 // Mostrar usuario
 document.addEventListener('DOMContentLoaded', () => {
