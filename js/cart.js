@@ -1,7 +1,7 @@
-// Definimos la tasa de cambio (ejemplo)
+// Tasa de cambio
 const tasaCambio = {
-    'USD': 1,      // 1 USD = 1 USD
-    'UYU': 40      // 1 USD = 39 UYU (ejemplo, actualiza según la tasa real)
+    'USD': 1, 
+    'UYU': 40     
 };
 
 // Función para convertir de una moneda a otra

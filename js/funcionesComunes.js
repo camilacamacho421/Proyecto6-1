@@ -84,23 +84,3 @@ function manejarBadgeCarrito() {
         carritoBadge.style.display = 'none'; // Oculta el badge si la cantidad es 0
     }
 }
-
-function incrementarQuantity(id) {
-    const productosComprados = JSON.parse(localStorage.getItem('productosComprados')) || [];
-    const producto = productosComprados.find(p => p.id === id);
-    if (producto) {
-        producto.quantity++;
-        localStorage.setItem('productosComprados', JSON.stringify(productosComprados));  // Actualiza en el localStorage
-        actualizarBadgeCarrito();  // Llama a la función para actualizar el badge
-    }
-}
-
-function decrementarQuantity(id) {
-    const productosComprados = JSON.parse(localStorage.getItem('productosComprados')) || [];
-    const producto = productosComprados.find(p => p.id === id);
-    if (producto && producto.quantity > 1) {
-        producto.quantity--;
-        localStorage.setItem('productosComprados', JSON.stringify(productosComprados));  // Actualiza en el localStorage
-        actualizarBadgeCarrito();  // Llama a la función para actualizar el badge
-    }
-}
