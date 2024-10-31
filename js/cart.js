@@ -4,14 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const carritoBadge = document.getElementById('carrito-badge');
     const subtotal_carrito = document.getElementById('subtotal_carrito');
 
-    //Mensaje si el carrito está vacío
     if (!productosComprados) {
         contenedor.innerHTML = `<h5>No hay productos</h5>`;
         carritoBadge.style.display = 'none';
         return;
     }
 
-    //Procesar los productos comprados, crea un arreglo de objetos JS
     const listaProductos = JSON.parse(productosComprados);
 
     // Actualiza el badge con la cantidad total de productos
@@ -33,25 +31,32 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="row text-muted">${producto.name}</div>
                     </div>
                     <div class="col">
-                        <button class="border" onclick="decrementarQuantity(${producto.id})">-</button>
+                        <button class="border boton-circular" onclick="decrementarQuantity(${producto.id})">-</button>
                         <span id="quantity-${producto.id}" class="border">${producto.quantity}</span>
-                        <button class="border" onclick="incrementarQuantity(${producto.id})">+</button>
+                        <button class="border boton-circular" onclick="incrementarQuantity(${producto.id})">+</button>
                     </div>
                     <div class="col"> 
-                        Subtotal: <span id="subtotal-${producto.id}">${producto.currency} ${subtotalProducto}</span>
-                        <span class="close">&#10005;</span>
-                    </div>
-                    <div class="col">
-                        <button id="eliminarProducto"><i class="fa-solid fa-trash-can"></i></button>
+                        <div class="subtotal-container">
+                            <span>Subtotal</span>
+                        <div>
+                        <span id="subtotal-${producto.id}">${subtotalProducto}</span>
+                        <span>${producto.currency}</span>
+                </div>
+            </div>
+        </div>
+                     <div class="col">
+                        <button id="eliminarProducto" class="btn-eliminar"> X </button>
                     </div>
                 </div>
+                <hr class="linea-separadora">
+
             `;
         });
 
         subtotal_carrito.textContent = `${listaProductos[0].currency} ${sumaSubTotal}`;
         contenedor.innerHTML = htmlContentToAppend;
     } else {
-        contenedor.innerHTML = `<h5>No hay productos</h5>`; //Si listaProductos está vacío muestra el mensaje.
+        contenedor.innerHTML = `<h5>No hay productos</h5>`;
     }
 });
 
@@ -63,11 +68,7 @@ function incrementarQuantity(id) {
         producto.quantity++;
         updateDisplay(producto);
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
-        
-        // Actualiza directamente el badge
-        const cantidadTotal = obtenerListaProducto.reduce((total, producto) => total + producto.quantity, 0);
-        document.getElementById('carrito-badge').textContent = cantidadTotal > 0 ? cantidadTotal : "";
-        
+        updateBadge();
         actualizarSumaTotal(obtenerListaProducto); // Actualiza el subtotal total
     }
 }
@@ -80,11 +81,7 @@ function decrementarQuantity(id) {
         producto.quantity--;
         updateDisplay(producto);
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
-        
-        // Actualiza directamente el badge
-        const cantidadTotal = obtenerListaProducto.reduce((total, producto) => total + producto.quantity, 0);
-        document.getElementById('carrito-badge').textContent = cantidadTotal > 0 ? cantidadTotal : "";
-        
+        updateBadge();
         actualizarSumaTotal(obtenerListaProducto); // Actualiza el subtotal total
     }
 }
@@ -93,7 +90,7 @@ function decrementarQuantity(id) {
 function updateDisplay(producto) {
     document.getElementById(`quantity-${producto.id}`).textContent = producto.quantity;
     const subtotal = producto.cost * producto.quantity;
-    document.getElementById(`subtotal-${producto.id}`).textContent = `${producto.currency} ${subtotal}`;
+    document.getElementById(`subtotal-${producto.id}`).textContent = `${subtotal}`; // Solo el monto, sin la moneda
     localStorage.setItem('productoComprado', JSON.stringify(producto));
 }
 
@@ -103,6 +100,15 @@ function actualizarSumaTotal(listaProductos) {
     const currency = listaProductos[0].currency; // Asume que todos los productos tienen la misma moneda
     subtotal_carrito.textContent = `${currency} ${sumaSubTotal}`; // Muestra el subtotal total actualizado
 }
+
+// Función para actualizar el badge
+function updateBadge() {
+    const productosComprados = JSON.parse(localStorage.getItem('productosComprados'));
+    const carritoBadge = document.getElementById('carrito-badge');
+    const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
+    carritoBadge.textContent = cantidadTotal;
+}
+
 
 // Mostrar usuario
 document.addEventListener('DOMContentLoaded', () => {
