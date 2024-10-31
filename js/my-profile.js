@@ -112,5 +112,5 @@ function actualizarNombreCompleto() {
 
 //Funcion para ver el badget ENTREGA 6
 document.addEventListener('DOMContentLoaded', () => {
-    inicializarBadgeCarrito();
+    manejarBadgeCarrito();
 });

@@ -69,24 +69,20 @@ document.getElementById('modoSwitch').addEventListener('change', function() {
 
 //Entrega 6 - Badge carrito
 
-function inicializarBadgeCarrito() {
+function manejarBadgeCarrito() {
     const productosComprados = JSON.parse(localStorage.getItem('productosComprados')) || [];
     const carritoBadge = document.getElementById('carrito-badge');
 
     // Calcula la cantidad total de productos en el carrito
     const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
 
-    // Muestra la cantidad total en el badge, o lo deja vacío si es 0
-    carritoBadge.textContent = cantidadTotal > 0 ? cantidadTotal : carritoBadge.style.display = 'none';
-    
-}
-
-function actualizarBadgeCarrito() {
-    const productosComprados = JSON.parse(localStorage.getItem('productosComprados')) || [];
-    const carritoBadge = document.getElementById('carrito-badge');
-
-    const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
-    carritoBadge.textContent = cantidadTotal > 0 ? cantidadTotal : "";
+    // Muestra la cantidad en el badge si es mayor a 0, si no, lo oculta
+    if (cantidadTotal > 0) {
+        carritoBadge.textContent = cantidadTotal;
+        carritoBadge.style.display = ''; // Muestra el badge si estaba oculto
+    } else {
+        carritoBadge.style.display = 'none'; // Oculta el badge si la cantidad es 0
+    }
 }
 
 function incrementarQuantity(id) {
