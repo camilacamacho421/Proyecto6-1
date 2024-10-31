@@ -1,3 +1,14 @@
+// Definimos la tasa de cambio (ejemplo)
+const tasaCambio = {
+    'USD': 1,      // 1 USD = 1 USD
+    'UYU': 40      // 1 USD = 39 UYU (ejemplo, actualiza según la tasa real)
+};
+
+// Función para convertir de una moneda a otra
+function convertirMoneda(cantidad, origen, destino) {
+    return (cantidad * tasaCambio[destino]) / tasaCambio[origen];
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const productosComprados = localStorage.getItem('productosComprados');
     const contenedor = document.querySelector('.texto_producto');
@@ -12,17 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const listaProductos = JSON.parse(productosComprados);
 
-    // Actualiza el badge con la cantidad total de productos
     const cantidadTotal = listaProductos.reduce((total, producto) => total + producto.quantity, 0);
     carritoBadge.textContent = cantidadTotal > 0 ? cantidadTotal : "";
 
-    if (listaProductos && listaProductos.length > 0) {
+    if (listaProductos.length > 0) {
         let htmlContentToAppend = '';
-        let sumaSubTotal = 0;
+        let sumaSubTotalUYU = 0;
 
         listaProductos.forEach(producto => {
-            const subtotalProducto = producto.cost * producto.quantity; 
-            sumaSubTotal += subtotalProducto;
+            const subtotalProducto = producto.cost * producto.quantity;
+            let subtotalEnUYU = producto.currency === 'USD' 
+                ? convertirMoneda(subtotalProducto, 'USD', 'UYU') 
+                : subtotalProducto; 
+            sumaSubTotalUYU += subtotalEnUYU;
 
             htmlContentToAppend += `
                 <div class="row">
@@ -38,22 +51,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="col"> 
                         <div class="subtotal-container">
                             <span>Subtotal</span>
-                        <div>
-                        <span id="subtotal-${producto.id}">${subtotalProducto}</span>
-                        <span>${producto.currency}</span>
-                </div>
-            </div>
-        </div>
-                     <div class="col">
+                            <span id="subtotal-${producto.id}">${subtotalEnUYU}</span>
+                            <span>UYU</span>
+                        </div>
+                    </div>
+                    <div class="col">
                         <button id="eliminarProducto" class="btn-eliminar"> X </button>
                     </div>
                 </div>
                 <hr class="linea-separadora">
-
             `;
         });
 
-        subtotal_carrito.textContent = `${listaProductos[0].currency} ${sumaSubTotal}`;
+        subtotal_carrito.textContent = `Total: UYU ${sumaSubTotalUYU}`;
         contenedor.innerHTML = htmlContentToAppend;
     } else {
         contenedor.innerHTML = `<h5>No hay productos</h5>`;
@@ -69,7 +79,7 @@ function incrementarQuantity(id) {
         updateDisplay(producto);
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
         updateBadge();
-        actualizarSumaTotal(obtenerListaProducto); // Actualiza el subtotal total
+        actualizarSumaTotal(obtenerListaProducto);
     }
 }
 
@@ -82,7 +92,7 @@ function decrementarQuantity(id) {
         updateDisplay(producto);
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
         updateBadge();
-        actualizarSumaTotal(obtenerListaProducto); // Actualiza el subtotal total
+        actualizarSumaTotal(obtenerListaProducto);
     }
 }
 
@@ -90,15 +100,19 @@ function decrementarQuantity(id) {
 function updateDisplay(producto) {
     document.getElementById(`quantity-${producto.id}`).textContent = producto.quantity;
     const subtotal = producto.cost * producto.quantity;
-    document.getElementById(`subtotal-${producto.id}`).textContent = `${subtotal}`; // Solo el monto, sin la moneda
-    localStorage.setItem('productoComprado', JSON.stringify(producto));
+    let subtotalEnUYU = producto.currency === 'USD' 
+        ? convertirMoneda(subtotal, 'USD', 'UYU') 
+        : subtotal; 
+    document.getElementById(`subtotal-${producto.id}`).textContent = `${subtotalEnUYU}`; // Muestra el subtotal en UYU
 }
 
 // Función para actualizar el subtotal total
 function actualizarSumaTotal(listaProductos) {
-    let sumaSubTotal = listaProductos.reduce((total, producto) => total + (producto.cost * producto.quantity), 0);
-    const currency = listaProductos[0].currency; // Asume que todos los productos tienen la misma moneda
-    subtotal_carrito.textContent = `${currency} ${sumaSubTotal}`; // Muestra el subtotal total actualizado
+    let sumaSubTotalUYU = listaProductos.reduce((total, producto) => {
+        const subtotal = producto.cost * producto.quantity;
+        return total + (producto.currency === 'USD' ? convertirMoneda(subtotal, 'USD', 'UYU') : subtotal);
+    }, 0);
+    subtotal_carrito.textContent = `Total: UYU ${sumaSubTotalUYU}`; // Muestra el subtotal total actualizado
 }
 
 // Función para actualizar el badge
@@ -108,7 +122,6 @@ function updateBadge() {
     const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
     carritoBadge.textContent = cantidadTotal;
 }
-
 
 // Mostrar usuario
 document.addEventListener('DOMContentLoaded', () => {
