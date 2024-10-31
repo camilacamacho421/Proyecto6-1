@@ -4,12 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const carritoBadge = document.getElementById('carrito-badge');
     const subtotal_carrito = document.getElementById('subtotal_carrito');
 
+    //Mensaje si el carrito está vacío
     if (!productosComprados) {
         contenedor.innerHTML = `<h5>No hay productos</h5>`;
         carritoBadge.style.display = 'none';
         return;
     }
 
+    //Procesar los productos comprados, crea un arreglo de objetos JS
     const listaProductos = JSON.parse(productosComprados);
 
     // Actualiza el badge con la cantidad total de productos
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         subtotal_carrito.textContent = `${listaProductos[0].currency} ${sumaSubTotal}`;
         contenedor.innerHTML = htmlContentToAppend;
     } else {
-        contenedor.innerHTML = `<h5>No hay productos</h5>`;
+        contenedor.innerHTML = `<h5>No hay productos</h5>`; //Si listaProductos está vacío muestra el mensaje.
     }
 });
 
