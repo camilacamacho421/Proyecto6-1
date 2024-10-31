@@ -110,7 +110,7 @@ function actualizarSumaTotal(listaProductos) {
         const subtotal = producto.cost * producto.quantity;
         return total + (producto.currency === 'USD' ? convertirMoneda(subtotal, 'USD', 'UYU') : subtotal);
     }, 0);
-    subtotal_carrito.textContent = `Total: UYU ${sumaSubTotalUYU}`; // Muestra el subtotal total actualizado
+    subtotal_carrito.textContent = `UYU ${sumaSubTotalUYU}`; // Muestra el subtotal total actualizado
 }
 
 // Función para actualizar el badge
