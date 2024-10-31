@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!productosComprados) {
         contenedor.innerHTML = `<h5>No hay productos</h5>`;
-        carritoBadge.textContent = ""
+        carritoBadge.style.display = 'none';
         return;
     }
 

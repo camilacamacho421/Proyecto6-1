@@ -77,7 +77,8 @@ function inicializarBadgeCarrito() {
     const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
 
     // Muestra la cantidad total en el badge, o lo deja vacío si es 0
-    carritoBadge.textContent = cantidadTotal > 0 ? cantidadTotal : "";
+    carritoBadge.textContent = cantidadTotal > 0 ? cantidadTotal : carritoBadge.style.display = 'none';
+    
 }
 
 function actualizarBadgeCarrito() {
