@@ -1,7 +1,7 @@
 // Tasa de cambio
 const tasaCambio = {
-    'USD': 1, 
-    'UYU': 40     
+    'USD': 1,
+    'UYU': 40
 };
 
 // Función para convertir de una moneda a otra
@@ -32,34 +32,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         listaProductos.forEach(producto => {
             const subtotalProducto = producto.cost * producto.quantity;
-            let subtotalEnUYU = producto.currency === 'USD' 
-                ? convertirMoneda(subtotalProducto, 'USD', 'UYU') 
-                : subtotalProducto; 
+            let subtotalEnUYU = producto.currency === 'USD'
+                ? convertirMoneda(subtotalProducto, 'USD', 'UYU')
+                : subtotalProducto;
             sumaSubTotalUYU += subtotalEnUYU;
 
             htmlContentToAppend += `
-                <div class="row">
-                    <div class="col-2"><img class="img-fluid" src="${producto.image}" alt="${producto.name}"></div>
-                    <div class="col">
-                        <div class="row text-muted">${producto.name}</div>
+                <div class="row align-items-center mb-2">
+                    <div class="col-3 col-md-2">
+                        <img class="img-fluid" src="${producto.image}" alt="${producto.name}">
                     </div>
-                    <div class="col">
+                    <div class="col-5 col-md-4">
+                        <span class="text-muted">${producto.name}</span>
+                    </div>
+                    <div class="col-4 col-md-4 d-flex align-items-center justify-content-center">
                         <button class="border boton-circular" onclick="decrementarQuantity(${producto.id})">-</button>
-                        <span id="quantity-${producto.id}" class="border">${producto.quantity}</span>
+                            <span id="quantity-${producto.id}" class="border mx-2">${producto.quantity}</span>
                         <button class="border boton-circular" onclick="incrementarQuantity(${producto.id})">+</button>
                     </div>
-                    <div class="col"> 
-                        <div class="subtotal-container">
-                            <span>Subtotal</span>
-                            <span>UYU</span> <span id="subtotal-${producto.id}">${subtotalEnUYU}</span>
-                        </div>
+                    <div class="col-12 col-md-2 text-end d-flex justify-content-end">
+                        <button id="eliminarProducto" class="btn-eliminar">X</button>
                     </div>
-                    <div class="col col-eliminar">
-                        <button id="eliminarProducto" class="btn-eliminar"> X </button>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12 text-end">
+                        <span>Subtotal:</span>
+                        <span class="ms-1">UYU</span>
+                        <span id="subtotal-${producto.id}" class="ms-1">${subtotalEnUYU}</span>
                     </div>
                 </div>
                 <hr class="linea-separadora">
-            `;
+                `;
+
         });
 
         subtotal_carrito.textContent = `UYU ${sumaSubTotalUYU}`;
@@ -97,9 +101,9 @@ function decrementarQuantity(id) {
 function updateDisplay(producto) {
     document.getElementById(`quantity-${producto.id}`).textContent = producto.quantity;
     const subtotal = producto.cost * producto.quantity;
-    let subtotalEnUYU = producto.currency === 'USD' 
-        ? convertirMoneda(subtotal, 'USD', 'UYU') 
-        : subtotal; 
+    let subtotalEnUYU = producto.currency === 'USD'
+        ? convertirMoneda(subtotal, 'USD', 'UYU')
+        : subtotal;
     document.getElementById(`subtotal-${producto.id}`).textContent = `${subtotalEnUYU}`; // Muestra el subtotal en UYU
 }
 
