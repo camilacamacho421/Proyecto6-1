@@ -1084,15 +1084,22 @@ span {
   background-position-y: center;
 }
 
+#carrito-button {
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Evita que el texto y el badge se dividan en líneas diferentes */
+}
+
 #carrito-badge {
-  display: inline-block;
-  min-width: 10px;
-  padding: 5px;
-  font-size: 12px;
-  text-align: center;
-  border-radius: 20%;
-  color: white;
-  background-color: red;
+  display: inline-flex;        
+  align-items: center;          
+  justify-content: center;      
+  min-width: 20px;               
+  height: 22px;                  
+  font-size: 12px;                       
+  border-radius: 50%;           
+  color: white;                  
+  background-color: rgb(246, 76, 24);
 }
 
 
