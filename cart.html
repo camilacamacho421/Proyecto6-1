@@ -35,7 +35,11 @@
           <div class="nav-item">
             <a class="nav-link" id="username">Usuario</a>
             <div class="desplegable">
-              <a id="carrito-button"><i class="fas fa-shopping-cart"></i> Mi carrito<span id="carrito-badge" class="badge bg-danger ms-2"></span></a>
+              <a id="carrito-button" class="d-flex align-items-center">
+                <i class="fas fa-shopping-cart"></i> 
+                <span>Mi carrito</span>
+                <span id="carrito-badge" class="badge bg-danger ms-2"></span>
+              </a>
               <a id="perfil-button"><i class="fas fa-user"></i> Mi perfil</a>
               <a id="logout-button"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
             </div>
@@ -60,11 +64,9 @@
                     </div>
                 </div>
 
-
-                
                 <div class="back-to-shop"><a class="border" href="javascript:history.back()">&leftarrow;</a><span class="text-muted">Seguir comprando</span>
-                   <i class="material-icons">delete</i>
-              </div>
+                        <i class="material-icons">delete</i>                   
+                </div>
                 <!--Esto hace que vuelva a la pagina anterior: javascript:history.back()-->
           
             </div>
@@ -78,7 +80,10 @@
                 <!--ENVÍO - CARRITO - ENTREGA 7-->
                 <form class="form_carrito">
                     <p>ENVÍO</p>
-                    <select class="select_carrito" disabled><option class="text-muted ">Envío estándar &dollar;220</option></select>
+                    <select class="select_carrito" disabled> <!-- SACAR ESTO CUANDO HAGAMOS LA FUNCIONALIDAD (ENTREGA 7) -->
+                      <option class="text-muted">Envío estándar &dollar;220</option>
+                    </select>
+                  
                 </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                  <div class="col" id="precio_total"><strong>PRECIO TOTAL</strong></div>
