@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <!--DESAFIATE-->
+          <div class="nav-item">
+            <a class="nav-link" id="username">Usuario</a>
+            <div class="desplegable">
+              <a id="carrito-button" class="d-flex align-items-center">
+                <i class="fas fa-shopping-cart"></i> 
+                <span>Mi carrito</span>
+                <span id="carrito-badge" class="badge bg-danger ms-2"></span>
+              </a>
+              <a id="perfil-button"><i class="fas fa-user"></i> Mi perfil</a>
+              <a id="logout-button"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main id="containerComprar">
+    <div class="container">
+      <div id="product-info-container"></div> <!-- Aquí se inyectará el HTML dinámico -->
+      <h3 class="product-info-reseña"> Reseñas</h3>
+      <div id="comments-container"></div>
+    </div>
+  </main>
+
+  
+  <div class="container">
+    <h3 class="product-info-titles">Productos relacionados</h3>
+    <div id="product-info-related" class="card-container"></div> <!-- Aquí se inyectará el HTML dinámico -->
+  </div>
+
+  <div class="containerEstrellas">
+    <h3 class="product-info-titles">Envía tu comentario</h3>
+    <form id="comment-form">
+      <div class="stars">
+        <input type="radio" name="rating" id="star1" value="5">
+        <label for="star1"> <i class="fas fa-star"></i></label>
+        <input type="radio" name="rating" id="star2" value="4">
+        <label for="star2"> <i class="fas fa-star"></i></label>
+        <input type="radio" name="rating" id="star3" value="3">
+        <label for="star3"> <i class="fas fa-star"></i></label>
+        <input type="radio" name="rating" id="star4" value="2">
+        <label for="star4"> <i class="fas fa-star"></i></label>
+        <input type="radio" name="rating" id="star5" value="1">
+        <label for="star5"> <i class="fas fa-star"></i></label>
+    </div>
+    <div>
+      <label for="mensaje"></label>
+      <textarea id="mensaje" name="mensaje" placeholder="Deja tu comentario"></textarea>
+    </div>  
+    <div>
+      <button class="enviarComment" type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/funcionesComunes.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/product-info.js"></script>
+</body>
+
+</html>

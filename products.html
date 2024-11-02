@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <!--AGREGAMOS EL BOTÓN PARA CERRAR SESIÓN-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <!--DESAFIATE 2 -->
+          <!--DESAFIATE-->
+          <div class="nav-item">
+            <a class="nav-link" id="username">Usuario</a>
+            <div class="desplegable">
+              <a id="carrito-button" class="d-flex align-items-center">
+                <i class="fas fa-shopping-cart"></i> 
+                <span>Mi carrito</span>
+                <span id="carrito-badge" class="badge bg-danger ms-2"></span>
+              </a>
+              <a id="perfil-button"><i class="fas fa-user"></i> Mi perfil</a>
+              <a id="logout-button"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!--CÓDIGO ENTREGA 3-->
+
+<main class="pb-5">
+  <div class="text-center p-4">
+    <h2>Productos</h2>
+    <p class="lead">Verás aquí todos los productos de la categoría <b id= "category-name">Cargando...</b></p>
+  </div>
+
+<!--DESAFIATE 3-->
+  <div class="searchInput">
+    <input type="text" id="searchInput" size="50" placeholder="🔎 Buscar un producto...">
+  </div>
+
+
+<!--Filtros-->
+
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+          <input type="radio" class="btn-check" name="options" id="sortAsc">
+          <label class="btn btn-light" for="sortAsc">
+            <img src="img/menor a mayor precio.png" alt="menor a mayor precio" class="icon-alfabeticamente">
+          </label>
+          <input type="radio" class="btn-check" name="options" id="sortDesc">
+          <label class="btn btn-light" for="sortDesc">
+            <img src="img/mayor a menor precio.png" alt="mayor a menor precio" class="icon-alfabeticamente">
+          </label>
+          <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+          <label class="btn btn-light" for="sortByCount"><i class="fa-solid fa-arrow-down-wide-short"></i></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+        <div class="row container p-0 m-0">
+          <div class="col">
+            <p class="font-weight-normal text-end my-2">Precio</p>
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+          </div>
+          <div class="col-3 p-0">
+            <div class="d-flex" style="gap: 10px;">
+              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!--TARJETAS PRODUCTOS - ENTREGA 2-->
+
+  <div class="pb-5 container">
+    <div class="container">
+      <div class="carsProductTitle">
+      </div>
+
+      <div class="cards-container" id="cat-list-container" > 
+      </div>
+      </div>
+
+  </main>
+
+
+<!-- FIN CÓDIGO TARJETAS PRODUCTOS - ENTREGA 2-->
+
+<!--CÓDIGO FOOTER-->
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script src="js/funcionesComunes.js"></script> <!--AGREGO EL JS DE FUNCIONES COMUNES A LOS HTML-->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/products.js"></script>
+
+</body>
+
+</html>

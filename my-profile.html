@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <!--DESAFIATE-->
+          <div class="nav-item">
+            <a class="nav-link" id="username">Usuario</a>
+            <div class="desplegable">
+              <a id="carrito-button" class="d-flex align-items-center">
+                <i class="fas fa-shopping-cart"></i> 
+                <span>Mi carrito</span>
+                <span id="carrito-badge" class="badge bg-danger ms-2"></span>
+              </a>
+              <a id="perfil-button"><i class="fas fa-user"></i> Mi perfil</a>
+              <a id="logout-button"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--Formulario-->
+  <main>
+    <div class="info-perfil">
+      <div class="perfil-container">
+        <img id="imagenPerfil" class="img-thumbnail" style="display:none;">
+        <div id="nombreCompleto" class="mt-2" style="display:none;">
+          <span id="nombreDisplay"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <form class="row g-3" id="miFormulario" novalidate>
+        <div class="col-md-6">
+          <label for="nombre" class="form-label">Nombre*</label>
+          <input type="text" class="form-control" id="nombre" required>
+          <div class="invalid-feedback">Este campo es obligatorio.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="segundoNombre" class="form-label">Segundo nombre</label>
+          <input type="text" class="form-control" id="segundoNombre">
+          <div class="invalid-feedback">Este campo es obligatorio.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="apellido" class="form-label">Apellido*</label>
+          <input type="text" class="form-control" id="apellido" required>
+          <div class="invalid-feedback">Este campo es obligatorio.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="segundoApellido" class="form-label">Segundo apellido</label>
+          <input type="text" class="form-control" id="segundoApellido">
+          <div class="invalid-feedback">Este campo es obligatorio.</div>
+        </div>
+        <div class="col-md-4">
+          <label for="email" class="form-label">Email*</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend3">@</span>
+            <input type="email" class="form-control" id="email" aria-describedby="inputGroupPrepend3" required>
+            <div class="invalid-feedback">Por favor, ingrese un correo válido.</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend3">📞</span>
+            <input type="tel" pattern="[0-9]{9}" class="form-control" id="telefono">
+            <div class="invalid-feedback">El teléfono debe contener solo números y 9 dígitos.</div>
+          </div>
+        </div>
+        <div class="col-md-4" id="foto">
+          <label for="fotoPerfil" class="form-label">Foto de perfil</label>
+          <input type="file" class="form-control" id="fotoPerfil" accept="image/*">
+        </div>
+        <div class="col-12">
+          <button class="Botongurdar" type="submit">Guardar cambios</button>
+        </div>
+      </form>
+
+      <!--MODO-->
+      <div class="col-md-12">
+        <label class="form-label"></label>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="modoSwitch">
+          <label class="form-check-label" for="modoSwitch">Día/Noche</label>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!--Fin Formulario-->
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+    </div>
+  </footer>
+  <script src="js/funcionesComunes.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/my-profile.js"></script>
+</body>
+
+</html>

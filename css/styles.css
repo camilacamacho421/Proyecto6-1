@@ -1,0 +1,1121 @@
+.jumbotron,
+.card-body,
+.container,
+.site-header {
+  font-family: 'Verdana', serif !important;
+}
+
+.jumbotron .display-4 {
+  font-weight: bold;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.jumbotron {
+  height: 50vh;
+  padding: 5em inherit;
+  margin-bottom: 0;
+  background-color: #53C0FB;
+  background: url('../img/cover_back.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black;
+  font-weight: bold;
+}
+
+/* Imagen inicio modo */
+body.modo-noche .jumbotron {
+  background: url('../img/cover_back_noche.png'); /* Nueva imagen para modo noche */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  text-shadow: 1px 1px 2px grey;
+}
+
+.jumbotron .lead {
+  font-size: 38px;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.site-header a {
+  color: white;
+  transition: ease-in-out color .15s;
+}
+
+.site-header .dropdown-menu a {
+  color: black;
+}
+
+.dropzone {
+  border: 2px dashed #0087F7;
+  border-radius: 5px;
+  background: white;
+}
+
+.img-fit {
+  max-height: 100%;
+}
+
+.alert {
+  position: fixed;
+  top: 80px;
+  width: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  top: 50%;
+  left: 50%;
+}
+
+.cursor-active {
+  cursor: pointer;
+}
+
+.left {
+  float: left;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+#spinner-wrapper {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1021;
+  display: none;
+}
+
+main {
+  min-height: calc(100vh - 210px);
+}
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.checked {
+  color: orange;
+}
+
+/*-------------------------------------LOGIN-----------------------------------------------------*/
+
+.login img {
+  width: 65%;
+  margin-bottom: 20px;
+
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  /* Centra horizontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  height: 37.5em;
+  /* Asegura que el body ocupe toda la altura de la ventana */
+  margin: 0;
+  /* Elimina el margen por defecto del body */
+  background-color: #ffffff;
+  /* Color de fondo opcional para ver mejor el contenedor */
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.titulo {
+  border-radius: 3.125em;
+  background-color: #F09100;
+  padding: 0.625em;
+  margin-bottom: 2.5em;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+  color: white;
+}
+
+.usuario,
+.contraseña {
+  padding: 0.625em;
+  border-radius: 1.563em;
+  border: #fff;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+}
+
+.boton {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  background-color: #F09100;
+  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.boton:hover {
+  background-color: #f08000;
+}
+
+.container-login {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 25em;
+  /* Ajusta el ancho según tu diseño */
+  margin: 6.5em auto;
+  /* Centra el formulario horizontalmente y verticalemente*/
+  padding: 0;
+  /* Espacio interno */
+  border: 1px solid #cccccc;
+  /* Color y grosor del borde */
+  border-radius: 0.5em;
+  /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Sombra ligera para darle profundidad */
+}
+
+/*-------------------------------------FIN LOGIN-----------------------------------------------------*/
+
+/*-------------------------------------AUTOS-----------------------------------------------------*/
+.carsProductTitle {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 30px;
+}
+
+/* Estilo para el contenedor de las tarjetas */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* Espacio entre tarjetas */
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Estilo para cada tarjeta */
+.cardAuto {
+  background-color: #fff;
+  /* Fondo blanco para la tarjeta */
+  border: 1px solid #ddd;
+  /* Borde gris claro */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  /* Sombra media */
+  overflow: hidden;
+  /* Para que el borde redondeado se aplique también a las imágenes */
+  max-width: 300px;
+  /* Ancho máximo de la tarjeta */
+  text-align: center;
+  /* Centrar texto y elementos */
+  position: relative;
+  /* Necesario para el posicionamiento absoluto del texto */
+  padding-bottom: 90px;
+  /* Espacio adicional en la parte inferior para el texto de vendidosCar  y precio*/
+  justify-content: space-between;
+  /* Espacio entre los elementos */
+  transition: box-shadow 0.3s;
+  /* Transición suave para la sombra al hacer hover */
+}
+
+/* Estilo para la imagen dentro de la tarjeta */
+.cardAuto img {
+  width: 100%;
+  /* Imagen ocupa todo el ancho de la tarjeta */
+  height: auto;
+  /* Mantener proporciones */
+  display: block;
+}
+
+/* Estilo para el nombre del modelo */
+.modelo {
+  font-size: 1.2em;
+  /* Tamaño del texto */
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Estilo para la descripción */
+.description {
+  font-size: 0.9em;
+  color: #555;
+  /* Color gris oscuro */
+  margin: 10px 10px;
+  text-align: center;
+}
+
+
+/* Estilo para el precio */
+.precio {
+  font-size: 1.1em;
+  color: #e74c3c;
+  /* Color rojo para destacar el precio */
+  position: absolute;
+  /* Posicionar de manera absoluta */
+  bottom: 30px;
+  /* Espacio desde el borde inferior de la tarjeta para hacer lugar para vendidosCar */
+  left: 0;
+  /* Alineado a la izquierda */
+  right: 0;
+  /* Alineado a la derecha */
+  background-color: #fff;
+  /* Fondo blanco para evitar que el texto se mezcle con el fondo */
+  padding: 10px;
+  /* Espacio alrededor del texto */
+  border-top: 1px solid #ddd;
+  /* Borde superior para separar del contenido superior */
+}
+
+/* Estilo para la cantidad de vendidos */
+.vendidos {
+  font-size: 0.9em;
+  color: #777;
+  /* Color gris claro */
+  margin: 0;
+  position: absolute;
+  /* Posicionar de manera absoluta en la parte inferior de la tarjeta */
+  bottom: 0;
+  /* Ubicar en el borde inferior de la tarjeta */
+  left: 0;
+  /* Alineado a la izquierda */
+  right: 0;
+  /* Alineado a la derecha */
+  background-color: #f9f9f9;
+  /* Fondo ligeramente diferente para el texto */
+  padding: 10px;
+  /* Espacio alrededor del texto */
+  border-top: 1px solid #ddd;
+  /* Borde superior para separar el texto del resto del contenido */
+}
+
+/* FILTROS PRODUCTOS */
+
+/* Tamaño de imagen para filtro alfabeticamente */
+.icon-alfabeticamente {
+  width: 20px; /* Cambia el tamaño según tus necesidades */
+  vertical-align: middle;
+}
+
+/*-------------------------------------FIN AUTOS-----------------------------------------------------*/
+
+/*-------------------------------------RESPONSIVE-----------------------------------------------------*/
+
+/* Resolución smartphone pequeño */
+@media screen and (width:320px) and (height:568px) {
+  .container-login {
+    margin: auto;
+  }
+}
+
+/*-------------------------------------FIN RESPONSIVE-----------------------------------------------------*/
+
+
+/*-------------------------------------DESAFIATE 2-----------------------------------------------------*/
+
+.navbar {
+  background-color: #343a40;
+  padding: 10px;
+  color: white;
+}
+
+.nav-item {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.desplegable {
+  display: none;
+  position: absolute;
+  background-color: #343a40;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.desplegable a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.desplegable a:hover {
+  background-color: #575d63;
+}
+
+.nav-item:hover .desplegable {
+  display: block;
+}
+
+/*-------------------------------------FIN DESAFIATE 2-----------------------------------------------------*/
+
+/* ESTILOS DE PRODUCT-INFO */
+
+#containerComprar {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#product-info-container {
+  max-width: 1200px;
+  /* Ancho máximo del contenedor */
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+}
+
+.carousel-item {
+  height: 400px;
+  /* Altura del carrusel */
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.carousel-control-prev-icon {
+  background-image: url(/img/boton\ izquierda.png);
+  /* Ruta relativa desde /css/ a /images/ */
+  background-size: 100% 100%;
+  /* Ajusta el tamaño de la imagen */
+}
+
+.carousel-control-next-icon {
+  background-image: url(/img/boton\ derecha.png);
+  /* Ruta relativa desde /css/ a /images/ */
+  background-size: 100% 100%;
+  /* Ajusta el tamaño de la imagen */
+}
+
+.product-info .product-category,
+.product-info .product-cost,
+.product-info .product-description,
+.product-info .product-sold-count {
+  font-size: 18px;
+}
+
+.product-info .product-name {
+  font-size: 25px;
+}
+
+#botonCompra {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#botonCompra:hover {
+  background-color: #8d281d;
+}
+
+/* Texto */
+
+.product-category {
+  font-size: 2em;
+}
+
+.product-cost {
+  font-size: 2em;
+  color: #e74c3c
+}
+
+.product-name {
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.product-sold-count {
+  color: #949090;
+}
+
+/* FIN ESTILOS DE PRODUCT-INFO */
+
+/* DESAFIATE 3 */
+
+.searchInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+
+.searchInput input[type="text"] {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  /* Espacio interno */
+  font-size: 16px;
+}
+
+/* FIN DESAFIATE 3 */
+
+/* ENTREGA 4 - ESTRELLAS */
+.checked {
+  color: #f7c522;
+}
+
+.nochecked {
+  color: #d8d8d8
+}
+
+/* FIN ENTREGA 4 - ESTRELLAS */
+
+/*ESTETICA PRODUCTOS RELACIONADOS*/
+
+#product-info-related {
+  display: flex;
+  /* Usar flexbox para el contenedor */
+  flex-wrap: wrap;
+  /* Permitir que las tarjetas se envuelvan si no caben en una fila */
+  justify-content: center;
+  /* Centrar las tarjetas en el contenedor */
+}
+
+.cardRelated {
+  display: flex;
+  /* Usar flexbox para alinear elementos */
+  flex-direction: column;
+  /* Colocar elementos en una columna */
+  align-items: center;
+  /* Centrar horizontalmente */
+  text-align: center;
+  /* Centrar texto */
+  margin: 10px;
+  /* Espacio alrededor de la tarjeta */
+  padding: 20px;
+  /* Espacio interno */
+  border: 1px solid #ccc;
+  /* Borde de la tarjeta */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  width: 300px;
+  /* Ancho fijo para las tarjetas */
+  height: 250px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.cardRelated img {
+  max-width: 100%;
+  /* Asegura que la imagen no se desborde */
+  height: auto;
+  /* Mantener la proporción de la imagen */
+  margin-bottom: 10px;
+  /* Espacio entre la imagen y el texto */
+}
+
+/*FIN ESTETICA PRODUCTOS RELACIONADOS*/
+
+/*ESTRELLAS ANIMADAS PARA COMENTARIO*/
+.stars {
+  direction: rtl;
+  display: inline-flex;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  font-size: 2em;
+  color: #d8d8d8;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+  /* Añadir transición para el color y la transformación */
+}
+
+.stars input:checked~label,
+.stars label:hover,
+.stars label:hover~label {
+  color: #f7c522;
+  transform: rotate(144deg) scale(1.1);
+  /* Rotar y agrandar al pasar el mouse */
+}
+
+/*FIN ESTRELLAS ANIMADAS PARA COMENTARIO*/
+
+
+/* ESTILO DE COMENTARIOS */
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.date {
+  color: #949090;
+  margin-left: 5px;
+}
+
+
+.comment {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+h3.product-info-reseña {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 20px;
+  color: #333;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+h3.product-info-titles {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 20px;
+  color: #333;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Termina estilo de comentarios*/
+
+/* FORMULARIO CALIFICACIÓN / COMENTARIO */
+
+/* Contenedor de las estrellas */
+.containerEstrellas {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Título del formulario */
+.containerEstrellas h3 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Área de texto */
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  resize: none;
+}
+
+/* Botón de enviar */
+.enviarComment {
+  width: 100%;
+  padding: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.enviarComment:hover {
+  background-color: #c0392b;
+}
+
+/* FIN FORMULARIO CALIFICACIÓN / COMENTARIO */
+
+/* ENTREGA 5 */
+
+/* BOTÓN MODO DIA Y NOCHE */
+
+body.modo-dia {
+  background-color: white;
+  color: black;
+}
+
+body.modo-noche {
+  background-color: rgb(13, 13, 13);
+  color: rgb(169, 169, 169);
+}
+
+/* FIN BOTÓN MODO DIA Y NOCHE */
+
+/*ESTILO IMAGEN Y NOMBRE DEL PERFIL*/
+
+.perfil-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente, si es necesario */
+  margin: 20px 0; /* Opcional: espacio alrededor del contenedor */
+}
+
+
+#imagenPerfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+}
+
+#nombreDisplay {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+/* FIN ESTILO IMAGEN Y NOMBRE DEL PERFIL*/
+
+/* Botón guardar */
+
+.Botongurdar {
+  width: 200px;
+  padding: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 auto;
+  display: block;
+}
+
+.Botongurdar:hover {
+  background-color: #c0392b;
+}
+
+/* Fin botón guardar */
+
+/* FIN ENTREGA 5 */
+
+/* ENTREGA 6 */
+
+.titulo_carrito{
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+.card_carrito{
+  margin: 5em auto auto auto;
+  max-width: 950px;
+  width: 90%;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1rem;
+  border: transparent;
+}
+
+.summary{
+  background-color: #ddd;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 4vh;
+  color: rgb(65, 65, 65);
+}
+
+.summary .col-2{
+  padding: 0;
+}
+.summary .col-10
+{
+  padding: 0;
+
+}.row{
+  margin: 0;
+  position: relative;
+}
+
+.border-bottom {
+  border-bottom: none !important; /* Elimina la línea inferior */
+}
+
+.linea-separadora{
+   border-top: 1px solid #414141 !important;
+
+}
+
+.titulo_carrito b{
+  font-size: 1.5rem;
+}
+.main{
+  margin: 0;
+  padding: 2vh 0;
+  width: 100%;
+}
+
+.col-2 {
+  flex: 0 0 25%; 
+  max-width: 30%; 
+  display: flex; 
+  justify-content: center; 
+}
+
+.col-2, .col{
+  padding: 0 1vh;
+}
+
+.col-eliminar {
+  flex: 0 0 40px; 
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+a{
+  padding: 0 1vh;
+}
+.close{
+  margin-left: auto;
+  font-size: 0.7rem;
+}
+
+.img-fluid {
+  height: auto; 
+  width: 100%; 
+  max-height: 8rem; 
+  object-fit: contain; 
+  padding-bottom: 0.5rem; 
+}
+
+.h5 carrito{
+  margin-top: 4vh;
+}
+
+.form_carrito{
+  padding: 2vh 0;
+}
+
+.select_carrito{
+  border: 1px solid rgba(0, 0, 0, 0.137);
+  padding: 1.5vh 1vh;
+  margin-bottom: 4vh;
+  outline: none;
+  width: 100%;
+  background-color: rgb(247, 247, 247);
+}
+
+.input_carrito{
+  border: 1px solid rgba(0, 0, 0, 0.137);
+  padding: 1vh;
+  margin-bottom: 4vh;
+  outline: none;
+  width: 100%;
+  background-color: rgb(247, 247, 247);
+}
+
+.input_carrito:focus::-webkit-input-placeholder
+{
+    color:transparent;
+}
+
+.boton_carrito{
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  width: 100%;
+  font-size: 0.9rem;
+  margin-top: 4vh;
+  padding: 1vh;
+  border-radius: 5px;
+}
+
+.boton_carrito:focus{
+  box-shadow: none;
+  outline: none;
+  box-shadow: none;
+  color: white;
+  -webkit-box-shadow: none;
+  -webkit-user-select: none;
+  transition: none; 
+}
+
+.boton_carrito:hover{
+  background-color: #c0392b;
+}
+
+.border{
+  color: black;
+  text-decoration: none;
+  padding: 0.2rem;
+}
+
+
+.border:hover{
+  color: black;
+  text-decoration: none;
+}
+
+.boton-circular {
+  background-color: #e74c3c; 
+  color: white; 
+  border: none; 
+  border-radius: 50%; 
+  width: 25px; 
+  height: 25px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;  
+  font-size: 1.2rem; 
+}
+
+.boton-circular:hover {
+  background-color: #c0392b; 
+}
+
+.boton-circular:focus {
+  outline: none; /* Sin borde de enfoque */
+}
+
+.col {
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+}
+
+.btn-eliminar {
+  background: transparent; 
+  border: none; 
+  cursor: pointer;
+  margin: 0; 
+  padding: 0; 
+  position: absolute; 
+  top: 5px; 
+}
+
+.btn-eliminar:hover {
+  color: #e74c3c; 
+}
+
+span {
+  margin: 0 10px; /* Espaciado horizontal entre botones y cantidad */
+}
+
+.icono-container {
+  display: flex;
+  flex-direction: column; /* Organiza los elementos en columna */
+  align-items: center; 
+}
+
+.material-icons {
+  font-size: 24px; 
+  color: #6c757d;
+  vertical-align: middle; 
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.material-icons:hover{
+  color: #e74c3c; 
+}
+
+.back-to-shop {
+  display: flex;
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center; /* Centra verticalmente */
+}
+
+
+.subtotal-container {
+  display: flex;
+  flex-direction: column; /* Cambia a columna para que subtotal esté encima */
+  align-items: center;
+}
+
+.subtotal-container div {
+  display: flex; /* Mantiene el monto y la moneda en la misma línea */
+  align-items: center; /* Alinea verticalmente en el centro */
+}
+
+.subtotal-container span {
+  font-size: 0.9rem; 
+  color: #333; 
+  margin-left: 5px; /* Espaciado entre el monto y la moneda */
+}
+
+#precio_total{
+ color: #e74c3c;
+ font-size: 0.9rem;
+}
+
+#subtotal{
+  font-size: 0.9rem;
+ }
+
+#code{
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253) , rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+}
+
+#carrito-button {
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Evita que el texto y el badge se dividan en líneas diferentes */
+}
+
+#carrito-badge {
+  display: inline-flex;        
+  align-items: center;          
+  justify-content: center;      
+  min-width: 20px;               
+  height: 22px;                  
+  font-size: 12px;                       
+  border-radius: 50%;           
+  color: white;                  
+  background-color: rgb(246, 76, 24);
+}
+
+
+@media(max-width:767px){
+  .card_carrito{
+      margin: 3vh auto;
+  }
+
+.cart{
+  background-color: #fff;
+  padding: 4vh 5vh;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+
+.summary{
+  border-top-right-radius: unset;
+  border-bottom-left-radius: 1rem; 
+  }
+}
+
+/* FIN ENTREGA 6 */
+
+.icon-alfabeticamente {
+  width: 20px; /* Cambia el tamaño según tus necesidades */
+  vertical-align: middle;
+}
+
+

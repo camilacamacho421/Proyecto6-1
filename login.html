@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Iniciar sesión - eCommerce</title>
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgb(248, 249, 250);
+    }
+  </style>
+</head>
+
+<body>
+  <!--FORMULARIO DE INICIO DE SESIÓN-->
+  <form id="container-login" class="container-login">
+    <div class="login">
+      <div class="titulo"><h2>INICIAR SESIÓN</h2></div>
+      <img src="img/login.png">
+      <div>
+        <label for="Usuario"></label>
+        <span><input class="usuario" type="email" id="Usuario" name="Usuario" placeholder="👤 Email" required></span>
+      </div>  
+      <div>
+        <label for="Contraseña"></label>
+        <p><input class="contraseña" type="password" id="Contraseña" name="Contraseña" placeholder="🔒 Contraseña" required></p>
+      </div>
+      <div>
+        <label for="Recordar"></label>
+        <span><input type="checkbox" id="Recordar" value="Recordar usuario"> Recordar usuario</span>
+      </div>
+      <div>
+        <button class="boton" type="submit">Ingresar</button>
+      </div>
+      <div class="registro">
+        <p>¿No tienes usuario? <a href="url">Regístrate</a></p>
+      </div>
+    </div>
+  </form>
+   
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+
+  <script src="js/login.js"></script>
+</body>
+
+</html>
