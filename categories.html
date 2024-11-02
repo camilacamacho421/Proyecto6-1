@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -36,7 +37,13 @@
           <div class="nav-item">
             <a class="nav-link" id="username">Usuario</a>
             <div class="desplegable">
-                <a id="logout-button">Cerrar sesión</a>
+              <a id="carrito-button" class="d-flex align-items-center">
+                <i class="fas fa-shopping-cart"></i> 
+                <span>Mi carrito</span>
+                <span id="carrito-badge" class="badge bg-danger ms-2"></span>
+              </a>
+              <a id="perfil-button"><i class="fas fa-user"></i> Mi perfil</a>
+              <a id="logout-button"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
             </div>
           </div>
         </ul>
@@ -57,11 +64,14 @@
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortAsc">
-            <label class="btn btn-light" for="sortAsc">A-Z</label>
+            <label class="btn btn-light" for="sortAsc">
+              <img src="img/alfabeticamente.png" alt="A-Z" class="icon-alfabeticamente">
+            </label>
+
             <input type="radio" class="btn-check" name="options" id="sortDesc">
-            <label class="btn btn-light" for="sortDesc">Z-A</label>
-            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+            <label class="btn btn-light" for="sortDesc">
+              <img src="img/no alfabeticamente.png" alt="Z-A" class="icon-alfabeticamente">
+            </label>
           </div>
         </div>
       </div>
@@ -73,15 +83,15 @@
               <p class="font-weight-normal text-end my-2">Cant.</p>
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" min="0">
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" min="0">
             </div>
             <div class="col-3 p-0">
-              <div class="btn-group" role="group">
+              <div class="d-flex" style="gap: 10px;">
                 <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
               </div>
             </div>
           </div>

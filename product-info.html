@@ -32,11 +32,17 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-             <!--DESAFIATE 2 -->
+          <!--DESAFIATE-->
           <div class="nav-item">
             <a class="nav-link" id="username">Usuario</a>
             <div class="desplegable">
-                <a id="logout-button">Cerrar sesión</a>
+              <a id="carrito-button" class="d-flex align-items-center">
+                <i class="fas fa-shopping-cart"></i> 
+                <span>Mi carrito</span>
+                <span id="carrito-badge" class="badge bg-danger ms-2"></span>
+              </a>
+              <a id="perfil-button"><i class="fas fa-user"></i> Mi perfil</a>
+              <a id="logout-button"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
             </div>
           </div>
         </ul>
@@ -46,7 +52,7 @@
   <main id="containerComprar">
     <div class="container">
       <div id="product-info-container"></div> <!-- Aquí se inyectará el HTML dinámico -->
-      <h3 class="product-info-titles"> Reseñas</h3>
+      <h3 class="product-info-reseña"> Reseñas</h3>
       <div id="comments-container"></div>
     </div>
   </main>
@@ -57,7 +63,7 @@
     <div id="product-info-related" class="card-container"></div> <!-- Aquí se inyectará el HTML dinámico -->
   </div>
 
-  <div class="container">
+  <div class="containerEstrellas">
     <h3 class="product-info-titles">Envía tu comentario</h3>
     <form id="comment-form">
       <div class="stars">

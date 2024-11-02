@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (productID) {
         // Construir la URL para obtener los datos del producto
         const productRelacionado = PRODUCT_INFO_URL + productID + EXT_TYPE;
-        
+
         // Hacer la solicitud para obtener la información del producto
         getJSONData(productRelacionado).then(function (resultObj) {
             if (resultObj.status === "ok") {
@@ -95,8 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 let htmlContentToAppend = '';
 
                 product.relatedProducts.forEach(item => {
-                    const description= `<p class="product-description">${item.name}</p>`;
-                    const img= `<img src="${item.image}" alt="${item.name}">`;
+                    const description = `<p class="product-description">${item.name}</p>`;
+                    const img = `<img src="${item.image}" alt="${item.name}">`;
                     htmlContentToAppend += `
                     <div class="cardRelated" onclick="setProductRelacionadoID(${item.id})">
                     ${description}
@@ -105,8 +105,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 document.getElementById('product-info-related').innerHTML = htmlContentToAppend;
+
+                //ENTREGA 6 - Parte 2
+                // Guardar los datos en localStorage y redirigir al carrito
+                document.getElementById('botonCompra').addEventListener('click', function () {
+                    // Información del producto a guardar
+                    const cantidadAlmacenada = localStorage.getItem('quantity') || 1; // Si no hay cantidad en el localStorage, se usa 1 por defecto
+                    const quantity = parseInt(cantidadAlmacenada, 10); 
+                
+                    // Obtén la lista actual de productos comprados del localStorage
+                    let ListaProductoComprado = JSON.parse(localStorage.getItem('productosComprados')) || [];
+                
+                    const productComprado = {
+                        id: product.id,
+                        name: product.name,
+                        cost: product.cost,
+                        currency: product.currency,
+                        image: product.images[0],
+                        quantity: quantity,
+                        subtotal: product.cost * quantity
+                    };
+                
+                    // Agrega el nuevo producto a la lista
+                    ListaProductoComprado.push(productComprado);
+                
+                    // Guarda la lista actualizada en el localStorage
+                    localStorage.setItem('productosComprados', JSON.stringify(ListaProductoComprado));
+                
+                    // Redirige a la página del carrito
+                    window.location.href = 'cart.html';
+                });
+                
             }
         });
+
     } else {
         console.error('No se encontró ningún ID de producto en el almacenamiento local');
     }
@@ -137,12 +169,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 document.getElementById('comment-form').addEventListener('submit', function (e) {
                     e.preventDefault();
-                    const nuevoComentario = capturarComentario(); 
+                    const nuevoComentario = capturarComentario();
 
                     if (nuevoComentario) {
                         comments.push(nuevoComentario);
                         mostrarComentarios(comments);
-                        
+
                         // Recalcular y mostrar el nuevo promedio
                         const nuevoPromedio = calcularPromedio(comments);
                         const nuevasEstrellas = generarEstrellas(Math.round(nuevoPromedio));
@@ -165,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function capturarComentario() {
         // Obtener la calificación seleccionada
         const calificacion = document.querySelector('input[name="rating"]:checked');
-        
+
         if (!calificacion) {
             return null; // Si no se seleccionó ninguna estrella, retornar null
         }
@@ -183,12 +215,12 @@ document.addEventListener('DOMContentLoaded', () => {
     //Formato de fecha y hora para que quede así -> dd/mm/yyyy, hh:mm y luego se llama esta función en MostrarComentarios()
     function formatoFecha(fechaString) {
         const fecha = new Date(fechaString);
-        const dia = String(fecha.getDate()).padStart(2, '0'); 
-        const mes = String(fecha.getMonth() + 1).padStart(2, '0'); 
+        const dia = String(fecha.getDate()).padStart(2, '0');
+        const mes = String(fecha.getMonth() + 1).padStart(2, '0');
         const año = fecha.getFullYear();
         const horas = String(fecha.getHours()).padStart(2, '0');
         const minutos = String(fecha.getMinutes()).padStart(2, '0');
-        
+
         return `${dia}/${mes}/${año}, ${horas}:${minutos}`;
     }
 
@@ -210,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.getElementById('comments-container').innerHTML = htmlContentToAppend;
     }
-    
+
     // Función para generar estrellas
     function generarEstrellas(score) {
         let estrellasHTML = '';
@@ -229,3 +261,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return (total / comentarios.length) || 0; // Evitar dividir por 0
     }
 });
+
+//Funcion para ver el badget ENTREGA 6
+document.addEventListener('DOMContentLoaded', () => {
+    manejarBadgeCarrito();
+});
+

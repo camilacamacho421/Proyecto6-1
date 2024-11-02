@@ -206,3 +206,8 @@ function fetchCategoryName() {
 
 // Llama a la función cuando la página se haya cargado
 window.onload = fetchCategoryName;
+
+//Funcion para ver el badget ENTREGA 6
+document.addEventListener('DOMContentLoaded', () => {
+    manejarBadgeCarrito();
+});

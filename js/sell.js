@@ -147,3 +147,13 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+//FUNCIÓN EN COMÚN PARA EL DESAFIANTE 2 - mostrar usuario
+document.addEventListener('DOMContentLoaded', () => {
+    Desafiante();
+});
+
+//Funcion para ver el badget ENTREGA 6
+document.addEventListener('DOMContentLoaded', () => {
+    manejarBadgeCarrito();
+});
