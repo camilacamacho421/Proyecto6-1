@@ -1113,8 +1113,11 @@ span {
 
 /* FIN ENTREGA 6 */
 
+/* ENTREGA 7 */
+/*Sección dirección de envío*/
+
 .icon-alfabeticamente {
-  width: 20px; /* Cambia el tamaño según tus necesidades */
+  width: 20px;
   vertical-align: middle;
 }
 
@@ -1138,3 +1141,18 @@ span {
   border-radius: 5px;
 }
 
+.btn_actualizardatos:focus{
+  box-shadow: none;
+  outline: none;
+  box-shadow: none;
+  color: white;
+  -webkit-box-shadow: none;
+  -webkit-user-select: none;
+  transition: none; 
+}
+
+.btn_actualizardatos:hover{
+  background-color: #e74c3c;
+}
+
+/* FIN ENTREGA 7 */
