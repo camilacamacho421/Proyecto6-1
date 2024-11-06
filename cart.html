@@ -36,7 +36,7 @@
             <a class="nav-link" id="username">Usuario</a>
             <div class="desplegable">
               <a id="carrito-button" class="d-flex align-items-center">
-                <i class="fas fa-shopping-cart"></i> 
+                <i class="fas fa-shopping-cart"></i>
                 <span>Mi carrito</span>
                 <span id="carrito-badge" class="badge bg-danger ms-2"></span>
               </a>
@@ -52,49 +52,150 @@
     <div class="container">
       <div class="card_carrito">
         <div class="row">
-            <div class="col-md-8 cart">
-                <div class="titulo_carrito">
-                    <div class="row">
-                        <div class="col"><h4><b>Carrito de compras</b></h4></div>
-                    </div>
-                </div>    
-                <div class="row border-top border-bottom">
-                    <div class="row main align-items-center">   
-                      <div class="texto_producto"></div>
-                    </div>
+          <div class="col-md-8 cart">
+            <div class="titulo_carrito">
+              <div class="row">
+                <div class="col">
+                  <h4><b>Carrito de compras</b></h4>
                 </div>
-
-                <div class="back-to-shop"><a class="border" href="javascript:history.back()">&leftarrow;</a><span class="text-muted">Seguir comprando</span>
-                        <i class="material-icons">delete</i>                   
-                </div>
-                <!--Esto hace que vuelva a la pagina anterior: javascript:history.back()-->
-          
+              </div>
             </div>
-            <div class="col-md-4 summary">
-                <div><h5 class="h5 carrito"><b>Resumen</b></h5></div>
+            <div class="row border-top border-bottom">
+              <div class="row main align-items-center">
+                <div class="texto_producto"></div>
+              </div>
+            </div>
+
+            <div class="back-to-shop"><a class="border" href="javascript:history.back()">&leftarrow;</a><span
+                class="text-muted">Seguir comprando</span>
+              <i class="material-icons">delete</i>
+            </div>
+            <!--Esto hace que vuelva a la pagina anterior: javascript:history.back()-->
+
+          </div>
+
+          <!-- Resumen, dirección y forma de pago -->
+          <div class="col-md-4 summary">
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                  type="button" role="tab" aria-controls="nav-home" aria-selected="true">Resumen</button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                  type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Dirección</button>
+              </div>
+            </nav>
+
+            <!-- Pestaña de resumen -->
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                tabindex="0">
                 <hr>
                 <div class="row">
-                    <div class="col" style="padding-left:0;" id="subtotal"><strong>Total productos</strong></div>
-                    <div class="col text-right" id="subtotal_carrito"></div>
+                  <div class="col" style="padding-left:0;" id="subtotal"><strong>Total productos</strong></div>
+                  <div class="col text-right" id="subtotal_carrito"></div>
                 </div>
-                <!--ENVÍO - CARRITO - ENTREGA 7-->
+                <!--ENVÍO-->
                 <form class="form_carrito">
-                    <p>ENVÍO</p>
-                    <select class="select_carrito" disabled> <!-- SACAR ESTO CUANDO HAGAMOS LA FUNCIONALIDAD (ENTREGA 7) -->
-                      <option class="text-muted">Envío estándar &dollar;220</option>
-                    </select>
-                  
+                  <p>ENVÍO</p>
+                  <select class="select_carrito">
+                    <option class="text-muted">Seleccione una opción</option>
+                    <option class="text-muted">Premium 2 a 5 días (15%)</option>
+                    <option class="text-muted">Express 5 a 8 días (7%)</option>
+                    <option class="text-muted">Standard 12 a 15 días (5%)</option>
+                  </select>
+
                 </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                 <div class="col" id="precio_total"><strong>PRECIO TOTAL</strong></div>
-                    <hr>
-                    <div class="col text-right" id="total_carrito"></div>
-                </div > 
+                  <div class="col" id="precio_total"><strong>PRECIO TOTAL</strong></div>
+                  <hr>
+                  <div class="col text-right" id="total_carrito"></div>
+                </div>
                 <button class="boton_carrito">COMPRAR</button>
+              </div>
+
+              <!-- Pestaña de dirección -->
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
+                tabindex="0">
+                <h6>Dirección de envío: (colocar)</h6>
+
+                <!-- Botón que redirige al modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  Actualizar datos
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Dirección de envío</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="state_id" class="control-label">Departamento</label>
+                            <select class="form-control" id="state_id">
+                              <option value="AL">Elija una opción</option>
+                              <option value=“MVD”>Montevideo</option>
+                              <option value=“ART”>Artigas</option>
+                              <option value=“CAN”>Canelones</option>
+                              <option value=“CER”>Cerro Largo</option>
+                              <option value=“COL”>Colonia</option>
+                              <option value=“DUR”>Durazno</option>
+                              <option value=“FLR”>Flores</option>
+                              <option value=“FLO”>Florida</option>
+                              <option value=“LAV”>Lavalleja</option>
+                              <option value=“MAL”>Maldonado</option>
+                              <option value=“PAY”>Paysandú</option>
+                              <option value=“RIO”>Río Negro </option>
+                              <option value=“RIV”>Rivera</option>
+                              <option value=“ROC”>Rocha</option>
+                              <option value=“SAL”>Salto</option>
+                              <option value=“SAN”>San José</option>
+                              <option value=“SOR”>Soriano</option>
+                              <option value=“TAC”>Tacuarembó</option>
+                              <option value=“TRE”>Treinta y Tres</option>
+                            </select>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="city_id" class="control-label">Ciudad</label>
+                            <input type="text" class="form-control" id="city_id" name="city" placeholder="Smallville">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="street1_id" class="control-label">Calle</label>
+                            <input type="text" class="form-control" id="street1_id" name="street1"
+                              placeholder="Street address, P.O. box, company name, c/o">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="zip_id" class="control-label">Número</label>
+                            <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="zip_id" class="control-label">Esquina</label>
+                            <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####">
+                          </div>
+
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+          </div>
         </div>
-        
-    </div>
+
+      </div>
     </div>
   </main>
   <footer class="text-muted">
@@ -102,7 +203,8 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <div id="spinner-wrapper">
