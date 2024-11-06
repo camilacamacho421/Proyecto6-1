@@ -197,3 +197,9 @@ function cargarCiudades(departamentoId, data) {
 
 // Llamar a la función para cargar los departamentos y ciudades
 window.onload = cargarDepartamentosYLocalidades;
+
+//Alert - Redes de cobranza
+function showMessage(message) {
+    alert(message);
+  }
+  

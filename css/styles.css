@@ -1161,5 +1161,25 @@ span {
   background-color: #e74c3c;
 }
 
-/* FIN ENTREGA 7 */
+/* Botones redes de cobranza */
+.image-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
+.image-button img {
+  width: 100px; /* Ajusta el tamaño según prefieras */
+  height: auto;
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.image-button:hover {
+  transform: scale(1.05); /* Efecto de aumento al pasar el cursor */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* FIN ENTREGA 7 */
