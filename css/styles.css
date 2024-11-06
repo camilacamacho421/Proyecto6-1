@@ -50,6 +50,12 @@ body.modo-noche .jumbotron {
   color: white;
 }
 
+/*Modificación para que se vea todo el inicio en Modo noche*/
+body.modo-noche .album.py-5.bg-light {
+  background-color: rgb(13, 13, 13) !important;
+}
+
+
 @media (min-width: 768px) {
   .jumbotron {
     padding-top: 6rem;
@@ -1156,3 +1162,4 @@ span {
 }
 
 /* FIN ENTREGA 7 */
+

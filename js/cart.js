@@ -195,7 +195,5 @@ function cargarCiudades(departamentoId, data) {
     }
 }
 
-
-
 // Llamar a la función para cargar los departamentos y ciudades
 window.onload = cargarDepartamentosYLocalidades;
