@@ -128,3 +128,74 @@ function updateBadge() {
 document.addEventListener('DOMContentLoaded', () => {
     Desafiante();
 });
+
+// ENTREGA 7
+// Mostrar datos de deptos y ciudades (JSON)
+
+// Función para cargar departamentos y ciudades
+async function cargarDepartamentosYLocalidades() {
+    try {
+        // Obtener el JSON desde la URL
+        const response = await fetch('https://gist.githubusercontent.com/fedebabrauskas/b708c2a1b7a29af94927ad0e8d6d6a27/raw/b0c544d53c82de298ccedb824f8dd5e5ef5477e7/localidades.json');
+        const data = await response.json();
+
+        // Obtener el elemento del select de departamentos
+        const selectDepartamento = document.getElementById('state_id');
+        selectDepartamento.innerHTML = ''; // Limpiar opciones anteriores
+
+        // Agregar el primer valor "Elija una opción"
+        const optionDefault = document.createElement('option');
+        optionDefault.value = '';
+        optionDefault.textContent = 'Seleccione un departamento';
+        optionDefault.disabled = true;  // Deshabilita esta opción para que no se pueda seleccionar
+        optionDefault.selected = true; // La opción será la seleccionada por defecto
+        selectDepartamento.appendChild(optionDefault);
+
+        // Agregar las opciones de departamentos
+        Object.keys(data).forEach(departamentoId => {
+            const departamentoName = data[departamentoId].name; // Accede al nombre
+            const option = document.createElement('option');
+            option.value = departamentoId; // Mantenemos el id como valor
+            option.textContent = departamentoName; // Mostramos el nombre
+            selectDepartamento.appendChild(option);
+        });
+
+
+        // Agregar evento de cambio para cargar las ciudades
+        selectDepartamento.addEventListener('change', (e) => {
+            cargarCiudades(e.target.value, data);
+        });
+
+    } catch (error) {
+        console.error('Error al cargar los datos:', error);
+    }
+}
+
+// Función para cargar las ciudades basadas en el departamento seleccionado
+function cargarCiudades(departamentoId, data) {
+    const selectCiudad = document.getElementById('city_id');
+    selectCiudad.innerHTML = ''; // Limpiar opciones anteriores
+
+    // Agregar la opción de "Elija una ciudad" como un pseudo-placeholder
+    const optionDefault = document.createElement('option');
+    optionDefault.value = '';
+    optionDefault.textContent = 'Seleccione una ciudad';
+    optionDefault.disabled = true;  // Deshabilita esta opción para que no se pueda seleccionar
+    optionDefault.selected = true; // La opción será la seleccionada por defecto
+    selectCiudad.appendChild(optionDefault);
+
+    if (departamentoId && data[departamentoId]) {
+        // Obtener las ciudades del departamento
+        data[departamentoId].towns.forEach(ciudad => {
+            const option = document.createElement('option');
+            option.value = ciudad.id; // Usamos el id de la ciudad como valor
+            option.textContent = ciudad.name; // Mostramos el nombre de la ciudad
+            selectCiudad.appendChild(option);
+        });
+    }
+}
+
+
+
+// Llamar a la función para cargar los departamentos y ciudades
+window.onload = cargarDepartamentosYLocalidades;
