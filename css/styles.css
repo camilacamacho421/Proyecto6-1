@@ -1181,5 +1181,44 @@ span {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+/*Formularios de modales*/
 
+.modal .modal-body form .form-group,
+.modal .modal-body form .row {
+  margin-bottom: 1rem;
+}
+
+.modal .modal-body form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Alinear el radio button junto a su etiqueta */
+.modal .modal-body form .panel-heading input[type="radio"],
+.modal .modal-body form .panel-heading label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.modal .modal-body form .row .col-md-3 {
+  padding-right: 0.5rem;
+}
+
+.modal .modal-body form .image-button {
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.help-block {
+  margin-bottom: 0.5rem;
+}
+
+/* Estilo para el ícono de tarjeta */
+.modal .modal-body form .fa-credit-card {
+  font-size: 2.5rem; /* Aumenta el tamaño del ícono */
+  display: flex;
+  align-items: center; /* Centra el ícono verticalmente */
+  color: black;
+}
 /* FIN ENTREGA 7 */
