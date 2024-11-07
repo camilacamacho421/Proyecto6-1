@@ -201,5 +201,61 @@ window.onload = cargarDepartamentosYLocalidades;
 //Alert - Redes de cobranza
 function showMessage(message) {
     alert(message);
-  }
-  
+}
+
+
+/* Mostrar info dirección 
+document.addEventListener("DOMContentLoaded", () => {
+    const botonDirecciones = document.getElementById("botonGuardarDireccion");
+    botonDirecciones.addEventListener('click', () => {
+        const calle = document.getElementById("calledire").value;
+        localStorage.setItem('calle', calle);
+        const numero = document.getElementById("numerodire").value;
+        localStorage.setItem('numero', numero);
+        const contenedorDireccion = document.getElementById("direccion");
+
+
+        if (calle && numero) {
+            contenedorDireccion.innerText = `Dirección de envío: ${calle} ${numero}`;
+
+        }
+        else {
+            contenedorDireccion.innerText = `Dirección de envío: (debe ingresar dirección)`;
+        };
+
+    });
+});*/
+
+// Mostrar dirección guardada en localStorage al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    const calleGuardada = localStorage.getItem('calle');
+    const numeroGuardado = localStorage.getItem('numero');
+    const contenedorDireccion = document.getElementById("direccion");
+
+    // Muestra la dirección almacenada en localStorage, si existe
+    if (calleGuardada && numeroGuardado) {
+        contenedorDireccion.innerText = `Dirección de envío: ${calleGuardada} ${numeroGuardado}`;
+    } else {
+        contenedorDireccion.innerText = `Dirección de envío: (debe ingresar dirección)`;
+    }
+
+    // Guardar nueva dirección cuando se hace clic en el botón
+    const botonDirecciones = document.getElementById("botonGuardarDireccion");
+    botonDirecciones.addEventListener('click', () => {
+        const calle = document.getElementById("calledire").value;
+        const numero = document.getElementById("numerodire").value;
+
+        // Guardar en localStorage
+        localStorage.setItem('calle', calle);
+        localStorage.setItem('numero', numero);
+
+        // Actualizar el contenedor de dirección en pantalla
+        if (calle && numero) {
+            contenedorDireccion.innerText = `Dirección de envío: ${calle} ${numero}`;
+        } else {
+            contenedorDireccion.innerText = `Dirección de envío: (debe ingresar dirección)`;
+        }
+    });
+});
+
+
