@@ -162,21 +162,21 @@ function updateBadge() {
 function borrarElemento(id) {
     // Obtener la lista de productos desde localStorage
     let obtenerListaProducto = JSON.parse(localStorage.getItem('productosComprados'));
-  
+
     // Buscar el índice del producto con el id correspondiente
     const posicion = obtenerListaProducto.findIndex(producto => producto.id === id);
-  
+
     // Si se encuentra el producto, eliminarlo
     if (posicion !== -1) {
-      obtenerListaProducto.splice(posicion, 1); // Eliminar el producto
-      localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto)); // Guardar la lista actualizada
-  
-      // Actualizar la interfaz para reflejar los cambios
-      actualizarCarrito(); 
-      updateBadge(); // Actualizar la cantidad en el badge del carrito
+        obtenerListaProducto.splice(posicion, 1); // Eliminar el producto
+        localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto)); // Guardar la lista actualizada
+
+        // Actualizar la interfaz para reflejar los cambios
+        actualizarCarrito();
+        updateBadge(); // Actualizar la cantidad en el badge del carrito
 
     }
-  }
+}
 
 
 // Evento de cambio para el selector de envío
@@ -300,13 +300,13 @@ const contenedorTarjeta = document.getElementById("contenedor_tarjeta");
 
 // Función para alternar la visibilidad de los contenedores
 function alternarMetodoPago() {
-  if (botonCobranza.checked) {
-    contenedorTarjeta.style.display = "none"; // Oculta el contenedor de tarjeta
-    contenedorCobranza.style.display = "block"; // Muestra el contenedor de cobranza
-  } else if (botonTarjeta.checked) {
-    contenedorCobranza.style.display = "none"; // Oculta el contenedor de cobranza
-    contenedorTarjeta.style.display = "block"; // Muestra el contenedor de tarjeta
-  }
+    if (botonCobranza.checked) {
+        contenedorTarjeta.style.display = "none"; // Oculta el contenedor de tarjeta
+        contenedorCobranza.style.display = "block"; // Muestra el contenedor de cobranza
+    } else if (botonTarjeta.checked) {
+        contenedorCobranza.style.display = "none"; // Oculta el contenedor de cobranza
+        contenedorTarjeta.style.display = "block"; // Muestra el contenedor de tarjeta
+    }
 }
 
 // Añadimos los eventos a los botones
@@ -319,23 +319,31 @@ alternarMetodoPago();
 
 //Validar campos de método de pago
 const botonFinalizarCompra = document.getElementById("botonFinalizarCompra");
-if (botonCobranza.checked){
-    const inputCedulaCobranza = document.getElementById("inputCedulaCobranza").value;
-    if(!inputCedulaCobranza){
-        botonFinalizarCompra.disabled;
-        botonFinalizarCompra.disabled = !inputCedulaCobranza;
-    }
-} else if (botonTarjeta.checked){
-    const numTarjeta = document.getElementById("numTarjeta").value;
-    const mesVencimiento = document.getElementById("mesVencimiento").value;
-    const anoVencimiento = document.getElementById("anoVencimiento").value;
-    const ccv = document.getElementById("ccv").value;
-    const nombreTitular = document.getElementById("nombreTitular").value;
+function validarCamposPago() {
+    if (botonCobranza.checked) {
+        const inputCedulaCobranza = document.getElementById("inputCedulaCobranza").value;
+        botonFinalizarCompra.disabled = !inputCedulaCobranza; // Deshabilita si está vacío
 
-    if(!numTarjeta || !mesVencimiento || !anoVencimiento || !ccv || !nombreTitular){
-        botonFinalizarCompra.disabled;
+    } else if (botonTarjeta.checked) {
+        const numTarjeta = document.getElementById("numTarjeta").value;
+        const mesVencimiento = document.getElementById("mesVencimiento").value;
+        const anoVencimiento = document.getElementById("anoVencimiento").value;
+        const ccv = document.getElementById("ccv").value;
+        const nombreTitular = document.getElementById("nombreTitular").value;
+
+        botonFinalizarCompra.disabled = !(numTarjeta && mesVencimiento && anoVencimiento && ccv && nombreTitular);
+
+    } else {
+        botonFinalizarCompra.disabled = true;
     }
-} else {
-    botonFinalizarCompra.disabled;
 }
+
+// Eventos para validar en tiempo real
+botonCobranza.addEventListener("change", validarCamposPago);
+botonTarjeta.addEventListener("change", validarCamposPago);
+document.querySelectorAll("#inputCedulaCobranza, #numTarjeta, #mesVencimiento, #anoVencimiento, #ccv, #nombreTitular")
+    .forEach(input => input.addEventListener("input", validarCamposPago));
+
+// Llamada inicial para establecer el estado del botón al cargar la página
+validarCamposPago();
 
