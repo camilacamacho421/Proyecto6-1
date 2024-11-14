@@ -144,6 +144,19 @@ function precioSegunCantidad(producto) {
     document.getElementById(`subtotal-${producto.id}`).textContent = `${subtotalEnUYU}`; // Muestra el subtotal en UYU
 }
 
+// Mostrar usuario
+document.addEventListener('DOMContentLoaded', () => {
+    Desafiante();
+});
+
+// Función para actualizar el badge
+function updateBadge() {
+    const productosComprados = JSON.parse(localStorage.getItem('productosComprados'));
+    const carritoBadge = document.getElementById('carrito-badge');
+    const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
+    carritoBadge.textContent = cantidadTotal;
+}
+
 // ENTREGA 7
 // Función para borrar un producto
 function borrarElemento(id) {
@@ -207,21 +220,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('DOMContentLoaded', () => {
     actualizarCarrito();
 });
-
-
-// Función para actualizar el badge
-function updateBadge() {
-    const productosComprados = JSON.parse(localStorage.getItem('productosComprados'));
-    const carritoBadge = document.getElementById('carrito-badge');
-    const cantidadTotal = productosComprados.reduce((total, producto) => total + producto.quantity, 0);
-    carritoBadge.textContent = cantidadTotal;
-}
-
-// Mostrar usuario
-document.addEventListener('DOMContentLoaded', () => {
-    Desafiante();
-});
-
 
 // Función para cargar departamentos y ciudades
 async function cargarDepartamentosYLocalidades() {
@@ -293,3 +291,9 @@ window.onload = cargarDepartamentosYLocalidades;
 function showMessage(message) {
     alert(message);
 }
+
+// Validaciones de método de pago y botón de compra
+const botonCobranza = document.getElementById("cobranza");
+const botonTarjeta = document.getElementById("tarjeta");
+const contenedorCobranza = document.getElementById("contenedor_cobranza");
+const contenedorTarjeta = document.getElementById("contenedor_tarjeta");

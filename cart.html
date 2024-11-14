@@ -66,7 +66,8 @@
               </div>
             </div>
 
-            <div class="back-to-shop"><a class="border" href="javascript:history.back()">&leftarrow; Seguir comprando</a>
+            <div class="back-to-shop"><a class="border" href="javascript:history.back()">&leftarrow; Seguir
+                comprando</a>
             </div>
             <!--Esto hace que vuelva a la pagina anterior: javascript:history.back()-->
 
@@ -125,67 +126,74 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <!-- Formulario tarjeta -->
+                        <!-- Pago con tarjeta -->
                         <form action="#" class="credit-card-div">
                           <div class="panel panel-default">
                             <div class="panel-heading">
                               <input type="radio" id="tarjeta" name="MetodoPago">
                               <label for="tarjeta">Tarjeta de débito/crédito</label>
-                              
 
-                              <div class="row ">
-                                <div class="col-md-12">
-                                  <input type="text" class="form-control" placeholder="Número de tarjeta" />
+                              <div id="contenedor_tarjeta">
+                                <div class="row ">
+                                  <div class="col-md-12">
+                                    <input type="text" class="form-control" placeholder="Número de tarjeta" />
+                                  </div>
+                                </div>
+                                <div class="row">
+
+                                  <span class="help-block text-muted small-font">Fecha de vencimiento</span>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <span class="help-block text-muted small-font">Mes</span>
+                                    <input type="text" class="form-control" placeholder="MM" />
+                                  </div>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <span class="help-block text-muted small-font">Año</span>
+                                    <input type="text" class="form-control" placeholder="AA" />
+                                  </div>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <span class="help-block text-muted small-font">CCV</span>
+                                    <input type="text" class="form-control" />
+                                  </div>
+                                  <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <i class="fa-regular fa-credit-card"></i>
+                                  </div>
+                                </div>
+                                <div class="row ">
+                                  <span class="help-block text-muted small-font">Nombre del titular</span>
+                                  <div class="col-md-12 pad-adjust">
+                                    <input type="text" class="form-control" />
+                                  </div>
                                 </div>
                               </div>
-                              <div class="row">
-                                
-                                <span class="help-block text-muted small-font">Fecha de vencimiento</span>
-                                <div class="col-md-3 col-sm-3 col-xs-3">
-                                  <span class="help-block text-muted small-font">Mes</span>
-                                  <input type="text" class="form-control" placeholder="MM" />
-                                </div>
-                                <div class="col-md-3 col-sm-3 col-xs-3">
-                                  <span class="help-block text-muted small-font">Año</span>
-                                  <input type="text" class="form-control" placeholder="AA" />
-                                </div>
-                                <div class="col-md-3 col-sm-3 col-xs-3">
-                                  <span class="help-block text-muted small-font">CCV</span>
-                                  <input type="text" class="form-control"/>
-                                </div>
-                                <div class="col-md-3 col-sm-3 col-xs-3">
-                                  <i class="fa-regular fa-credit-card"></i>
-                                </div>
-                              </div>
-                              <div class="row ">
-                                <span class="help-block text-muted small-font">Nombre del titular</span>
-                                <div class="col-md-12 pad-adjust">
-                                  <input type="text" class="form-control"/>
-                                </div>
-                              </div>
-                              
+
                               <hr>
 
                               <!-- Pago por red de cobranza -->
                               <div>
-                                <input type="radio" id="deposito" name="MetodoPago">
-                                <label for="deposito">Depósito en Red de cobranza</label>
+                                <input type="radio" id="cobranza" name="MetodoPago">
+                                <label for="cobranza">Depósito en Red de cobranza</label>
                               </div>
-                              <div class="row ">
-                                <span class="help-block text-muted small-font">Ingrese su CI sin puntos ni guión</span>
-                                <div class="col-md-12 pad-adjust">
-                                  <input type="text" class="form-control"/>
+                              <div id="contenedor_cobranza">
+                                <div class="row ">
+                                  <span class="help-block text-muted small-font">Ingrese su CI sin puntos ni
+                                    guión</span>
+                                  <div class="col-md-12 pad-adjust">
+                                    <input type="text" class="form-control" />
+                                  </div>
                                 </div>
+                                <button class="image-button"
+                                  onclick="showMessage('Dirigete con tu CI a la red de cobranza')">
+                                  <img src="img/abitab.jpg" alt="Abitab" class="abitabimg">
+                                </button>
+                                <button class="image-button"
+                                  onclick="showMessage('Dirigete con tu CI a la red de cobranza')">
+                                  <img src="img/red pagos.png" alt="Red Pagos" class="redpagosimg">
+                                </button>
                               </div>
-                              <button class="image-button" onclick="showMessage('Dirigete con tu CI a la red de cobranza')">
-                                <img src="img/abitab.jpg" alt="Abitab" class="abitabimg">
-                              </button>
-                              <button class="image-button" onclick="showMessage('Dirigete con tu CI a la red de cobranza')">
-                                <img src="img/red pagos.png" alt="Red Pagos" class="redpagosimg">
-                              </button>                              
                             </div>
                           </div>
                         </form>
+
 
                       </div>
                       <div class="modal-footer">
@@ -240,7 +248,7 @@
                           <div class="form-group">
                             <label for="numerodireccion" class="control-label">Número</label>
                             <input type="text" class="form-control" id="numerodire" name="zip">
-                          </div>                        
+                          </div>
 
                           <div class="form-group">
                             <label for="zip_id" class="control-label">Esquina</label>
@@ -250,7 +258,8 @@
                         </form>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="botonGuardarDireccion">Guardar</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                          id="botonGuardarDireccion">Guardar</button>
                       </div>
                     </div>
                   </div>
