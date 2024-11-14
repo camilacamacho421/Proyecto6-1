@@ -9,7 +9,7 @@ function convertirMoneda(cantidad, origen, destino) {
     return (cantidad * tasaCambio[destino]) / tasaCambio[origen];
 }
 
-// Función para actualizar el carrito (mostrar productos o mensaje si no hay productos)
+// Función para actualizar el carrito y los subtotales
 function actualizarCarrito() {
     const productosComprados = localStorage.getItem('productosComprados');
     const contenedor = document.querySelector('.texto_producto');
@@ -19,6 +19,8 @@ function actualizarCarrito() {
     if (!productosComprados || JSON.parse(productosComprados).length === 0) {
         contenedor.innerHTML = `<h5>No hay productos</h5>`;
         carritoBadge.style.display = 'none';
+        subtotal_carrito.textContent = "UYU 0";
+        actualizarTotal(); // Asegurarse de que el total también se actualice cuando no hay productos
         return;
     }
 
@@ -71,14 +73,39 @@ function actualizarCarrito() {
         subtotal_carrito.textContent = `UYU ${sumaSubTotalUYU}`;
         contenedor.innerHTML = htmlContentToAppend;
 
-        actualizarTotal(sumaSubTotalUYU);
+        actualizarTotal();
     }
 }
 
-// Llamar a la función para actualizar el carrito cuando se carga la página
-document.addEventListener('DOMContentLoaded', () => {
-    actualizarCarrito();
-});
+// Función para actualizar el precio total con envío
+function actualizarTotal() {
+    let listaProductos = JSON.parse(localStorage.getItem('productosComprados')) || [];
+    let sumaSubTotalUYU = listaProductos.reduce((total, producto) => {
+        const subtotal = producto.cost * producto.quantity;
+        return total + (producto.currency === 'USD' ? convertirMoneda(subtotal, 'USD', 'UYU') : subtotal);
+    }, 0);
+
+    let costoenvio = 0;
+    const selectEnvio = document.querySelector('.select_carrito');
+    const selectedOption = selectEnvio.options[selectEnvio.selectedIndex];
+    switch (selectedOption?.id) {
+        case "envioPremium":
+            costoenvio = sumaSubTotalUYU * 0.15;
+            break;
+        case "envioExpress":
+            costoenvio = sumaSubTotalUYU * 0.07;
+            break;
+        case "envioStandard":
+            costoenvio = sumaSubTotalUYU * 0.05;
+            break;
+        default:
+            costoenvio = 0;
+    }
+
+    const contenedorTotal = document.getElementById("total_carrito");
+    const totalConEnvio = sumaSubTotalUYU + costoenvio;
+    contenedorTotal.textContent = `UYU ${totalConEnvio.toFixed(2)}`;
+}
 
 
 // Función para incrementar la cantidad
@@ -87,10 +114,10 @@ function incrementarQuantity(id) {
     const producto = obtenerListaProducto.find(p => p.id === id);
     if (producto) {
         producto.quantity++;
-        updateDisplay(producto);
+        precioSegunCantidad(producto);
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
         updateBadge();
-        actualizarSumaTotal(obtenerListaProducto);
+        actualizarCarrito(); // Llamar para actualizar subtotal y total
     }
 }
 
@@ -100,15 +127,15 @@ function decrementarQuantity(id) {
     const producto = obtenerListaProducto.find(p => p.id === id);
     if (producto && producto.quantity > 1) {
         producto.quantity--;
-        updateDisplay(producto);
+        precioSegunCantidad(producto);
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
         updateBadge();
-        actualizarSumaTotal(obtenerListaProducto);
+        actualizarCarrito(); // Llamar para actualizar subtotal y total
     }
 }
 
-// Función para actualizar el subtotal en la interfaz
-function updateDisplay(producto) {
+// Función para actualizar el subtotal del producto al modificar cantidad
+function precioSegunCantidad(producto) {
     document.getElementById(`quantity-${producto.id}`).textContent = producto.quantity;
     const subtotal = producto.cost * producto.quantity;
     let subtotalEnUYU = producto.currency === 'USD'
@@ -117,19 +144,70 @@ function updateDisplay(producto) {
     document.getElementById(`subtotal-${producto.id}`).textContent = `${subtotalEnUYU}`; // Muestra el subtotal en UYU
 }
 
-// Función para actualizar el subtotal total
-function actualizarSumaTotal(listaProductos) {
-    let sumaSubTotalUYU = listaProductos.reduce((total, producto) => {
-        const subtotal = producto.cost * producto.quantity;
-        return total + (producto.currency === 'USD' ? convertirMoneda(subtotal, 'USD', 'UYU') : subtotal);
-    }, 0);
+// ENTREGA 7
+// Función para borrar un producto
+function borrarElemento(id) {
+    // Obtener la lista de productos desde localStorage
+    let obtenerListaProducto = JSON.parse(localStorage.getItem('productosComprados'));
+  
+    // Buscar el índice del producto con el id correspondiente
+    const posicion = obtenerListaProducto.findIndex(producto => producto.id === id);
+  
+    // Si se encuentra el producto, eliminarlo
+    if (posicion !== -1) {
+      obtenerListaProducto.splice(posicion, 1); // Eliminar el producto
+      localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto)); // Guardar la lista actualizada
+  
+      // Actualizar la interfaz para reflejar los cambios
+      actualizarCarrito(); 
+      updateBadge(); // Actualizar la cantidad en el badge del carrito
 
-    // Actualizar el subtotal total en el DOM
-    const subtotal_carrito = document.getElementById('subtotal_carrito');
-    if (subtotal_carrito) {
-        subtotal_carrito.textContent = `UYU ${sumaSubTotalUYU}`;
     }
-}
+  }
+
+
+// Evento de cambio para el selector de envío
+document.querySelector('.select_carrito').addEventListener('change', actualizarTotal);
+
+
+// Mostrar dirección guardada en localStorage al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    const calleGuardada = localStorage.getItem('calle');
+    const numeroGuardado = localStorage.getItem('numero');
+    const contenedorDireccion = document.getElementById("direccion");
+
+    // Muestra la dirección almacenada en localStorage, si existe
+    if (calleGuardada && numeroGuardado) {
+        contenedorDireccion.innerText = `Dirección de envío: ${calleGuardada} ${numeroGuardado}`;
+    } else {
+        contenedorDireccion.innerText = `Dirección de envío: (debe ingresar dirección)`;
+    }
+
+    // Guardar nueva dirección cuando se hace clic en el botón
+    const botonDirecciones = document.getElementById("botonGuardarDireccion");
+    botonDirecciones.addEventListener('click', () => {
+        const calle = document.getElementById("calledire").value;
+        const numero = document.getElementById("numerodire").value;
+
+        // Guardar en localStorage
+        localStorage.setItem('calle', calle);
+        localStorage.setItem('numero', numero);
+
+        // Actualizar el contenedor de dirección en pantalla
+        if (calle && numero) {
+            contenedorDireccion.innerText = `Dirección de envío: ${calle} ${numero}`;
+        } else {
+            contenedorDireccion.innerText = `Dirección de envío: (debe ingresar dirección)`;
+        }
+    });
+});
+
+
+// Llamar a la función para actualizar el carrito cuando se carga la página
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarCarrito();
+});
+
 
 // Función para actualizar el badge
 function updateBadge() {
@@ -143,35 +221,6 @@ function updateBadge() {
 document.addEventListener('DOMContentLoaded', () => {
     Desafiante();
 });
-
-// ENTREGA 7
-// Función para borrar un producto
-function borrarElemento(id) {
-    // Obtener la lista de productos desde localStorage
-    let obtenerListaProducto = JSON.parse(localStorage.getItem('productosComprados'));
-
-    // Buscar el índice del producto con el id correspondiente
-    const posicion = obtenerListaProducto.findIndex(producto => producto.id === id);
-
-    // Si se encuentra el producto, eliminarlo
-    if (posicion !== -1) {
-        obtenerListaProducto.splice(posicion, 1); // Eliminar el producto
-        localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto)); // Guardar la lista actualizada
-
-        // Eliminar el producto en el DOM
-        //const productoElemento = document.getElementById(`producto-${id}`);
-        //if (productoElemento) {
-        //    productoElemento.remove(); // Eliminar el nodo del producto en el DOM
-        //}
-
-        // Actualizar el subtotal del carrito
-        actualizarCarrito(); // Actualizar la interfaz para reflejar los cambios
-        actualizarSumaTotal(obtenerListaProducto);
-        updateBadge(); // Actualizar la cantidad en el badge del carrito
-        actualizarTotal(sumaSubTotalUYU)
-    }
-}
-
 
 
 // Función para cargar departamentos y ciudades
@@ -243,97 +292,4 @@ window.onload = cargarDepartamentosYLocalidades;
 //Alert - Redes de cobranza
 function showMessage(message) {
     alert(message);
-}
-
-
-/* Mostrar info dirección 
-document.addEventListener("DOMContentLoaded", () => {
-    const botonDirecciones = document.getElementById("botonGuardarDireccion");
-    botonDirecciones.addEventListener('click', () => {
-        const calle = document.getElementById("calledire").value;
-        localStorage.setItem('calle', calle);
-        const numero = document.getElementById("numerodire").value;
-        localStorage.setItem('numero', numero);
-        const contenedorDireccion = document.getElementById("direccion");
-
-
-        if (calle && numero) {
-            contenedorDireccion.innerText = `Dirección de envío: ${calle} ${numero}`;
-
-        }
-        else {
-            contenedorDireccion.innerText = `Dirección de envío: (debe ingresar dirección)`;
-        };
-
-    });
-});*/
-
-// Mostrar dirección guardada en localStorage al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-    const calleGuardada = localStorage.getItem('calle');
-    const numeroGuardado = localStorage.getItem('numero');
-    const contenedorDireccion = document.getElementById("direccion");
-
-    // Muestra la dirección almacenada en localStorage, si existe
-    if (calleGuardada && numeroGuardado) {
-        contenedorDireccion.innerText = `Dirección de envío: ${calleGuardada} ${numeroGuardado}`;
-    } else {
-        contenedorDireccion.innerText = `Dirección de envío: (debe ingresar dirección)`;
-    }
-
-    // Guardar nueva dirección cuando se hace clic en el botón
-    const botonDirecciones = document.getElementById("botonGuardarDireccion");
-    botonDirecciones.addEventListener('click', () => {
-        const calle = document.getElementById("calledire").value;
-        const numero = document.getElementById("numerodire").value;
-
-        // Guardar en localStorage
-        localStorage.setItem('calle', calle);
-        localStorage.setItem('numero', numero);
-
-        // Actualizar el contenedor de dirección en pantalla
-        if (calle && numero) {
-            contenedorDireccion.innerText = `Dirección de envío: ${calle} ${numero}`;
-        } else {
-            contenedorDireccion.innerText = `Dirección de envío: (debe ingresar dirección)`;
-        }
-    });
-});
-
-
-// Función para actualizar el precio total con envío
-function actualizarTotal(sumaSubTotalUYU) {
-    let costoenvio = 0;  // Inicializamos como 0, y se actualizará según el tipo de envío.
-
-    // Obtener los elementos de las opciones de envío
-    const selectEnvio = document.querySelector('.select_carrito');  // Obtener el selector de tipo de envío
-
-    // Función para actualizar el precio total
-    function actualizarPrecioTotal() {
-        const contenedorTotal = document.getElementById("total_carrito");
-        const totalConEnvio = sumaSubTotalUYU + costoenvio;  // Sumar el subtotal con el costo de envío
-        contenedorTotal.textContent = `UYU ${totalConEnvio.toFixed(2)}`;  // Mostrar el total con dos decimales
-    }
-
-    // Event listener para las opciones de envío (esto se puede simplificar usando un solo listener para el select)
-    selectEnvio.addEventListener("change", () => {
-        const selectedOption = selectEnvio.options[selectEnvio.selectedIndex];  // Obtener la opción seleccionada
-        switch (selectedOption.id) {
-            case "envioPremium":
-                costoenvio = sumaSubTotalUYU * 0.15;  // Calcular 15% de envío
-                break;
-            case "envioExpress":
-                costoenvio = sumaSubTotalUYU * 0.07;  // Calcular 7% de envío
-                break;
-            case "envioStandard":
-                costoenvio = sumaSubTotalUYU * 0.05;  // Calcular 5% de envío
-                break;
-            default:
-                costoenvio = 0;  // No hay envío seleccionado
-        }
-        actualizarPrecioTotal();  // Actualizar el precio total con el costo de envío
-    });
-
-    // Llamar a la función para actualizar el total inicial
-    actualizarPrecioTotal();
 }
