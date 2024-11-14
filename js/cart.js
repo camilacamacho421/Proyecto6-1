@@ -9,13 +9,14 @@ function convertirMoneda(cantidad, origen, destino) {
     return (cantidad * tasaCambio[destino]) / tasaCambio[origen];
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// Función para actualizar el carrito (mostrar productos o mensaje si no hay productos)
+function actualizarCarrito() {
     const productosComprados = localStorage.getItem('productosComprados');
     const contenedor = document.querySelector('.texto_producto');
     const carritoBadge = document.getElementById('carrito-badge');
     const subtotal_carrito = document.getElementById('subtotal_carrito');
 
-    if (!productosComprados) {
+    if (!productosComprados || JSON.parse(productosComprados).length === 0) {
         contenedor.innerHTML = `<h5>No hay productos</h5>`;
         carritoBadge.style.display = 'none';
         return;
@@ -38,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
             sumaSubTotalUYU += subtotalEnUYU;
 
             htmlContentToAppend += `
-                <div class="row align-items-center mb-2">
+                <!-- Contenedor completo para el producto y su subtotal -->
+                <div id="producto-${producto.id}" class="producto row align-items-center mb-2">
                     <div class="col-3 col-md-2">
                         <img class="img-fluid" src="${producto.image}" alt="${producto.name}">
                     </div>
@@ -47,29 +49,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="col-4 col-md-4 d-flex align-items-center justify-content-center">
                         <button class="border boton-circular" onclick="decrementarQuantity(${producto.id})">-</button>
-                            <span id="quantity-${producto.id}" class="border mx-2">${producto.quantity}</span>
+                        <span id="quantity-${producto.id}" class="border mx-2">${producto.quantity}</span>
                         <button class="border boton-circular" onclick="incrementarQuantity(${producto.id})">+</button>
                     </div>
                     <div class="col-12 col-md-2 text-end d-flex justify-content-end">
-                        <button id="eliminarProducto" class="btn-eliminar">X</button>
+                        <button class="btn-eliminar" onclick="borrarElemento(${producto.id})"><i class="material-icons">delete</i></button>
                     </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-12 text-end">
-                        <span>Subtotal:</span>
-                        <span class="ms-1">UYU</span>
-                        <span id="subtotal-${producto.id}" class="ms-1">${subtotalEnUYU}</span>
+                    <!-- Subtotal del producto -->
+                    <div class="row mb-2">
+                        <div class="col-12 text-end">
+                            <span>Subtotal:</span>
+                            <span class="ms-1">UYU</span>
+                            <span id="subtotal-${producto.id}" class="ms-1">${subtotalEnUYU}</span>
+                        </div>
                     </div>
+                    <hr class="linea-separadora">
                 </div>
-                <hr class="linea-separadora">
-                `;
-
+            `;
         });
 
         subtotal_carrito.textContent = `UYU ${sumaSubTotalUYU}`;
         contenedor.innerHTML = htmlContentToAppend;
+
+        actualizarTotal(sumaSubTotalUYU);
     }
+}
+
+// Llamar a la función para actualizar el carrito cuando se carga la página
+document.addEventListener('DOMContentLoaded', () => {
+    actualizarCarrito();
 });
+
 
 // Función para incrementar la cantidad
 function incrementarQuantity(id) {
@@ -113,7 +123,12 @@ function actualizarSumaTotal(listaProductos) {
         const subtotal = producto.cost * producto.quantity;
         return total + (producto.currency === 'USD' ? convertirMoneda(subtotal, 'USD', 'UYU') : subtotal);
     }, 0);
-    subtotal_carrito.textContent = `UYU ${sumaSubTotalUYU}`; // Muestra el subtotal total actualizado
+
+    // Actualizar el subtotal total en el DOM
+    const subtotal_carrito = document.getElementById('subtotal_carrito');
+    if (subtotal_carrito) {
+        subtotal_carrito.textContent = `UYU ${sumaSubTotalUYU}`;
+    }
 }
 
 // Función para actualizar el badge
@@ -130,7 +145,34 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ENTREGA 7
-// Mostrar datos de deptos y ciudades (JSON)
+// Función para borrar un producto
+function borrarElemento(id) {
+    // Obtener la lista de productos desde localStorage
+    let obtenerListaProducto = JSON.parse(localStorage.getItem('productosComprados'));
+
+    // Buscar el índice del producto con el id correspondiente
+    const posicion = obtenerListaProducto.findIndex(producto => producto.id === id);
+
+    // Si se encuentra el producto, eliminarlo
+    if (posicion !== -1) {
+        obtenerListaProducto.splice(posicion, 1); // Eliminar el producto
+        localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto)); // Guardar la lista actualizada
+
+        // Eliminar el producto en el DOM
+        //const productoElemento = document.getElementById(`producto-${id}`);
+        //if (productoElemento) {
+        //    productoElemento.remove(); // Eliminar el nodo del producto en el DOM
+        //}
+
+        // Actualizar el subtotal del carrito
+        actualizarCarrito(); // Actualizar la interfaz para reflejar los cambios
+        actualizarSumaTotal(obtenerListaProducto);
+        updateBadge(); // Actualizar la cantidad en el badge del carrito
+        actualizarTotal(sumaSubTotalUYU)
+    }
+}
+
+
 
 // Función para cargar departamentos y ciudades
 async function cargarDepartamentosYLocalidades() {
@@ -259,3 +301,39 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// Función para actualizar el precio total con envío
+function actualizarTotal(sumaSubTotalUYU) {
+    let costoenvio = 0;  // Inicializamos como 0, y se actualizará según el tipo de envío.
+
+    // Obtener los elementos de las opciones de envío
+    const selectEnvio = document.querySelector('.select_carrito');  // Obtener el selector de tipo de envío
+
+    // Función para actualizar el precio total
+    function actualizarPrecioTotal() {
+        const contenedorTotal = document.getElementById("total_carrito");
+        const totalConEnvio = sumaSubTotalUYU + costoenvio;  // Sumar el subtotal con el costo de envío
+        contenedorTotal.textContent = `UYU ${totalConEnvio.toFixed(2)}`;  // Mostrar el total con dos decimales
+    }
+
+    // Event listener para las opciones de envío (esto se puede simplificar usando un solo listener para el select)
+    selectEnvio.addEventListener("change", () => {
+        const selectedOption = selectEnvio.options[selectEnvio.selectedIndex];  // Obtener la opción seleccionada
+        switch (selectedOption.id) {
+            case "envioPremium":
+                costoenvio = sumaSubTotalUYU * 0.15;  // Calcular 15% de envío
+                break;
+            case "envioExpress":
+                costoenvio = sumaSubTotalUYU * 0.07;  // Calcular 7% de envío
+                break;
+            case "envioStandard":
+                costoenvio = sumaSubTotalUYU * 0.05;  // Calcular 5% de envío
+                break;
+            default:
+                costoenvio = 0;  // No hay envío seleccionado
+        }
+        actualizarPrecioTotal();  // Actualizar el precio total con el costo de envío
+    });
+
+    // Llamar a la función para actualizar el total inicial
+    actualizarPrecioTotal();
+}

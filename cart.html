@@ -66,9 +66,7 @@
               </div>
             </div>
 
-            <div class="back-to-shop"><a class="border" href="javascript:history.back()">&leftarrow;</a><span
-                class="text-muted">Seguir comprando</span>
-              <i class="material-icons">delete</i>
+            <div class="back-to-shop"><a class="border" href="javascript:history.back()">&leftarrow; Seguir comprando</a>
             </div>
             <!--Esto hace que vuelva a la pagina anterior: javascript:history.back()-->
 
@@ -99,16 +97,16 @@
                   <p>ENVÍO</p>
                   <select class="select_carrito">
                     <option class="text-muted">Seleccione una opción</option>
-                    <option class="text-muted">Premium 2 a 5 días (15%)</option>
-                    <option class="text-muted">Express 5 a 8 días (7%)</option>
-                    <option class="text-muted">Standard 12 a 15 días (5%)</option>
+                    <option class="text-muted" id="envioPremium">Premium 2 a 5 días (15%)</option>
+                    <option class="text-muted" id="envioExpress">Express 5 a 8 días (7%)</option>
+                    <option class="text-muted" id="envioStandard">Standard 12 a 15 días (5%)</option>
                   </select>
 
                 </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                   <div class="col" id="precio_total"><strong>PRECIO TOTAL</strong></div>
-                  <hr>
                   <div class="col text-right" id="total_carrito"></div>
+                  <hr>
                 </div>
 
                 <!-- Button trigger modal -->
