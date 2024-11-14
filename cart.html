@@ -136,7 +136,7 @@
                               <div id="contenedor_tarjeta">
                                 <div class="row ">
                                   <div class="col-md-12">
-                                    <input type="text" class="form-control" placeholder="Número de tarjeta" />
+                                    <input type="text" class="form-control" id="numTarjeta" placeholder="Número de tarjeta" />
                                   </div>
                                 </div>
                                 <div class="row">
@@ -144,15 +144,15 @@
                                   <span class="help-block text-muted small-font">Fecha de vencimiento</span>
                                   <div class="col-md-3 col-sm-3 col-xs-3">
                                     <span class="help-block text-muted small-font">Mes</span>
-                                    <input type="text" class="form-control" placeholder="MM" />
+                                    <input type="text" class="form-control" id="mesVencimiento" placeholder="MM" />
                                   </div>
                                   <div class="col-md-3 col-sm-3 col-xs-3">
                                     <span class="help-block text-muted small-font">Año</span>
-                                    <input type="text" class="form-control" placeholder="AA" />
+                                    <input type="text" class="form-control" id="anoVencimiento" placeholder="AA" />
                                   </div>
                                   <div class="col-md-3 col-sm-3 col-xs-3">
                                     <span class="help-block text-muted small-font">CCV</span>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" class="form-control" id="ccv"/>
                                   </div>
                                   <div class="col-md-3 col-sm-3 col-xs-3">
                                     <i class="fa-regular fa-credit-card"></i>
@@ -161,7 +161,7 @@
                                 <div class="row ">
                                   <span class="help-block text-muted small-font">Nombre del titular</span>
                                   <div class="col-md-12 pad-adjust">
-                                    <input type="text" class="form-control" />
+                                    <input type="text" class="form-control" id="nombreTitular" />
                                   </div>
                                 </div>
                               </div>
@@ -178,7 +178,7 @@
                                   <span class="help-block text-muted small-font">Ingrese su CI sin puntos ni
                                     guión</span>
                                   <div class="col-md-12 pad-adjust">
-                                    <input type="text" class="form-control" />
+                                    <input type="text" class="form-control" id="inputCedulaCobranza"/>
                                   </div>
                                 </div>
                                 <button class="image-button"
@@ -197,7 +197,7 @@
 
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Finalizar compra</button>
+                        <button type="button" class="btn btn-primary" id="botonFinalizarCompra">Finalizar compra</button>
                       </div>
                     </div>
                   </div>

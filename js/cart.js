@@ -297,3 +297,45 @@ const botonCobranza = document.getElementById("cobranza");
 const botonTarjeta = document.getElementById("tarjeta");
 const contenedorCobranza = document.getElementById("contenedor_cobranza");
 const contenedorTarjeta = document.getElementById("contenedor_tarjeta");
+
+// Función para alternar la visibilidad de los contenedores
+function alternarMetodoPago() {
+  if (botonCobranza.checked) {
+    contenedorTarjeta.style.display = "none"; // Oculta el contenedor de tarjeta
+    contenedorCobranza.style.display = "block"; // Muestra el contenedor de cobranza
+  } else if (botonTarjeta.checked) {
+    contenedorCobranza.style.display = "none"; // Oculta el contenedor de cobranza
+    contenedorTarjeta.style.display = "block"; // Muestra el contenedor de tarjeta
+  }
+}
+
+// Añadimos los eventos a los botones
+botonCobranza.addEventListener("change", alternarMetodoPago);
+botonTarjeta.addEventListener("change", alternarMetodoPago);
+
+// Llamamos a la función al cargar la página para establecer el estado inicial
+alternarMetodoPago();
+
+
+//Validar campos de método de pago
+const botonFinalizarCompra = document.getElementById("botonFinalizarCompra");
+if (botonCobranza.checked){
+    const inputCedulaCobranza = document.getElementById("inputCedulaCobranza").value;
+    if(!inputCedulaCobranza){
+        botonFinalizarCompra.disabled;
+        botonFinalizarCompra.disabled = !inputCedulaCobranza;
+    }
+} else if (botonTarjeta.checked){
+    const numTarjeta = document.getElementById("numTarjeta").value;
+    const mesVencimiento = document.getElementById("mesVencimiento").value;
+    const anoVencimiento = document.getElementById("anoVencimiento").value;
+    const ccv = document.getElementById("ccv").value;
+    const nombreTitular = document.getElementById("nombreTitular").value;
+
+    if(!numTarjeta || !mesVencimiento || !anoVencimiento || !ccv || !nombreTitular){
+        botonFinalizarCompra.disabled;
+    }
+} else {
+    botonFinalizarCompra.disabled;
+}
+
