@@ -1230,4 +1230,47 @@ body.modo-noche .border {
   align-items: center; /* Centra el ícono verticalmente */
   color: black;
 }
+
+
+/* Estilo Boton de Finalizar Compra */
+#botonFinalizarCompra {
+  background-color: #e74c3c; 
+  border: none; 
+}
+
+#botonFinalizarCompra:hover {
+  background-color: #8d281d; 
+}
+
+#botonFinalizarCompra:disabled {
+  background-color: #cccccc; /* Gris cuando está deshabilitado */
+  color: #666666; 
+  opacity: 0.7; 
+}
+
+/* Estilo Boton Guardar Direccion */
+#botonGuardarDireccion {
+  background-color: #e74c3c;
+  border: none;
+}
+
+#botonGuardarDireccion:hover {
+  background-color: #8d281d;
+}
+
+/* Estilo Boton Comprar */
+#botonComprar {
+  background-color: #e74c3c; 
+}
+
+#botonComprar:hover {
+  background-color: #8d281d; 
+}
+
+#botonComprar:disabled {
+  background-color: #b1afaf; /* Gris cuando está deshabilitado */
+  color: #4e4d4d; 
+  opacity: 0.7; 
+}
+
 /* FIN ENTREGA 7 */
