@@ -347,3 +347,22 @@ document.querySelectorAll("#inputCedulaCobranza, #numTarjeta, #mesVencimiento, #
 // Llamada inicial para establecer el estado del botón al cargar la página
 validarCamposPago();
 
+
+//Validar campos envío, dirección y productos (botón comprar)
+const botonCompra = document.getElementById("botonComprar");
+const calle = localStorage.getItem('calle');
+const numero = localStorage.getItem('numero');
+const opcionEnvio = document.querySelector('.select_carrito');
+const opcionSeleccionada = opcionEnvio.options[opcionEnvio.selectedIndex];
+const listaProductosComprados = localStorage.getItem('productosComprados');
+
+function validarCamposBotonCompra() {
+    botonCompra.addEventListener("click", () => {
+        if ((!calle || !numero) && (!opcionSeleccionada) && (!productosComprados || JSON.parse(productosComprados).length === 0)) {
+            botonCompra.disabled = true;
+        }
+    })
+    
+}
+
+validarCamposDireccion();
