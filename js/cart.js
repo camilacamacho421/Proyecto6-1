@@ -118,6 +118,7 @@ function incrementarQuantity(id) {
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
         updateBadge();
         actualizarCarrito(); // Llamar para actualizar subtotal y total
+        validarCamposBotonCompra();
     }
 }
 
@@ -131,6 +132,7 @@ function decrementarQuantity(id) {
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
         updateBadge();
         actualizarCarrito(); // Llamar para actualizar subtotal y total
+        validarCamposBotonCompra();
     }
 }
 
@@ -174,6 +176,7 @@ function borrarElemento(id) {
         // Actualizar la interfaz para reflejar los cambios
         actualizarCarrito();
         updateBadge(); // Actualizar la cantidad en el badge del carrito
+        validarCamposBotonCompra();
 
     }
 }
@@ -343,26 +346,34 @@ botonCobranza.addEventListener("change", validarCamposPago);
 botonTarjeta.addEventListener("change", validarCamposPago);
 document.querySelectorAll("#inputCedulaCobranza, #numTarjeta, #mesVencimiento, #anoVencimiento, #ccv, #nombreTitular")
     .forEach(input => input.addEventListener("input", validarCamposPago));
-
-// Llamada inicial para establecer el estado del botón al cargar la página
 validarCamposPago();
 
 
 //Validar campos envío, dirección y productos (botón comprar)
 const botonCompra = document.getElementById("botonComprar");
-const calle = localStorage.getItem('calle');
-const numero = localStorage.getItem('numero');
-const opcionEnvio = document.querySelector('.select_carrito');
-const opcionSeleccionada = opcionEnvio.options[opcionEnvio.selectedIndex];
-const listaProductosComprados = localStorage.getItem('productosComprados');
 
 function validarCamposBotonCompra() {
-    botonCompra.addEventListener("click", () => {
-        if ((!calle || !numero) && (!opcionSeleccionada) && (!productosComprados || JSON.parse(productosComprados).length === 0)) {
-            botonCompra.disabled = true;
-        }
-    })
-    
+    const calle = localStorage.getItem('calle');
+    const numero = localStorage.getItem('numero');
+    const opcionEnvio = document.querySelector('.select_carrito');
+    const productosComprados = JSON.parse(localStorage.getItem('productosComprados')) || [];
+
+    const envioSeleccionado = opcionEnvio && opcionEnvio.value !== "Seleccione una opción"; 
+    const direccionValida = calle && numero; 
+    const productosDisponibles = productosComprados.length > 0;
+
+    // Habilitar o deshabilitar el botón de compra
+    botonCompra.disabled = !(direccionValida && envioSeleccionado && productosDisponibles);
 }
 
+// Llamada inicial para asegurarse de que el botón esté bien al cargar la página
 validarCamposBotonCompra();
+
+// Evento de cambio para el selector de envío
+document.querySelector('.select_carrito').addEventListener('change', validarCamposBotonCompra);
+
+// Validar cuando se cargue el carrito o se actualicen los productos
+document.addEventListener('DOMContentLoaded', () => {
+    validarCamposBotonCompra();
+    actualizarCarrito(); 
+});
