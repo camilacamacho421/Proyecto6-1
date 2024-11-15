@@ -114,11 +114,9 @@ function incrementarQuantity(id) {
     const producto = obtenerListaProducto.find(p => p.id === id);
     if (producto) {
         producto.quantity++;
-        precioSegunCantidad(producto);
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
-        updateBadge();
-        actualizarCarrito(); // Llamar para actualizar subtotal y total
-        validarCamposBotonCompra();
+        actualizarCarrito();
+        validarCamposBotonCompra(); // Validar después de incrementar
     }
 }
 
@@ -128,11 +126,9 @@ function decrementarQuantity(id) {
     const producto = obtenerListaProducto.find(p => p.id === id);
     if (producto && producto.quantity > 1) {
         producto.quantity--;
-        precioSegunCantidad(producto);
         localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
-        updateBadge();
-        actualizarCarrito(); // Llamar para actualizar subtotal y total
-        validarCamposBotonCompra();
+        actualizarCarrito();
+        validarCamposBotonCompra(); // Validar después de decrementar
     }
 }
 
@@ -162,25 +158,17 @@ function updateBadge() {
 // ENTREGA 7
 // Función para borrar un producto
 function borrarElemento(id) {
-    // Obtener la lista de productos desde localStorage
     let obtenerListaProducto = JSON.parse(localStorage.getItem('productosComprados'));
-
-    // Buscar el índice del producto con el id correspondiente
     const posicion = obtenerListaProducto.findIndex(producto => producto.id === id);
 
-    // Si se encuentra el producto, eliminarlo
     if (posicion !== -1) {
-        obtenerListaProducto.splice(posicion, 1); // Eliminar el producto
-        localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto)); // Guardar la lista actualizada
-
-        // Actualizar la interfaz para reflejar los cambios
+        obtenerListaProducto.splice(posicion, 1);
+        localStorage.setItem('productosComprados', JSON.stringify(obtenerListaProducto));
         actualizarCarrito();
-        updateBadge(); // Actualizar la cantidad en el badge del carrito
-        validarCamposBotonCompra();
-
+        updateBadge();
+        validarCamposBotonCompra(); // Validar después de eliminar un producto
     }
 }
-
 
 // Evento de cambio para el selector de envío
 document.querySelector('.select_carrito').addEventListener('change', actualizarTotal);
@@ -192,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const numeroGuardado = localStorage.getItem('numero');
     const contenedorDireccion = document.getElementById("direccion");
 
-    // Muestra la dirección almacenada en localStorage, si existe
     if (calleGuardada && numeroGuardado) {
         contenedorDireccion.innerText = `Dirección de envío: ${calleGuardada} ${numeroGuardado}`;
     } else {
@@ -215,8 +202,12 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             contenedorDireccion.innerText = `Dirección de envío: (debe ingresar dirección)`;
         }
+
+        // Validar después de guardar la dirección
+        validarCamposBotonCompra();
     });
 });
+
 
 
 // Llamar a la función para actualizar el carrito cuando se carga la página
@@ -365,7 +356,6 @@ function validarCamposBotonCompra() {
     // Habilitar o deshabilitar el botón de compra
     botonCompra.disabled = !(direccionValida && envioSeleccionado && productosDisponibles);
 }
-
 // Llamada inicial para asegurarse de que el botón esté bien al cargar la página
 validarCamposBotonCompra();
 
