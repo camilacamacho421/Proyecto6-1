@@ -365,4 +365,4 @@ function validarCamposBotonCompra() {
     
 }
 
-validarCamposDireccion();
+validarCamposBotonCompra();
