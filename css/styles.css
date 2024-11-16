@@ -1273,4 +1273,19 @@ body.modo-noche .border {
   opacity: 0.7; 
 }
 
+.btn-red {
+  background-color:  #e74c3c !important; /* Fondo rojo */
+  color: white !important; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Tamaño del botón */
+  font-size: 16px; /* Tamaño de la fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de botón */
+}
+
+.btn-red:hover {
+  background-color:  #8d281d!important; /* Fondo más oscuro al pasar el mouse */
+}
+
+
 /* FIN ENTREGA 7 */
