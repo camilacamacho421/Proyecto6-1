@@ -312,32 +312,56 @@ alternarMetodoPago();
 
 
 //Validar campos de método de pago
-const botonFinalizarCompra = document.getElementById("botonFinalizarCompra");
-function validarCamposPago() {
-    if (botonCobranza.checked) {
-        const inputCedulaCobranza = document.getElementById("inputCedulaCobranza").value;
-        botonFinalizarCompra.disabled = !inputCedulaCobranza; // Deshabilita si está vacío
 
-    } else if (botonTarjeta.checked) {
-        const numTarjeta = document.getElementById("numTarjeta").value;
-        const mesVencimiento = document.getElementById("mesVencimiento").value;
-        const anoVencimiento = document.getElementById("anoVencimiento").value;
-        const ccv = document.getElementById("ccv").value;
-        const nombreTitular = document.getElementById("nombreTitular").value;
+document.addEventListener("DOMContentLoaded", () => {
+    const botonFinalizarCompra = document.getElementById("botonFinalizarCompra");
+    const botonCobranza = document.getElementById("cobranza");
+    const botonTarjeta = document.getElementById("tarjeta");
 
-        botonFinalizarCompra.disabled = !(numTarjeta && mesVencimiento && anoVencimiento && ccv && nombreTitular);
+    function validarCamposPago() {
+        if (botonCobranza.checked) {
+            const inputCedulaCobranza = document.getElementById("inputCedulaCobranza").value;
+            botonFinalizarCompra.disabled = !inputCedulaCobranza.trim();
+        } else if (botonTarjeta.checked) {
+            const numTarjeta = document.getElementById("numTarjeta").value;
+            const mesVencimiento = document.getElementById("mesVencimiento").value;
+            const anoVencimiento = document.getElementById("anoVencimiento").value;
+            const ccv = document.getElementById("ccv").value;
+            const nombreTitular = document.getElementById("nombreTitular").value;
 
-    } else {
-        botonFinalizarCompra.disabled = true;
+            botonFinalizarCompra.disabled = !(numTarjeta.trim() && mesVencimiento.trim() && anoVencimiento.trim() && ccv.trim() && nombreTitular.trim());
+        } else {
+            botonFinalizarCompra.disabled = true;
+        }
     }
-}
 
-// Eventos para validar en tiempo real
-botonCobranza.addEventListener("change", validarCamposPago);
-botonTarjeta.addEventListener("change", validarCamposPago);
-document.querySelectorAll("#inputCedulaCobranza, #numTarjeta, #mesVencimiento, #anoVencimiento, #ccv, #nombreTitular")
-    .forEach(input => input.addEventListener("input", validarCamposPago));
-validarCamposPago();
+    botonFinalizarCompra.addEventListener("click", () => {
+        if (!botonFinalizarCompra.disabled) {
+            Swal.fire({
+                title: "Tu compra está preparándose",
+                text: "Gracias por completar tu compra.",
+                icon: "success",
+                iconHtml: '<i class="fas fa-check-circle"></i>', // Ícono personalizado
+                confirmButtonText: "Aceptar",
+                customClass: {
+                    confirmButton: "btn-red" // Clase personalizada
+                  },
+                  buttonsStyling: false // Desactiva los estilos predeterminados de SweetAlert2
+                })
+               }
+              });              
+    
+
+    botonCobranza.addEventListener("change", validarCamposPago);
+    botonTarjeta.addEventListener("change", validarCamposPago);
+
+    document.querySelectorAll("#inputCedulaCobranza, #numTarjeta, #mesVencimiento, #anoVencimiento, #ccv, #nombreTitular")
+        .forEach(input => input.addEventListener("input", validarCamposPago));
+
+    validarCamposPago();
+});
+
+
 
 
 //Validar campos envío, dirección y productos (botón comprar)
