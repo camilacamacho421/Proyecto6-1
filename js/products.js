@@ -113,7 +113,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 
 // ENTREGA 3: Modifico URL para que asocie el catID y lleve al JSON correcto.
 
-const PRODUCTS_URL_MODIFICADA = PRODUCTS_URL+localStorage.getItem("catID")+".json" 
+const PRODUCTS_URL_MODIFICADA = PRODUCTS_URL+localStorage.getItem("catID")
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
