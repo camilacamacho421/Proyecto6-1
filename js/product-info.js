@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (productID) {
         // Construir la URL para obtener los datos del producto
-        const productInfoURL = PRODUCT_INFO_URL + productID;
+        const productInfoURL = PRODUCT_INFO_URL + productID + EXT_TYPE;
 
         // Hacer la solicitud para obtener la información del producto
         getJSONData(productInfoURL).then(function (resultObj) {
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (productID) {
         // Construir la URL para obtener los datos del producto
-        const productRelacionado = PRODUCT_INFO_URL + productID;
+        const productRelacionado = PRODUCT_INFO_URL + productID + EXT_TYPE;
 
         // Hacer la solicitud para obtener la información del producto
         getJSONData(productRelacionado).then(function (resultObj) {
